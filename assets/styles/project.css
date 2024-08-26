@@ -1,0 +1,30 @@
+h1 {
+    font-size: 3em;
+    color: #fff;
+}
+
+.description {
+    font-style: italic;
+    font-size: small;
+    color: #ffffffb2;
+}
+
+.text-image-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-text-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}

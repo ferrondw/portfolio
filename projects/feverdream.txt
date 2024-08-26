@@ -1,0 +1,4 @@
+## MOVEMENT
+The movement in Fever Dream is really easy, the game concept is built around a mechanic I found while messing around with some physics stuff in Unity.
+Basically, use a normal Rigidbody2D, give the player precise control over their horizontal movement, but no options vertically.
+This made coding the controls really easy, and for the player fun to mess around with!

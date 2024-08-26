@@ -1,0 +1,138 @@
+[
+    {
+        "title": "Fever Dream",
+        "description": "A platformer game where you can't jump",
+        "thumbnailPath": "assets/images/fever_dream.png",
+        "path": "projects/fever_dream.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Master Cappucino's Café",
+        "description": "A merge game where you help master cappuccino by combining cats in his market stall",
+        "thumbnailPath": "assets/images/master_cappucinos_cafe.png",
+        "path": "projects/master_cappucinos_cafe.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Operation StarFall",
+        "description": "A Game as a Service 2D Metroidvania game in the style of popular cartoons from the 80s",
+        "thumbnailPath": "assets/images/operation_starfall.png",
+        "path": "projects/operation_starfall.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Custom Volume Overrides",
+        "description": "A collection of shader graph effects made to work with URP Volumes",
+        "thumbnailPath": "assets/images/operation_starfall.png",
+        "path": "projects/operation_starfall.md",
+        "tags": ["unity"],
+        "workTime": ""
+    },
+    {
+        "title": "MA Bird",
+        "description": "Flappy Bird clone made for MediaCollege Amsterdam in 5 hours",
+        "thumbnailPath": "assets/images/ma_bird.png",
+        "path": "projects/ma_bird.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Two Guys One Ball",
+        "description": "A game-jam game I made over the weekend, pong with more color",
+        "thumbnailPath": "assets/images/two_guys_one_ball.png",
+        "path": "projects/two_guys_one_ball.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Snail Scope",
+        "description": "A multiplayer FPS game",
+        "thumbnailPath": "assets/images/snail_scope.png",
+        "path": "projects/snail_scope.md",
+        "tags": ["unity", "csharp", "networking"],
+        "workTime": ""
+    },
+    {
+        "title": "Catch The Shit",
+        "description": "A fruit catching game where you tilt your phone to move",
+        "thumbnailPath": "assets/images/catch_the_shit.png",
+        "path": "projects/catch_the_fruit.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "HangUp",
+        "description": "A chatting client with rooms made with WebSockets",
+        "thumbnailPath": "assets/images/hangup.png",
+        "path": "projects/hangup.md",
+        "tags": ["html", "css", "js", "websockets"],
+        "workTime": ""
+    },
+    {
+        "title": "El Cubico",
+        "description": "An infinite runner game, made by a guy, but I said I could do it better, thus this game was made",
+        "thumbnailPath": "assets/images/el_cubico.png",
+        "path": "projects/el_cubico.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Overjoyed",
+        "description": "A hyper-casual avoidance game, do everything you can to avoid getting happy!",
+        "thumbnailPath": "assets/images/overjoyed.png",
+        "path": "projects/overjoyed.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "The Clockwork",
+        "description": "JSTA (JavaScript Text Adventure) aka The Clockwork is a beginner JS ",
+        "thumbnailPath": "assets/images/the_clockwork.png",
+        "path": "projects/the_clockwork.md",
+        "tags": ["js", "github"],
+        "workTime": ""
+    },
+    {
+        "title": "Yakapedia",
+        "description": "Classes that make coding with C# MUCH Easier! (Includes a custom save system, logger, method extensions and more!)",
+        "thumbnailPath": "assets/images/yakapedia.png",
+        "path": "projects/yakapedia.md",
+        "tags": ["unity", "csharp", "github"],
+        "workTime": ""
+    },
+    {
+        "title": "Waypoint System",
+        "description": "Easy to use class to visually create and use Waypoint lists in the Unity game engine",
+        "thumbnailPath": "assets/images/waypoint_system.png",
+        "path": "projects/waypoint_system.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Dialogue Graph System",
+        "description": "Drag and connect nodes to create visual and easy to manage dialogue for games",
+        "thumbnailPath": "assets/images/dialogue_graph_system.png",
+        "path": "projects/dialogue_graph_system.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "Wiskunde Keuzedeel: Platformer",
+        "description": "Endless runner in Unity with mathematical functions for jumping, colliding and collecting",
+        "thumbnailPath": "assets/images/wiskunde_keuzedeel_platformer.png",
+        "path": "projects/wiskunde_keuzedeel_platformer.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    },
+    {
+        "title": "2D2D",
+        "description": "Jam game from the Educational International Game Jam about switching dimensions",
+        "thumbnailPath": "assets/images/2d2d.png",
+        "path": "projects/2d2d.md",
+        "tags": ["unity", "csharp"],
+        "workTime": ""
+    }
+]
