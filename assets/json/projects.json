@@ -8,10 +8,10 @@
         "workTime": "16-12-2022 - 20-6-2024"
     },
     {
-        "title": "Master Cappucino's Café",
+        "title": "Master Cappuccino's Café",
         "description": "A merge game where you help master cappuccino by combining cats in his market stall",
         "thumbnailPath": "assets/images/master_cappucinos_cafe.png",
-        "path": "projects/master_cappucinos_cafe.md",
+        "path": "projects/master_cappuccinos_cafe.md",
         "tags": ["unity", "csharp"],
         "workTime": "14-10-2023 - 21-10-2023"
     },

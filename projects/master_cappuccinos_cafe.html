@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ferron | Master Cappucino's Café</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/project.css">
+
+    <!-- Highlight JS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- Metadata -->
+    <meta property="og:title" content="Ferron" />
+    <meta property="og:description" content="My Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://37308.hosts2.ma-cloud.nl/p2/" />
+    <meta property="og:image" content="https://37308.hosts2.ma-cloud.nl/p2/assets/images/metadata.png">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta name="theme-color" content="#57c7ff">
+
+    <meta itemprop="name" content="Ferron de Witte">
+    <meta itemprop="description" content="My Portfolio">
+    <meta itemprop="image" content="https://37308.hosts2.ma-cloud.nl/p2/assets/icons/metadata.png">
+
+    <meta name="twitter:title" content="Ferron de Witte">
+    <meta name="twitter:description" content="My Portfolio">
+    <meta name="twitter:image" content="https://37308.hosts2.ma-cloud.nl/p2/assets/icons/metadata.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <div class="bgholder">
+        <div class="bg"></div>
+    </div>
+
+    <header>
+        <nav class="left">
+            <button onclick="window.location.href='../index.html'">Home</button>
+            <button onclick="window.location.href='../lab/'">Lab</button>
+        </nav>
+
+        <img src="../assets/icons/logo.png" alt="Logo">
+
+        <nav class="right">
+            <button onclick="window.location.href='../about.html'">About</button>
+            <button onclick="window.location.href='../contact.html'">Contact</button>
+        </nav>
+    </header>
+
+    <main id="project">
+        <h1>Master Cappuccino's Café</h1>
+        <div id="buttons">
+            <img src="../assets/icons/itch.png" onclick="window.location.href='https:\/\/yakanashe.itch.io/meow'">
+        </div>
+
+        <p>I made this project together with <a href="https://anniquebebe.artstation.com">Annique</a> for the <a
+                href="https://itch.io/jam/hyper-unicorn-gamejam-part-4">Hyper Unicorn Gamejam: Part 4</a>. We called
+            ourselves 'Molten Apple' and as such, we won the game jam! In this game jam we had one week to finish a game
+            from start to finish. The theme was revealed to be 'Combine', and we made Master Cappuccino's Café, a merge
+            game filled with cute cats and sound effects!</p>
+
+        <h2>Mechanics</h2>
+        <p>When making a chain of 3-5 cats and let go, they all merge together into the next tier of cat. There are 10
+            cat tiers, all with unique sprites made by <a href="https://anniquebebe.artstation.com">Annique</a>.</p>
+        <p>When the market stall overflows (hits the top collider), it's game over. The score is calculated in the
+            following way:</p>
+
+        <pre><code>private int Score(int kittyTier, int chainLength)
+{
+    // tier = 1-10 | length = 3-5 | min = 4 | max = 15
+    return kittyTier + chainLength;
+}</code></pre>
+        <p>And when hovering over another cat when already holding one, they get connected, I'm doing this with
+            DistanceJoints (which are already in the engine, thus perfect for a limited time event!), this code explain
+            how the cats are connected once you let go:</p>
+        <pre><code>private void ConnectTwoKitties(GameObject kitty1, GameObject kitty2)
+{
+    if (kitty1 == null || kitty2 == null)
+    {
+        Debug.LogError("One or both kitties are in the backrooms.");
+        return;
+    }
+
+    DistanceJoint2D distanceJoint = kitty1.AddComponent<DistanceJoint2D>();
+    
+    distanceJoint.connectedBody = kitty2.GetComponent<Rigidbody2D>();
+
+    // configure joint settings... thought of instantiating a prefab but this works just fine!
+    distanceJoint.autoConfigureDistance = false;
+    distanceJoint.maxDistanceOnly = true;
+    distanceJoint.enableCollision = false;
+    distanceJoint.distance = 0.5f;
+}</code></pre>
+
+        <h2>Art / Concepts</h2>
+
+        <section>
+            <img src="../assets/images/master_cappuccinos_cafe/Boba.png">
+            <p>This is one of the cats that <a href="https://anniquebebe.artstation.com">Annique</a> made, we talked a
+                bit back and forth, and came to the conclusion in the theme of a market stall it would be cute to make
+                all the cats food themed. So this is the highest tier cat, the boba cat! Wanna see more art? Check out the game at Itch.io!</p>
+        </section>
+
+        <section>
+            <p>And this is the background, in Unity the background is set to brown, and the z-layer of the 'background'
+                is
+                set higher then other sprites, so it acts more like a foreground. But it looks cute and works like a
+                charm!</p>
+            <img src="../assets/images/master_cappuccinos_cafe/Background.png">
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://discord.gg/6FwTHR3qpn"><img src="../assets/icons/discord.png" alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe"><img src="../assets/icons/playstore.png"
+                    alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw"><img src="../assets/icons/github.png" alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ"><img src="../assets/icons/youtube.png"
+                    alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com"><img src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
+        </div>
+        <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
