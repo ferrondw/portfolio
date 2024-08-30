@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ferron | Fever Dream</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/project.css">
+
+    <!-- Highlight JS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- Metadata -->
+    <meta property="og:title" content="Ferron" />
+    <meta property="og:description" content="My Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://37308.hosts2.ma-cloud.nl/p2/" />
+    <meta property="og:image" content="https://37308.hosts2.ma-cloud.nl/p2/assets/images/metadata.png">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta name="theme-color" content="#57c7ff">
+
+    <meta itemprop="name" content="Ferron de Witte">
+    <meta itemprop="description" content="My Portfolio">
+    <meta itemprop="image" content="https://37308.hosts2.ma-cloud.nl/p2/assets/icons/metadata.png">
+
+    <meta name="twitter:title" content="Ferron de Witte">
+    <meta name="twitter:description" content="My Portfolio">
+    <meta name="twitter:image" content="https://37308.hosts2.ma-cloud.nl/p2/assets/icons/metadata.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <div class="bgholder">
+        <div class="bg"></div>
+    </div>
+
+    <header>
+        <nav class="left">
+            <button onclick="window.location.href='../index.html'">Home</button>
+            <button onclick="window.location.href='../lab/'">Lab</button>
+        </nav>
+
+        <img src="../assets/icons/logo.png" alt="Logo">
+
+        <nav class="right">
+            <button onclick="window.location.href='../about.html'">About</button>
+            <button onclick="window.location.href='../contact.html'">Contact</button>
+        </nav>
+    </header>
+
+    <main id="project">
+        <h1>Fever Dream</h1>
+        <div id="buttons">
+            <img src="../assets/icons/playstore.png"
+                onclick="window.location.href='https:\/\/play.google.com/store/apps/details?id=game.Yakanashe.FeverDream'">
+        </div>
+
+        <p>I started this project to test a little game mechanic I had in mind, which expanded into
+            this game. Fever Dream is a platformer where you can't jump. This means you'll have to flick your way off
+            platforms in order to reach the portal to finish the level. This has been the project that stuck with me,
+            and that I've worked the longest on. That also means that the UI and code have improved in it's lifetime.
+            I'm very happy about the project, and although it's not completely finished yet, I'm happy about the game
+            that I made. (I'm also very grateful to all the people that helped me come up with ideas for the game to
+            improve it even more!)</p>
+
+        <h2>Player</h2>
+
+        <p>Even though the player is a simple rectangle, it needs to keep track of a lot of things,
+            such as which way it moves:</p>
+        <pre><code class="language-csharp">private MovementState movementState { get; set; }
+    
+    public enum MovementState
+    {
+        Idle,
+        Left,
+        Right
+    }</code></pre>
+
+        <p>The player also manages how loud the wind sound effect needs to be</p>
+        <pre><code class="language-csharp">public void HandleWindVolume()
+    {
+        if (player.CanMove)
+        {
+            RotationSound.volume = Mathf.Lerp(RotationSound.volume,
+                (Mathf.Abs(player.Rigidbody.angularVelocity) / 1700) * AudioSettings.sfxVolume * 0.5f,
+                1.3f * Time.deltaTime);
+        }
+    }</code></pre>
+
+        <p>After some more code the player actually moves...</p>
+        <pre><code class="language-csharp">private void Update()
+    {
+        if (!CanMove)
+        {
+            playerInput.ChangeMovementState(0);
+            Rigidbody.ResetVelocity();
+            Rigidbody.ResetAngularVelocity();
+            playerWindSFX.RotationSound.volume = Mathf.Lerp(playerWindSFX.RotationSound.volume, 0, 0.5f);
+    
+            return;
+        }
+        
+        playerWindSFX.HandleWindVolume();
+        
+        if (ControlSchemeHandler.UsingFullScreenControlScheme)
+        {
+            playerInput.FullscreenInput();
+            return;
+        }
+        
+        playerInput.ButtonInput();
+    }</code></pre>
+
+        <h2>Mechanics</h2>
+        <p>Mechanics are all based on one base class, and a script that handles trigger collisions
+            with a mechanic</p>
+        <pre><code class="language-csharp">public class BaseMechanic : MonoBehaviour
+{
+// Collision checks do nothing if not overridden (e.g. Lava only needs Enter, while Black Hole needs all 3).
+public virtual void HandleTriggerEnter(Collider2D other){}
+
+public virtual void HandleTriggerStay(Collider2D other){}
+
+public virtual void HandleTriggerExit(Collider2D other){}
+}</code></pre>
+        <br><br>
+        <pre><code class="language-csharp">public class MechanicChecker : MonoBehaviour
+{    
+private Collider2D _collider;
+private void Start() =&gt; _collider = GetComponent&lt;Collider2D&gt;();
+
+private void OnTriggerEnter2D(Collider2D collision)
+{
+    BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+    if (gameMechanic != null)
+    {
+        gameMechanic.HandleTriggerEnter(_collider);
+    }
+}
+
+private void OnTriggerStay2D(Collider2D collision)
+{
+    BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+    if (gameMechanic != null)
+    {
+        gameMechanic.HandleTriggerStay(_collider);
+    }
+}
+
+private void OnTriggerExit2D(Collider2D collision)
+{
+    BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+    if (gameMechanic != null)
+    {
+        gameMechanic.HandleTriggerExit(_collider);
+    }
+}
+}</code></pre>
+
+        <p>For example, here are the Key, Lava and Jump Pad mechanic:</p>
+
+        <pre><code class="language-csharp">public class Key : BaseMechanic
+{
+public GameObject objectToToggleOnHit;
+    
+private void Start()
+{
+    RecursiveKeyAnimation();
+}
+
+private void RecursiveKeyAnimation()
+{
+    transform.DOMoveY(transform.position.y + 0.3f, 1).SetEase(Ease.InOutSine).OnComplete(() =>
+    {
+        transform.DOMoveY(transform.position.y - 0.3f, 1).SetEase(Ease.InOutSine).OnComplete(RecursiveKeyAnimation);
+    });
+}
+
+public override void HandleTriggerEnter(Collider2D other)
+{
+    objectToToggleOnHit.SetActive(!objectToToggleOnHit.activeSelf);
+    Destroy(gameObject);
+}
+}</code></pre>
+        <img src="../assets/images/fever_dream/7.png" alt="Image">
+        <pre><code class="language-csharp">public class Lava : BaseMechanic
+{
+public override void HandleTriggerEnter(Collider2D other)
+{
+    
+    LevelManager.Instance.RestartLevel();
+}
+}</code></pre>
+        <img src="../assets/images/fever_dream/9.png" alt="Image">
+        <pre><code class="language-csharp">public class JumpPad : BaseMechanic
+{
+[SerializeField] private float JumpPadStrength;
+
+private bool isAnimating = false;
+private Vector3 transformUp;
+
+private void Start() =&gt; transformUp = transform.up;
+
+public override void HandleTriggerEnter(Collider2D other)
+{
+    other.GetComponent&lt;PlayerMovement&gt;().Rigidbody.velocity = new Vector2(other.GetComponent&lt;PlayerMovement&gt;().Rigidbody.velocity.x, JumpPadStrength) * transform.up;
+        
+    if (isAnimating) return;
+    
+    isAnimating = true;
+    transform.DOMove(transform.position + transformUp * 0.2f, 0.25f).OnComplete(() =&gt;
+    {
+        transform.DOMove(transform.position - transformUp * 0.2f, 0.4f)
+        .OnComplete(() =&gt; { isAnimating = false; });
+    });
+}
+}</code></pre>
+        <img src="../assets/images/fever_dream/8.png" alt="Image">
+
+        <h2>Customisation</h2>
+        <p>I LOVE customisation in games, so I'm not one to leave it out. Fever Dream has
+            customisable skins, themes, trails, backgrounds and music. Here is an example of some skins:</p>
+        <img src="../assets/images/fever_dream/1.png" alt="Image">
+        <img src="../assets/images/fever_dream/2.png" alt="Image">
+        <img src="../assets/images/fever_dream/3.png" alt="Image">
+        <img src="../assets/images/fever_dream/4.png" alt="Image">
+        <img src="../assets/images/fever_dream/5.png" alt="Image">
+        <img src="../assets/images/fever_dream/6.png" alt="Image">
+
+        <h2>Levels</h2>
+
+        <p>Levels are loaded while the transition animation is playing in the background, this is a
+            snippet of how the level handling works:</p>
+        <img src="../assets/images/fever_dream/10.png" alt="Image">
+        <p>Each level has it's own script</p>
+        <pre><code class="language-csharp">public class Level : MonoBehaviour
+{
+public string levelName;
+public AudioClip audioClip;
+public Vector2 spawnPosition;
+}</code></pre>
+
+        <p>Those are used in LevelManager (this is the method 'LoadLevel(int levelID, bool
+            doFadeIn)')</p>
+        <pre><code class="language-csharp">for (int i = 0; i &lt; levelParent.childCount; i++)
+{
+levelParent.GetChild(i).gameObject.SetActive(i == levelID);
+}
+
+ResetPlayer();</code></pre>
+        <pre><code class="language-csharp">public void ResetPlayer()
+{
+playerMovement.isGravityInversed = false;
+
+GameObject player = playerMovement.gameObject;
+player.transform.position = levelParent.transform.GetChild(StaticData.CurrentLevel).GetComponent&lt;Level&gt;().spawnPosition;
+player.transform.rotation = Quaternion.identity;
+
+Rigidbody2D rb = playerMovement.Rigidbody;
+rb.position = startPosition;
+rb.angularVelocity = 0;
+rb.gravityScale = 0.5f;
+rb.velocity = Vector2.zero;
+}</code></pre>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://discord.gg/6FwTHR3qpn"><img src="../assets/icons/discord.png" alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe"><img src="../assets/icons/playstore.png"
+                    alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw"><img src="../assets/icons/github.png" alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ"><img src="../assets/icons/youtube.png"
+                    alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com"><img src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
+        </div>
+        <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

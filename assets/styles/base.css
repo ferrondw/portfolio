@@ -5,16 +5,35 @@
 
     --semi-transparent: #00000060;
     --transparent: #00000000;
-    
+
     --primary: #002a3b;
-    --secondary: #005c80;
+    --secondary: rgb(0, 92, 128);
 
     --transition-speed: 0.25s;
     --background-line: #ffffff20;
 }
 
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #005c80 #000000;
+}
+
+*::-webkit-scrollbar {
+    width: 20px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #005c80;
+    border-radius: 10px;
+}
+
 body {
-    background-color: black; /* behind animated background, fallback color */
+    background-color: black;
+    /* behind animated background, fallback color */
     text-shadow: #000 0px 5px 5px;
     user-select: none;
     color: var(--light);
@@ -138,7 +157,7 @@ main p {
     animation: 2s linear infinite crawlingWall;
 }
 
-#bg{
+#bg {
     position: fixed;
     z-index: -1;
     margin: 0 auto;
@@ -185,7 +204,7 @@ footer p {
 }
 
 .social-links img:hover {
-    scale: 1.2;
+    scale: 1.1;
     opacity: 1;
     transition: var(--transition-speed);
 }
@@ -197,7 +216,7 @@ footer p {
     margin-bottom: 5px;
 }
 
-.search-bar{
+.search-bar {
     font-family: "Source Code Pro", monospace;
     border-style: none;
     background-color: var(--semi-transparent);
@@ -209,7 +228,7 @@ footer p {
     margin-right: 10px;
 }
 
-#tag-filter{
+#tag-filter {
     font-family: "Source Code Pro", monospace;
     border-style: none;
     background-color: var(--semi-transparent);
@@ -220,18 +239,18 @@ footer p {
     width: 30%;
 }
 
-#tag-filter option { 
+#tag-filter option {
     /* Whatever color  you want */
     background-color: var(--dark);
 }
 
-filtering{
+filtering {
     display: flex;
     flex-direction: row;
     width: 40%;
 }
 
-.projects-text{
+.projects-text {
     font-size: 60px;
     color: var(--light);
 }
@@ -271,7 +290,7 @@ projects .info {
     transition: ease var(--transition-speed);
 }
 
-.project:hover{
+.project:hover {
     box-shadow: 0px 7px 5px 5px #0000008a;
     transform: translateY(-8px);
     scale: 1.02;
@@ -279,7 +298,7 @@ projects .info {
     transition: ease var(--transition-speed);
 }
 
-.project .metadata{
+.project .metadata {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -296,11 +315,11 @@ projects .tags img {
     max-width: 40px;
 }
 
-projects .info .title{
+projects .info .title {
     margin-bottom: 0px;
 }
 
-.about{
+.about {
     color: var(--white);
     font-size: 17px;
     user-select: none;
@@ -317,7 +336,7 @@ projects .info .title{
     transition: ease var(--transition-speed);
 }
 
-.about-text{
+.about-text {
     font-size: 100px;
     margin-top: 100px;
     margin-bottom: 50px;
@@ -325,20 +344,20 @@ projects .info .title{
     animation: 1s fadeIn;
 }
 
-.about img{
+.about img {
     max-width: 30%;
     height: fit-content;
     border-radius: 10px;
     margin-right: 30px;
 }
 
-.about date{
+.about date {
     color: #ffffff82;
     padding-left: 5px;
     font-size: 14px;
 }
 
-.about b{
+.about b {
     font-size: 25px;
 }
 
@@ -348,14 +367,14 @@ projects .info .title{
     text-decoration: underline;
 }
 
-.contact{
+.contact {
     border-radius: 10px;
     width: fit-content;
     padding: 20px;
     scale: 1.2;
 }
 
-.contact .social-links{
+.contact .social-links {
     align-self: center;
     height: fit-content;
     padding: 0%;
@@ -398,7 +417,7 @@ projects .info .title{
         width: 100%;
     }
 
-    main{
+    main {
         padding: 50px 0px 70px;
     }
 
@@ -407,7 +426,7 @@ projects .info .title{
         margin: 0px;
         margin-top: 70px;
     }
-    
+
     main .domain {
         z-index: -1;
         font-size: 80px;
@@ -416,14 +435,14 @@ projects .info .title{
         color: var(--secondary);
         animation: 1s fadeIn;
     }
-    
+
     main p {
         color: var(--light);
         z-index: 2;
         margin-bottom: 20px;
     }
 
-    projects{
+    projects {
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -443,44 +462,44 @@ projects .info .title{
         margin-right: 10px;
     }
 
-    .project .metadata{
+    .project .metadata {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
-    .project .info{
+    .project .info {
         margin-right: 10px;
     }
-    
+
     projects .tags img {
         max-width: 30px;
         border-radius: 5px;
     }
-    
-    projects .info .title{
+
+    projects .info .title {
         margin-bottom: 0px;
         font-size: 20px;
     }
 
-    projects .info .description{
+    projects .info .description {
         font-size: 10px;
     }
 
-    filtering{
+    filtering {
         width: 90%;
     }
 
-    .search-bar{
+    .search-bar {
         width: 50%;
         margin-right: 5px;
     }
-    
-    #tag-filter{
+
+    #tag-filter {
         width: 50%;
     }
 
-    .about{
+    .about {
         width: 90%;
         flex-direction: column;
         color: var(--white);
@@ -488,27 +507,27 @@ projects .info .title{
         padding: 10px;
     }
 
-    .about-text{
+    .about-text {
         font-size: 60px;
     }
 
-    .about img{
+    .about img {
         max-width: 70%;
         align-self: center;
         height: fit-content;
         padding-bottom: 20px;
     }
-    
-    .about date{
+
+    .about date {
         color: #ffffff82;
         padding-left: 5px;
         font-size: 14px;
     }
-    
-    .about b{
+
+    .about b {
         font-size: 25px;
     }
-    
+
     .about a,
     .about a::after {
         color: var(--white);
@@ -519,23 +538,23 @@ projects .info .title{
         font-size: 10px;
         margin: 10px;
     }
-    
+
     .social-links a {
         display: flex;
         height: fit-content;
         margin: 10px;
     }
-    
+
     .social-links img {
         max-width: 25px;
     }
 
-    .contact{
+    .contact {
         display: flex;
         flex-direction: column;
     }
 
-    .contact .social-links{
+    .contact .social-links {
         flex-direction: column;
     }
 }
