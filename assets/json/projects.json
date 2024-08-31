@@ -19,7 +19,7 @@
         "title": "Custom Volume Overrides",
         "description": "A collection of shader graph effects made to work with URP Volumes",
         "thumbnailPath": "assets/images/custom_volume_overrides.png",
-        "path": "projects/custom_volume_overrides.html",
+        "path": "projects/custom_volume_overrides.html", 
         "tags": ["unity", "shader"],
         "workTime": ""
     },
