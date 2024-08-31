@@ -34,7 +34,7 @@
 body {
     background-color: black;
     /* behind animated background, fallback color */
-    text-shadow: #000 0px 5px 5px;
+    text-shadow: #0008 0px 5px 5px;
     user-select: none;
     color: var(--light);
     font-family: "Source Code Pro", monospace;

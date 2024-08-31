@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     `;
         projectElement.addEventListener("click", () => {
-            window.location.href = `projects/${project.path.substring(9, project.path.length - 3)}.html`; // this is shitty code, tip: never do this
+            window.location.href = project.path;
         });
         return projectElement;
     }

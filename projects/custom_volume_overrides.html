@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ferron | Fever Dream</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/project.css">
+    <script src="../assets/scripts/viewImage.js"></script>
+
+    <!-- Highlight JS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- Metadata -->
+    <meta property="og:title" content="Ferron" />
+    <meta property="og:description" content="My Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ferron.dev/" />
+    <meta property="og:image" content="https://ferron.dev/assets/images/metadata.png">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:keywords" content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta name="theme-color" content="#57c7ff">
+
+    <meta itemprop="name" content="Ferron de Witte">
+    <meta itemprop="description" content="My Portfolio">
+    <meta itemprop="image" content="https://ferron.dev/assets/images/metadata.png">
+
+    <meta name="twitter:title" content="Ferron de Witte">
+    <meta name="twitter:description" content="My Portfolio">
+    <meta name="twitter:image" content="https://ferron.dev/assets/images/metadata.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <div class="bgholder">
+        <div class="bg"></div>
+    </div>
+
+    <header>
+        <nav class="left">
+            <button onclick="window.location.href='../home'">Home</button>
+            <button onclick="window.location.href='../lab'">Lab</button>
+        </nav>
+
+        <img src="../assets/icons/logo.png" alt="Logo">
+
+        <nav class="right">
+            <button onclick="window.location.href='../about'">About</button>
+            <button onclick="window.location.href='../contact'">Contact</button>
+        </nav>
+    </header>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modalContent" id="modalImage">
+    </div>
+
+    <main id="project">
+        <h1>Custom Volume Overrides</h1>
+
+        <p>Though these are called Custom <i>Volume</i> Overrides, I will only talk about the shaders I made. This is
+            because <a href="https://sites.google.com/view/portfoliomaxym/home">Maxym</a> (classmate) made the system to convert the shader graphs to volume overrides.</p>
+
+        <h2>SuperDot</h2>
+        <p>The idea came from early CRT like screens, showing each dot more pronounced rather then a clean screen. I
+            made this effect mainly by using the Fraction, UV, and Rounded Polygon nodes in Shader Graph.</p>
+        <img class="interactable" src="../assets/images/custom_volume_overrides/super_dot_graph.png">
+        <img class="interactable" src="../assets/images/custom_volume_overrides/super_dot.png">
+
+        <p>I actually LOVE this shader! Due to it using the Rounded Polygon and not a circle, you can customise it in
+            loads of ways! Here is an example where the width is 10, and the polygon is square:</p>
+        <img class="interactable" src="../assets/images/custom_volume_overrides/super_dot_2.png">
+
+        <h2>Rain</h2>
+        <p>Because these shaders are made for a game (Project Starfall), it would be fitting to have some weather
+            related shaders! So this was my attempts at a rain shader, made with mostly scrolling warped noise and
+            adding / subtracting, then lerping that with the UV's to create a screen warp / rain particle effect!</p>
+        <img class="interactable" src="../assets/images/custom_volume_overrides/rain_graph.png">
+        <img class="interactable" src="../assets/images/custom_volume_overrides/rain.gif">
+        <p class="description">Gif does not look pretty due to compression, sorry!</p>
+
+        <h2>Fisheye</h2>
+        <p>For the fun of it, I also made a really easy fisheye effect! Though the graph is small, the process to get it
+            there was not. I tried lots of things, but in the end it all worked out.</p>
+            <img class="interactable" src="../assets/images/custom_volume_overrides/fisheye_graph.png">
+            <img class="interactable" src="../assets/images/custom_volume_overrides/fisheye.png">
+
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://discord.gg/6FwTHR3qpn"><img src="../assets/icons/discord.png" alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe"><img src="../assets/icons/playstore.png"
+                    alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw"><img src="../assets/icons/github.png" alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ"><img src="../assets/icons/youtube.png"
+                    alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com"><img src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
+        </div>
+        <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
         "title": "Fever Dream",
         "description": "A platformer game where you can't jump",
         "thumbnailPath": "assets/images/fever_dream.png",
-        "path": "projects/fever_dream.md",
+        "path": "projects/fever_dream.html",
         "tags": ["unity", "csharp"],
         "workTime": "16-12-2022 - 20-6-2024"
     },
@@ -11,7 +11,7 @@
         "title": "Master Cappuccino's Café",
         "description": "A merge game where you help master cappuccino by combining cats in his market stall",
         "thumbnailPath": "assets/images/master_cappucinos_cafe.png",
-        "path": "projects/master_cappuccinos_cafe.md",
+        "path": "projects/master_cappuccinos_cafe.html",
         "tags": ["unity", "csharp"],
         "workTime": "14-10-2023 - 21-10-2023"
     },
@@ -19,7 +19,7 @@
         "title": "Custom Volume Overrides",
         "description": "A collection of shader graph effects made to work with URP Volumes",
         "thumbnailPath": "assets/images/custom_volume_overrides.png",
-        "path": "projects/operation_starfall.md",
+        "path": "projects/custom_volume_overrides.html",
         "tags": ["unity", "shader"],
         "workTime": ""
     },
@@ -27,7 +27,7 @@
         "title": "The Clockwork",
         "description": "A choose your own adventure text story written in JavaScript as beginnner course for MediaCollege Amsterdam",
         "thumbnailPath": "assets/images/the_clockwork.png",
-        "path": "projects/the_clockwork.md",
+        "path": "projects/the_clockwork.html",
         "tags": ["js", "github"],
         "workTime": "14-9-2023 - 2-10-2023"
     },
@@ -35,8 +35,8 @@
         "title": "Waypoint System",
         "description": "Easy to use class to visually create and use Waypoint lists in the Unity game engine",
         "thumbnailPath": "assets/images/waypoint_system.png",
-        "path": "projects/waypoint_system.md",
+        "path": "projects/waypoint_system.html",
         "tags": ["unity", "csharp"],
-        "workTime": "??-??-2024 - ??-??-2024"
+        "workTime": "27-11-2023 - 01-25-2024"
     }
 ]

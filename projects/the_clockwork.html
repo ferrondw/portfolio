@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ferron | The Clockwork</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <link rel="stylesheet" href="../assets/styles/project.css">
+    <script src="../assets/scripts/viewImage.js"></script>
+
+    <!-- Highlight JS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <!-- Metadata -->
+    <meta property="og:title" content="Ferron" />
+    <meta property="og:description" content="My Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ferron.dev/" />
+    <meta property="og:image" content="https://ferron.dev/assets/images/metadata.png">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:keywords" content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta name="theme-color" content="#57c7ff">
+
+    <meta itemprop="name" content="Ferron de Witte">
+    <meta itemprop="description" content="My Portfolio">
+    <meta itemprop="image" content="https://ferron.dev/assets/images/metadata.png">
+
+    <meta name="twitter:title" content="Ferron de Witte">
+    <meta name="twitter:description" content="My Portfolio">
+    <meta name="twitter:image" content="https://ferron.dev/assets/images/metadata.png">
+    <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body>
+    <div class="bgholder">
+        <div class="bg"></div>
+    </div>
+
+    <header>
+        <nav class="left">
+            <button onclick="window.location.href='../home'">Home</button>
+            <button onclick="window.location.href='../lab'">Lab</button>
+        </nav>
+
+        <img src="../assets/icons/logo.png" alt="Logo">
+
+        <nav class="right">
+            <button onclick="window.location.href='../about'">About</button>
+            <button onclick="window.location.href='../contact'">Contact</button>
+        </nav>
+    </header>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modalContent" id="modalImage">
+    </div>
+
+    <main id="project">
+        <h1>The Clockwork</h1>
+        <div id="buttons">
+            <img src="../assets/icons/github.png" onclick="window.location.href='https:\/\/github.com/ferrondw/JSTA'">
+        </div>
+        <p>"In "The Clockwork" you wake up with a splitting headache and find yourself in a series of bizarre and often
+            gory situations. You'll make choices that lead to hilarious and sometimes gruesome consequences as you
+            navigate through a tangled web of time loops, alien encounters, and divine knowledge. Will you survive this
+            web of time loops and end it happily ever after, or will you find yourself lost in the void, frozen to
+            death, or merged with your younger self, repeating the same adventure with newfound wisdom? Keep in mind,
+            your decisions will determine the fate of this world. Choose wisely."</p>
+
+        <p>This was my first ever JavaScript project for <a href="https://www.ma-web.nl">MediaCollege Amsterdam</a>.
+            Where in our first year, we had to make a story game in pure JavaScript ran on NodeJS. We had to learn
+            GitHub and make a flowchart for the story:</p>
+
+        <img class="interactable" src="../assets/images/the_clockwork/flowchart.png">
+
+        <p>Besides the story, I focussed on making the programming of it modular and easy to edit. Thus I made main.js,
+            which parses the story written fully in JSON. Then I use external ASCII art and such by making a JavaScript
+            file and making it export itself, making it usable as an import. Here is a bit of code for parsing the
+            story, followed by a part of the story:</p>
+
+        <pre><code>async function PlayPart(index) {
+    try {
+            const { text, choices } = Story[index];
+
+            for (const line of text) {
+                for(const word of line.split('')){
+                        process.stdout.write(`${word}`);
+                        await new Promise(resolve => setTimeout(resolve, letterDelay * 1000));
+                }
+                process.stdout.write("\n")
+                await new Promise(resolve => setTimeout(resolve, sentenceDelay * 1000));
+            }
+
+            const choiceKeys = Object.keys(choices);
+            const userAnswer = readlineSync.keyInSelect(choiceKeys, '');
+
+            const nextStoryPart = choices[choiceKeys[userAnswer]];
+
+            //check for endings
+            if (!parseInt(nextStoryPart)) {
+                PlayEnding(parseInt(nextStoryPart.slice(1)));
+                return;
+            }
+
+            //play the next part of the story based on the users choice
+            PlayPart(nextStoryPart);
+    }
+    catch {
+            // something went wrong trying to play a story part
+            // this means there is a flaw in the story file, something leads to nothing!
+            console.log('Seems like a wormhole sucked up the story, so it cannot continue!');
+    }
+}</code></pre>
+
+        <pre><code>const Art = require("./art.js");
+
+const Story = [
+    { // 0 - Waking up with a headache
+        text: ['After a long day of work, you can finally sleep.',
+        'But, after waking up, you have a splitting headache!',
+        'Pressing the sore eyelids together while yawning with crispy lips, you get out of bed.',
+        'Still a little bit dizzy from standing up, you quickly come to a decision to make.'],
+        choices: {
+        'Look around what can help with the headache': 1,
+        'Notice something glowing': 9
+    },
+    },
+    { // 1 - Looking for help
+        text: ['As you stumble around your room looking for something to help with the headache, you notice 2 things.',
+        'On one end of the room is a paracetemol, on the other a cold glass of water.',
+        'You are simply too dizzy to get both, who knows what might go wrong if you did!',
+        'So, will you...'],
+        choices: {
+        'Get the glass of water.': 2,
+        'Get the paracetemol.': 2,
+    },
+    }...
+];
+module.exports = Story;</code></pre>
+
+        <p>Using process.stdout.write() I can write the next character without creating a new line, this is how
+            animating the characters is made. If an error occurs, I handle that with spitting out a custom error message
+            in line with the 'world' of the story. This is a part of the story animated:</p>
+        <img class="interactable" src="../assets/images/the_clockwork/playing.gif">
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://discord.gg/6FwTHR3qpn"><img src="../assets/icons/discord.png" alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe"><img src="../assets/icons/playstore.png"
+                    alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw"><img src="../assets/icons/github.png" alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ"><img src="../assets/icons/youtube.png"
+                    alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com"><img src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
+        </div>
+        <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
