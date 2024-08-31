@@ -57,6 +57,11 @@ header {
     padding-top: 30px;
 }
 
+.construction{
+    border-radius: 20px;
+    margin: 40px;
+}
+
 header nav {
     display: flex;
     flex-direction: row;
