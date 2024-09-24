@@ -43,15 +43,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderProjects(projects) {
         projectsContainer.innerHTML = "";
-        projects.forEach((project) => {
-            const projectElement = createProjectElement(project);
+        const finishedProjects = projects.filter(project => project.finished);
+        const unfinishedProjects = projects.filter(project => !project.finished);
+
+        finishedProjects.forEach((project) => {
+            const projectElement = createProjectElement(project, true);
+            projectsContainer.appendChild(projectElement);
+        });
+
+        unfinishedProjects.forEach((project) => {
+            const projectElement = createProjectElement(project, false);
             projectsContainer.appendChild(projectElement);
         });
     }
 
-    function createProjectElement(project) {
+
+    function createProjectElement(project, isFinished) {
         const projectElement = document.createElement("div");
         projectElement.classList.add("project");
+
+        if (!isFinished) {
+            projectElement.classList.add("unfinished");
+        }
+        else {
+            projectElement.addEventListener("click", () => {
+                window.location.href = project.path;
+            });
+        }
+
         projectElement.innerHTML = `
       <img src="${project.thumbnailPath}" alt="Project Image">
       <div class="info">
@@ -62,9 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
       </div>
     `;
-        projectElement.addEventListener("click", () => {
-            window.location.href = project.path;
-        });
+
         return projectElement;
     }
 

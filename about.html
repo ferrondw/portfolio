@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="./assets/styles/base.css">
     <script defer src="assets/scripts/variables.js"></script>
+    <script defer src="../assets/scripts/hueRandomiser.js"></script>
 
     <!-- Metadata -->
     <meta property="og:title" content="Ferron" />
@@ -19,7 +20,8 @@
     <meta property="og:image" content="https://ferrondewitte.com/assets/images/metadata.png">
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:keywords" content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
     <meta name="theme-color" content="#57c7ff">
 
     <meta itemprop="name" content="Ferron de Witte">
@@ -43,7 +45,7 @@
             <button onclick="window.location.href='lab'">Lab</button>
         </nav>
 
-        <img src="./assets/icons/logo.png" alt="Logo">
+        <img src="./assets/icons/logo.png" alt="Logo" onclick="toggleRandomColors()">
 
         <nav class="right">
             <button onclick="window.location.href='about'">About</button>
@@ -56,30 +58,33 @@
     <div class="about">
         <!-- <img src="image of me i dont have"> -->
         <p class="about-p">
-            Hello! I'm Ferron, an enthousiastic and eager game developer that has been making games with the Unity
-            Engine since
-            2019. I'm <var id="age">16</var> years old and have been interested in laptops, hardware, software, games
+            Hello! I'm Ferron, an enthousiastic game developer that has ~5 years of experience using the Unity Game
+            Engine. I'm <var id="age">16</var> years old and have been interested in laptops, hardware, software, games
             and everything behind
-            it since I was a little kid. I'm currently in my <var id="collegeYear">1st</var> year of studying <var
-                id="collegeBranch">Software Development</var> at <var id="college">Mediacollege Amsterdam</var>.
+            it since I was a little kid. I'm currently in my <var id="collegeYear">3rd</var> year of studying <var
+                id="collegeBranch">Software Development</var> at <var id="college">Mediacollege Amsterdam</var> (but I
+            was allowed to advance a year, so this is my 2nd actual year in the school).
             <br><br>
             But coding is not the only thing I like about game development, I also like:<br>
-            - Story building / world building / character design (Keep in mind I am NOT an artist, though it does interest me)<br>
+            - Story building / world building / character design (Keep in mind I am NOT an artist, though it does
+            interest me)<br>
             - Coming up with intuitional ways the user can interact with the UI of the game.<br>
             - Making tools that can eventually be used to speed up the coding process for other developers
             <br><br>
             I've made <var id="unityProjectAmount">100+</var> Unity projects so far, from which a lot have failed
-            / were tests. But a lot that became a product or prototype that I've released. (See <a
-                href="home">Home</a> for projects)
+            / were tests. But a lot that became a product or prototype that I've released. (See <a href="home">Home</a>
+            for projects)
             <br><br>
-            Besides C# and Unity, I can also use (but not as proficient as C#) HTML, CSS, JavaScript, Java, Android Studio, Shader Graph and Python.
+            Besides C# and Unity, I can also use (but not as proficient as C#) HTML, CSS, JavaScript, Java, Android
+            Studio, Shader Graph, Blender and Python.
             <br><br>
             I am looking for a internship where the team is close, bonding with other people is important for me. When
             working, I do love to work alone, but pair programming is not off the table! I got a year of experience with
             SCRUM, because it was used in Neon Origins. I do prefer to work with Unity over anything else, although I
             may consider other engines / languages.
             <br><br>
-            View and download my CV in <a href="cv/fdw-cv-nederlands.pdf">Dutch</a> or in <a href="cv/fdw-cv-english.pdf">English</a>, whatever you prefer!
+            View and download my CV in <a href="cv/fdw-cv-nederlands.pdf">Dutch</a> or in <a
+                href="cv/fdw-cv-english.pdf">English</a>, whatever you prefer!
             <br><br><br>
             <b>Work Experience</b>
             <br><br>

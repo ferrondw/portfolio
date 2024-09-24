@@ -13,10 +13,11 @@ h1 {
         border-radius: 20px;
         margin-top: 20px;
         transition: all var(--transition-speed) ease;
+        box-shadow: 0px 4px 15px 0px #00000000;
     }
 
     img:hover{
-        box-shadow: 0px 5px 3px 3px #0000008a;
+        box-shadow: 0px 4px 15px 0px #0000005e;
         transform: translateY(-3px);
         cursor: zoom-in;
         scale: 1.01;
