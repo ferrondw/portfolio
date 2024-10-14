@@ -49,22 +49,39 @@ document.addEventListener("DOMContentLoaded", function () {
         const unfinishedProjects = projects.filter(project => !project.finished);
 
         finishedAndHighlightedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project, true, true);
+            const projectElement = createProjectElement(project);
             projectsContainer.appendChild(projectElement);
         });
 
         finishedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project, true, false);
+            const projectElement = createProjectElement(project);
             projectsContainer.appendChild(projectElement);
         });
 
+        if(finishedProjects.length > 0 && unfinishedProjects.length != 0){
+            createComingSoonTile();
+        }
+
         unfinishedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project, false, false);
+            const projectElement = createProjectElement(project);
             projectsContainer.appendChild(projectElement);
         });
     }
 
-    function createProjectElement(project, isFinished, isHighlighted) {
+    function createComingSoonTile(){
+        const tempElement = document.createElement("div");
+        tempElement.classList.add("project");
+
+        tempElement.innerHTML = `
+        <div class="info">
+          <h2 class="title">Coming Soon</h2>
+          <p class="description">The rest of the project pages are not done yet, but it's a peek at what will be made in the future, stay tuned for more projects!</p>
+        </div>
+      `;
+      projectsContainer.appendChild(tempElement);
+    }
+
+    function createProjectElement(project) {
         const projectElement = document.createElement("div");
         projectElement.classList.add("project");
 
@@ -79,9 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
 
-        if (isFinished) {
+        if (project.finished) {
 
-            if(isHighlighted){
+            if(project.highlighted){
                 const div = document.createElement('div');
                 div.classList = 'border';
                 projectElement.appendChild(div);
@@ -94,6 +111,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         else {
             projectElement.classList.add("unfinished");
+        }
+
+        if(project.spotlightLabel.length > 0){
+            const p = document.createElement('p');
+            p.textContent = project.spotlightLabel;
+            p.classList = 'spotlight';
+            projectElement.appendChild(p);
         }
 
         return projectElement;

@@ -6,6 +6,7 @@
         "path": "projects/fever_dream.html",
         "tags": ["unity", "csharp"],
         "workTime": "16-12-2022 - 20-6-2024",
+        "spotlightLabel": "On the Play Store",
         "finished": true,
         "highlighted": true
     },
@@ -16,6 +17,7 @@
         "path": "projects/master_cappuccinos_cafe.html",
         "tags": ["unity", "csharp", "jam"],
         "workTime": "14-10-2023 - 21-10-2023",
+        "spotlightLabel": "",
         "finished": true,
         "highlighted": false
     },
@@ -26,6 +28,7 @@
         "path": "projects/operation_starfall.html",
         "tags": ["unity", "csharp"],
         "workTime": "11-9-2023 - ??-2-2025",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -36,6 +39,7 @@
         "path": "projects/custom_volume_overrides.html", 
         "tags": ["unity", "shader"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": true,
         "highlighted": false
     },
@@ -46,6 +50,7 @@
         "path": "projects/ma_bird.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -56,6 +61,7 @@
         "path": "projects/two_guys_one_ball.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -66,6 +72,7 @@
         "path": "projects/snail_scope.html",
         "tags": ["unity", "csharp", "networking"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -76,6 +83,7 @@
         "path": "projects/catch_the_fruit.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -86,6 +94,7 @@
         "path": "projects/hangup.html",
         "tags": ["html", "css", "js", "websockets"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -96,6 +105,7 @@
         "path": "projects/el_cubico.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -106,6 +116,7 @@
         "path": "projects/overjoyed.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -116,6 +127,7 @@
         "path": "projects/the_clockwork.html",
         "tags": ["js", "github"],
         "workTime": "14-9-2023 - 2-10-2023",
+        "spotlightLabel": "",
         "finished": true,
         "highlighted": false
     },
@@ -126,6 +138,7 @@
         "path": "projects/yakapedia.html",
         "tags": ["unity", "csharp", "github"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -136,6 +149,7 @@
         "path": "projects/waypoint_system.html",
         "tags": ["unity", "csharp"],
         "workTime": "27-11-2023 - 01-25-2024",
+        "spotlightLabel": "",
         "finished": true,
         "highlighted": false
     },
@@ -146,6 +160,7 @@
         "path": "projects/dialogue_graph_system.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -156,6 +171,7 @@
         "path": "projects/wiskunde_keuzedeel_platformer.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -166,6 +182,7 @@
         "path": "projects/2d2d.html",
         "tags": ["unity", "csharp", "jam"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -176,6 +193,7 @@
         "path": "projects/hedge_runner.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     },
@@ -186,6 +204,7 @@
         "path": "projects/oyakka.html",
         "tags": ["html", "css", "js"],
         "workTime": "",
+        "spotlightLabel": "",
         "finished": false,
         "highlighted": false
     }

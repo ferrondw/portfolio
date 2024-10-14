@@ -257,6 +257,7 @@ filtering {
     display: flex;
     flex-direction: row;
     width: 40%;
+    margin-bottom: 30px;
 }
 
 .projects-text {
@@ -291,14 +292,14 @@ projects .info {
     display: block;
     z-index: -2;
     display: block;
-    height: 120%;
-    width: 120%;
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     background: linear-gradient(45deg, #fff0 20%, #fff0 45%, #deb75c40 52%, #deb75c40 58%, #fff0 65%, #fff0 100%);
     background-size: 500% auto;
     left: 0;
     top: 0;
-    border-radius: 20px;
+    border-radius: 10px;
     border-width: 10px;
     border-color: #deb75c70;
     
@@ -316,7 +317,6 @@ projects .info {
     position: relative;
     flex-direction: column;
     justify-content: space-evenly;
-    overflow: hidden;
     z-index: 0;
     width: 16%;
     margin-bottom: 60px;
@@ -347,8 +347,24 @@ projects .info {
     border-color: #deb75c;
     border-width: 5px;
     border-style: solid;
+    border-radius: 0px 20px 20px 20px;
     background-color: #000000;
     background-color: var(--semi-transparent);
+}
+
+.project .spotlight{
+    position: absolute;
+    z-index: 1;
+    background-color: #deb75c;
+    color: var(--dark);
+    font-size: 20px;
+    text-shadow: none;
+    font-weight: bold;
+    padding: 2px;
+    left: -5px;
+    top: -50px;
+    border-radius: 15px 15px 0px 0px;
+    padding-inline: 15px;
 }
 
 .project .metadata {
@@ -476,6 +492,7 @@ projects .info .title {
 
     main .name {
         font-size: 80px;
+        font-weight: 700;
         margin: 0px;
         margin-top: 70px;
     }
@@ -483,6 +500,7 @@ projects .info .title {
     main .domain {
         z-index: -1;
         font-size: 70px;
+        font-weight: 700;
         margin-top: -50px;
         animation: 1s fadeIn;
     }
