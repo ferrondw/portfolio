@@ -3,8 +3,8 @@ let isRandomized = false;
 const originalPrimary = getComputedStyle(root).getPropertyValue('--primary');
 const originalSecondary = getComputedStyle(root).getPropertyValue('--secondary');
 
-function randomHueColor(hue, val) {
-    return `hsl(${hue}, 100%, ${val})`;
+function randomHueColor(hue, val, sat) {
+    return `hsl(${hue}, ${sat}, ${val})`;
 }
 
 loadColors();
@@ -26,8 +26,8 @@ function toggleRandomColors() {
         localStorage.setItem('colors', []);
     } else {
 
-        const newPrimary = randomHueColor(hue, '12%');
-        const newSecondary = randomHueColor(hue, '25%');
+        const newPrimary = randomHueColor(hue, '12%', '100%');
+        const newSecondary = randomHueColor(hue, '35%', '50%');
         const colors = [newPrimary, newSecondary];
 
         root.style.setProperty('--primary', newPrimary);

@@ -4,10 +4,12 @@
     --dark: #000000;
 
     --semi-transparent: #00000060;
+    --semi-transparent-highlighted: #1f1d0060;
     --transparent: #00000000;
 
     --primary: hsl(197, 100%, 12%);
-    --secondary: hsl(197, 100%, 25%);
+    --secondary: hsl(197, 50%, 35%);
+
 
     --transition-speed: 0.25s;
     --background-line: #ffffff20;
@@ -117,7 +119,7 @@ main {
 
 main .name {
     font-size: 100px;
-    color: var(--light);
+    color: var(--secondary);
     margin: 0px;
     margin-top: 100px;
 }
@@ -127,7 +129,7 @@ main .domain {
     font-size: 90px;
     margin-top: -60px;
     margin-bottom: -30px;
-    color: var(--secondary);
+    color: var(--light);
     animation: 1s fadeIn;
 }
 
@@ -150,7 +152,7 @@ main p {
 
 .bg {
     width: 100%;
-    height: 100%;
+    height: 150%;
     scale: 2.3;
 
     background-position: center center;
@@ -284,10 +286,38 @@ projects .info {
     justify-content: center;
 }
 
+.border {
+    position: absolute;
+    display: block;
+    z-index: -2;
+    display: block;
+    height: 120%;
+    width: 120%;
+    overflow: hidden;
+    background: linear-gradient(45deg, #fff0 20%, #fff0 45%, #deb75c40 52%, #deb75c40 58%, #fff0 65%, #fff0 100%);
+    background-size: 500% auto;
+    left: 0;
+    top: 0;
+    border-radius: 20px;
+    border-width: 10px;
+    border-color: #deb75c70;
+    
+    animation: shine 15s linear infinite;
+  }
+
+  @keyframes shine {
+    to {
+      background-position: 500% center;
+    }
+  }
+
 .project {
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: space-evenly;
+    overflow: hidden;
+    z-index: 0;
     width: 16%;
     margin-bottom: 60px;
     background-color: var(--semi-transparent);
@@ -311,6 +341,14 @@ projects .info {
     opacity: 0.6;
 
     cursor:not-allowed;
+}
+
+.project.highlighted{
+    border-color: #deb75c;
+    border-width: 5px;
+    border-style: solid;
+    background-color: #000000;
+    background-color: var(--semi-transparent);
 }
 
 .project .metadata {
@@ -446,7 +484,6 @@ projects .info .title {
         z-index: -1;
         font-size: 70px;
         margin-top: -50px;
-        color: var(--secondary);
         animation: 1s fadeIn;
     }
 
@@ -459,6 +496,21 @@ projects .info .title {
     projects {
         flex-direction: row;
         flex-wrap: wrap;
+    }
+
+    highlighted{
+        width: 90%;
+        height: min-content;
+    
+        img{
+            max-height: fit-content;
+            width: 50%;
+        }
+    
+        .info{
+            margin-left: 15px;
+            width: 50%;
+        }
     }
 
     .project {

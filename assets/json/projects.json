@@ -6,25 +6,28 @@
         "path": "projects/fever_dream.html",
         "tags": ["unity", "csharp"],
         "workTime": "16-12-2022 - 20-6-2024",
-        "finished": true
+        "finished": true,
+        "highlighted": true
     },
     {
         "title": "Master Cappuccino's Café",
         "description": "A merge game where you help master cappuccino by combining cats in his market stall",
         "thumbnailPath": "assets/images/project_covers/master_cappucinos_cafe.png",
         "path": "projects/master_cappuccinos_cafe.html",
-        "tags": ["unity", "csharp"],
+        "tags": ["unity", "csharp", "jam"],
         "workTime": "14-10-2023 - 21-10-2023",
-        "finished": true
+        "finished": true,
+        "highlighted": false
     },
     {
         "title": "Operation StarFall",
-        "description": "A Game as a Service 2D Metroidvania game in the style of popular cartoons from the 80s",
+        "description": "A Game as a Service 2.5D Metroidvania game in the style of popular cartoons from the 80s",
         "thumbnailPath": "assets/images/project_covers/operation_starfall.png",
-        "path": "projects/operation_starfall.md",
+        "path": "projects/operation_starfall.html",
         "tags": ["unity", "csharp"],
-        "workTime": "",
-        "finished": false
+        "workTime": "11-9-2023 - ??-2-2025",
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Custom Volume Overrides",
@@ -33,70 +36,78 @@
         "path": "projects/custom_volume_overrides.html", 
         "tags": ["unity", "shader"],
         "workTime": "",
-        "finished": true
+        "finished": true,
+        "highlighted": false
     },
     {
         "title": "MA Bird",
         "description": "Flappy Bird clone made for MediaCollege Amsterdam in 5 hours",
         "thumbnailPath": "assets/images/project_covers/ma_bird.png",
-        "path": "projects/ma_bird.md",
+        "path": "projects/ma_bird.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Two Guys One Ball",
         "description": "A game-jam game I made over the weekend, pong with more color",
         "thumbnailPath": "assets/images/project_covers/two_guys_one_ball.png",
-        "path": "projects/two_guys_one_ball.md",
+        "path": "projects/two_guys_one_ball.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Snail Scope",
         "description": "A multiplayer FPS game",
         "thumbnailPath": "assets/images/project_covers/snail_scope.png",
-        "path": "projects/snail_scope.md",
+        "path": "projects/snail_scope.html",
         "tags": ["unity", "csharp", "networking"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Catch The Shit",
         "description": "A fruit catching game where you tilt your phone to move",
         "thumbnailPath": "assets/images/project_covers/catch_the_shit.png",
-        "path": "projects/catch_the_fruit.md",
+        "path": "projects/catch_the_fruit.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "HangUp",
         "description": "A chatting client with rooms made with WebSockets",
         "thumbnailPath": "assets/images/project_covers/hangup.png",
-        "path": "projects/hangup.md",
+        "path": "projects/hangup.html",
         "tags": ["html", "css", "js", "websockets"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "El Cubico",
         "description": "An infinite runner game, made by a guy, but I said I could do it better, thus this game was made",
         "thumbnailPath": "assets/images/project_covers/el_cubico.png",
-        "path": "projects/el_cubico.md",
+        "path": "projects/el_cubico.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Overjoyed",
         "description": "A hyper-casual avoidance game, do everything you can to avoid getting happy!",
         "thumbnailPath": "assets/images/project_covers/overjoyed.png",
-        "path": "projects/overjoyed.md",
+        "path": "projects/overjoyed.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "The Clockwork",
@@ -105,16 +116,18 @@
         "path": "projects/the_clockwork.html",
         "tags": ["js", "github"],
         "workTime": "14-9-2023 - 2-10-2023",
-        "finished": true
+        "finished": true,
+        "highlighted": false
     },
     {
         "title": "Yakapedia",
         "description": "Classes that make coding with C# MUCH Easier! (Includes a custom save system, logger, method extensions and more!)",
         "thumbnailPath": "assets/images/project_covers/yakapedia.png",
-        "path": "projects/yakapedia.md",
+        "path": "projects/yakapedia.html",
         "tags": ["unity", "csharp", "github"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Waypoint System",
@@ -123,33 +136,57 @@
         "path": "projects/waypoint_system.html",
         "tags": ["unity", "csharp"],
         "workTime": "27-11-2023 - 01-25-2024",
-        "finished": true
+        "finished": true,
+        "highlighted": false
     },
     {
         "title": "Dialogue Graph System",
         "description": "Drag and connect nodes to create visual and easy to manage dialogue for games",
         "thumbnailPath": "assets/images/project_covers/dialogue_graph_system.png",
-        "path": "projects/dialogue_graph_system.md",
+        "path": "projects/dialogue_graph_system.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "Wiskunde Keuzedeel: Platformer",
         "description": "Endless runner in Unity with mathematical functions for jumping, colliding and collecting",
         "thumbnailPath": "assets/images/project_covers/wiskunde_keuzedeel_platformer.png",
-        "path": "projects/wiskunde_keuzedeel_platformer.md",
+        "path": "projects/wiskunde_keuzedeel_platformer.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
     },
     {
         "title": "2D2D",
         "description": "Jam game from the Educational International Game Jam about switching dimensions",
         "thumbnailPath": "assets/images/project_covers/2d2d.png",
-        "path": "projects/2d2d.md",
+        "path": "projects/2d2d.html",
+        "tags": ["unity", "csharp", "jam"],
+        "workTime": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Hedge Runner",
+        "description": "A game where you are a hedgehog needing to clear randomly generated mazes",
+        "thumbnailPath": "assets/images/project_covers/hedge_runner.png",
+        "path": "projects/hedge_runner.html",
         "tags": ["unity", "csharp"],
         "workTime": "",
-        "finished": false
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "oYakka",
+        "description": "Website to chat with Ollama locally",
+        "thumbnailPath": "assets/images/project_covers/oyakka.png",
+        "path": "projects/oyakka.html",
+        "tags": ["html", "css", "js"],
+        "workTime": "",
+        "finished": false,
+        "highlighted": false
     }
 ]

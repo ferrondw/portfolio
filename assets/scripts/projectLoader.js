@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
         websockets: "WebSockets",
         python: "Python",
         networking: "Networking / Multiplayer",
-        shader: "Shader (Graph)"
+        shader: "Shader (Graph)",
+        jam: "Game Jam"
     };
 
     fetch("assets/json/projects.json")
@@ -43,44 +44,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderProjects(projects) {
         projectsContainer.innerHTML = "";
-        const finishedProjects = projects.filter(project => project.finished);
+        const finishedAndHighlightedProjects = projects.filter(project => project.finished && project.highlighted);
+        const finishedProjects = projects.filter(project => project.finished && !project.highlighted);
         const unfinishedProjects = projects.filter(project => !project.finished);
 
+        finishedAndHighlightedProjects.forEach((project) => {
+            const projectElement = createProjectElement(project, true, true);
+            projectsContainer.appendChild(projectElement);
+        });
+
         finishedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project, true);
+            const projectElement = createProjectElement(project, true, false);
             projectsContainer.appendChild(projectElement);
         });
 
         unfinishedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project, false);
+            const projectElement = createProjectElement(project, false, false);
             projectsContainer.appendChild(projectElement);
         });
     }
 
-
-    function createProjectElement(project, isFinished) {
+    function createProjectElement(project, isFinished, isHighlighted) {
         const projectElement = document.createElement("div");
         projectElement.classList.add("project");
 
-        if (!isFinished) {
-            projectElement.classList.add("unfinished");
-        }
-        else {
+        projectElement.innerHTML = `
+        <img src="${project.thumbnailPath}" alt="Project Image">
+        <div class="info">
+          <h2 class="title">${project.title}</h2>
+          <p class="description">${project.description}</p>
+          <div class="tags">
+          ${project.tags.map(tag => `<img src="assets/icons/${tag}.png" alt="Tag">`).join('')}
+        </div>
+        </div>
+      `;
+
+        if (isFinished) {
+
+            if(isHighlighted){
+                const div = document.createElement('div');
+                div.classList = 'border';
+                projectElement.appendChild(div);
+                projectElement.classList.add("highlighted");
+            }
+
             projectElement.addEventListener("click", () => {
                 window.location.href = project.path;
             });
         }
-
-        projectElement.innerHTML = `
-      <img src="${project.thumbnailPath}" alt="Project Image">
-      <div class="info">
-        <h2 class="title">${project.title}</h2>
-        <p class="description">${project.description}</p>
-        <div class="tags">
-        ${project.tags.map(tag => `<img src="assets/icons/${tag}.png" alt="Tag">`).join('')}
-      </div>
-      </div>
-    `;
+        else {
+            projectElement.classList.add("unfinished");
+        }
 
         return projectElement;
     }
