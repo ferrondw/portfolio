@@ -17,7 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
         python: "Python",
         networking: "Networking / Multiplayer",
         shader: "Shader (Graph)",
-        jam: "Game Jam"
+        jam: "Game Jam",
+        unfinished: "Incomplete project page"
     };
 
     fetch("assets/json/projects.json")
@@ -58,27 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
             projectsContainer.appendChild(projectElement);
         });
 
-        if(finishedProjects.length > 0 && unfinishedProjects.length != 0){
-            createComingSoonTile();
-        }
-
         unfinishedProjects.forEach((project) => {
             const projectElement = createProjectElement(project);
             projectsContainer.appendChild(projectElement);
         });
-    }
-
-    function createComingSoonTile(){
-        const tempElement = document.createElement("div");
-        tempElement.classList.add("project");
-
-        tempElement.innerHTML = `
-        <div class="info">
-          <h2 class="title">Coming Soon</h2>
-          <p class="description">The rest of the project pages are not done yet, but it's a peek at what will be made in the future, stay tuned for more projects!</p>
-        </div>
-      `;
-      projectsContainer.appendChild(tempElement);
     }
 
     function createProjectElement(project) {
@@ -96,22 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       `;
 
-        if (project.finished) {
-
-            if(project.highlighted){
+        if (project.finished && project.highlighted) {
                 const div = document.createElement('div');
                 div.classList = 'border';
                 projectElement.appendChild(div);
                 projectElement.classList.add("highlighted");
-            }
-
-            projectElement.addEventListener("click", () => {
-                window.location.href = project.path;
-            });
         }
-        else {
+        else if(!project.finished) {
             projectElement.classList.add("unfinished");
         }
+
+        projectElement.addEventListener("click", () => {
+            window.location.href = project.path;
+        });
 
         if(project.spotlightLabel.length > 0){
             const p = document.createElement('p');

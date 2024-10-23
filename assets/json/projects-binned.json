@@ -1,0 +1,78 @@
+[
+    {
+        "title": "Dialogue Graph System",
+        "description": "Drag and connect nodes to create visual and easy to manage dialogue for games",
+        "thumbnailPath": "assets/images/project_covers/dialogue_graph_system.png",
+        "path": "projects/dialogue_graph_system.html",
+        "tags": ["unity", "csharp"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Yakapedia",
+        "description": "Classes that make coding with C# MUCH Easier! (Includes a custom save system, logger, method extensions and more!)",
+        "thumbnailPath": "assets/images/project_covers/yakapedia.png",
+        "path": "projects/yakapedia.html",
+        "tags": ["unity", "csharp", "github"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },    {
+        "title": "Overjoyed",
+        "description": "A hyper-casual avoidance game, do everything you can to avoid getting happy!",
+        "thumbnailPath": "assets/images/project_covers/overjoyed.png",
+        "path": "projects/overjoyed.html",
+        "tags": ["unity", "csharp"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Two Guys One Ball",
+        "description": "A game-jam game I made over the weekend, pong with more color",
+        "thumbnailPath": "assets/images/project_covers/two_guys_one_ball.png",
+        "path": "projects/two_guys_one_ball.html",
+        "tags": ["unity", "csharp"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Snail Scope",
+        "description": "A multiplayer FPS game",
+        "thumbnailPath": "assets/images/project_covers/snail_scope.png",
+        "path": "projects/snail_scope.html",
+        "tags": ["unity", "csharp", "networking"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Catch The Shit",
+        "description": "A fruit catching game where you tilt your phone to move",
+        "thumbnailPath": "assets/images/project_covers/catch_the_shit.png",
+        "path": "projects/catch_the_fruit.html",
+        "tags": ["unity", "csharp"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "HangUp",
+        "description": "A chatting client with rooms made with WebSockets",
+        "thumbnailPath": "assets/images/project_covers/hangup.png",
+        "path": "projects/hangup.html",
+        "tags": ["html", "css", "js", "websockets", "unfinished"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    }
+]
