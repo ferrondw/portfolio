@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Ferron | Fever Dream</title>
+    <title>Ferron | Custom Volume Overrides</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,8 @@
     <meta property="og:image" content="https://ferrondewitte.com/assets/images/metadata.png">
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:keywords" content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
     <meta name="theme-color" content="#57c7ff">
 
     <meta itemprop="name" content="Ferron de Witte">
@@ -46,7 +47,8 @@
         <div class="bg"></div>
     </div>
 
-    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span style="color: var(--light);">DE&thinsp;WITTE</span></div>
+    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span
+            style="color: var(--light);">DE&thinsp;WITTE</span></div>
     <header>
         <nav class="left">
             <button onclick="window.location.href='../home'">Home</button>
@@ -69,9 +71,20 @@
     <main id="project">
         <h1>Custom Volume Overrides</h1>
         <img class="banner" src="../assets/banners/custom_volume_overrides.gif" alt="Gif">
+        <div id="buttons">
+            <img src="../assets/icons/github.png" target="_blank"
+                onclick="window.location.href='https:\/\/github.com/ferrondw/wiskunde-keuzedeel-1'">
+        </div>
 
         <p>Though these are called Custom <i>Volume</i> Overrides, I will only talk about the shaders I made. This is
-            because <a href="https://sites.google.com/view/portfoliomaxym/home">Maxym</a> (classmate) made the system to convert the shader graphs to volume overrides.</p>
+            because <a href="https://sites.google.com/view/portfoliomaxym/home">Maxym</a> (classmate) made the system to
+            convert the shader graphs to volume overrides.</p>
+
+        <h2>Pixel Transition</h2>
+        <p>Every good game needs a fancy transition! So I thought about what kind of transition would be cool, and then
+            the idea struck. What if the whole screen slowly pixelates and then goes to black?</p>
+        <img class="interactable" src="../assets/images/custom_volume_overrides/pixel_transition_graph.png">
+        <img class="interactable" src="../assets/images/custom_volume_overrides/pixel_transition.gif">
 
         <h2>SuperDot</h2>
         <p>The idea came from early CRT like screens, showing each dot more pronounced rather then a clean screen. I
@@ -89,25 +102,30 @@
             adding / subtracting, then lerping that with the UV's to create a screen warp / rain particle effect!</p>
         <img class="interactable" src="../assets/images/custom_volume_overrides/rain_graph.png">
         <img class="interactable" src="../assets/images/custom_volume_overrides/rain.gif">
-        <p class="description">Gif does not look pretty due to compression, sorry!</p>
 
         <h2>Fisheye</h2>
         <p>For the fun of it, I also made a really easy fisheye effect! Though the graph is small, the process to get it
             there was not. I tried lots of things, but in the end it all worked out.</p>
-            <img class="interactable" src="../assets/images/custom_volume_overrides/fisheye_graph.png">
-            <img class="interactable" src="../assets/images/custom_volume_overrides/fisheye.png">
+        <img class="interactable" src="../assets/images/custom_volume_overrides/fisheye_graph.png">
+        <img class="interactable" src="../assets/images/custom_volume_overrides/fisheye.png">
 
     </main>
 
     <footer>
         <div class="social-links">
-            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png" alt="Discord"></a>
-            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img src="../assets/icons/playstore.png" alt="Play Store"></a>
-            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
-            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png" alt="Github"></a>
-            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img src="../assets/icons/youtube.png" alt="YouTube"></a>
-            <a href="mailto:ferrondewitte@gmail.com"><img src="../assets/icons/mail.png" alt="E-mail"></a>
-            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png"
+                    alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img
+                    src="../assets/icons/playstore.png" alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png"
+                    alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png"
+                    alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img
+                    src="../assets/icons/youtube.png" alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
             <a href="../cv/fdw-cv-english.pdf" target="_blank"><img src="../assets/icons/cv.png" alt="C V"></a>
         </div>
         <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>

@@ -22,17 +22,6 @@
         "highlighted": true
     },
     {
-        "title": "Master Cappuccino's Café",
-        "description": "A merge game where you help master cappuccino by combining cats in his market stall",
-        "thumbnailPath": "assets/images/project_covers/master_cappucinos_cafe.png",
-        "path": "projects/master_cappuccinos_cafe.html",
-        "tags": ["unity", "csharp", "jam"],
-        "workTime": "14-10-2023 - 21-10-2023",
-        "spotlightLabel": "",
-        "finished": true,
-        "highlighted": false
-    },
-    {
         "title": "Operation StarFall",
         "description": "A Game as a Service 2.5D Metroidvania game in the style of popular cartoons from the 80s",
         "thumbnailPath": "assets/images/project_covers/operation_starfall.png",
@@ -107,6 +96,17 @@
         "workTime": "",
         "spotlightLabel": "",
         "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Master Cappuccino's Café",
+        "description": "A merge game where you help master cappuccino by combining cats in his market stall",
+        "thumbnailPath": "assets/images/project_covers/master_cappucinos_cafe.png",
+        "path": "projects/master_cappuccinos_cafe.html",
+        "tags": ["unity", "csharp", "jam"],
+        "workTime": "14-10-2023 - 21-10-2023",
+        "spotlightLabel": "",
+        "finished": true,
         "highlighted": false
     },
     {

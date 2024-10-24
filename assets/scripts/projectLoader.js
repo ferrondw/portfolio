@@ -18,7 +18,8 @@ document.addEventListener("DOMContentLoaded", function () {
         networking: "Networking / Multiplayer",
         shader: "Shader (Graph)",
         jam: "Game Jam",
-        unfinished: "Incomplete project page"
+        unfinished: "Incomplete project page",
+        playable: "Playable (In Browser)"
     };
 
     fetch("assets/json/projects.json")
