@@ -28,7 +28,8 @@
     <meta property="og:image" content="https://ferrondewitte.com/assets/images/metadata.png">
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:keywords" content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
     <meta name="theme-color" content="#57c7ff">
 
     <meta itemprop="name" content="Ferron de Witte">
@@ -46,7 +47,8 @@
         <div class="bg"></div>
     </div>
 
-    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span style="color: var(--light);">DE&thinsp;WITTE</span></div>
+    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span
+            style="color: var(--light);">DE&thinsp;WITTE</span></div>
     <header>
         <nav class="left">
             <button onclick="window.location.href='../home'">Home</button>
@@ -69,7 +71,6 @@
     <main id="project">
         <h1>Waypoint System</h1>
         <img class="banner" src="../assets/banners/waypoint_system.gif" alt="Gif">
-        <p class="description">Also yes all screenshots are in Dutch, system stays the same though ¯\_(ツ)_/¯</p>
         <p>Waypoints are specific points in a game world that serve as navigation aids for objects such as players,
             enemies, and moving platforms. They are widely used in games to control the movement and positioning of
             objects. This ensures smooth and controlled gameplay experiences.
@@ -78,6 +79,14 @@
             now all that is no longer necessary, with the Waypoint System you can easily edit and use a list of points
             in the gizmos. This can be useful for moving platforms, splines, enemies, spawners and more!</p>
 
+        <h2>Examples</h2>
+        <p>This is an example of a Waypoint on a Bobert (from Project StarFall). This means Bobert knows where it can
+            go.</p>
+        <img class="interactable" src="../assets/images/waypoint_system/8.png">
+        <p class="description">Small Patrol Path</p>
+        <img class="interactable" src="../assets/images/waypoint_system/9.png">
+        <p class="description">Big Patrol Path</p>
+
         <h2>Gizmos</h2>
         <section>
             <p>The gizmos is easy to use, it consists of the line itself, position handles and a few buttons to edit the
@@ -85,22 +94,21 @@
             <img class="interactable" src="../assets/images/waypoint_system/1.png">
         </section>
 
-        <section>
-            <img class="interactable" src="../assets/images/waypoint_system/2.png">
-            <p>If you press the gear, more settings will appear.</p>
-        </section>
+        <p>If you press the gear, more settings will appear.</p>
+        <img class="interactable" src="../assets/images/waypoint_system/2.png">
 
-        <p>The gear toggles the settings on/off.
+        <p>* The gear toggles the settings on/off.
             <br>
-            The gray plus sign switches the insert mode on/off.
+            * The gray plus sign switches the insert mode on/off.
             <br>
-            The gray X switches the delete mode on/off.
+            * The gray X switches the delete mode on/off.
             <br>
-            The pink line simplifies the waypoint, removing unnecessary points.
+            * The pink line simplifies the waypoint, removing unnecessary points.
             <br>
-            The purple line makes the waypoint smoother, although there will be exponentially more points.
+            * The purple line makes the waypoint smoother, although there will be exponentially more points.
             <br>
-            And the green plus sign creates a new point in the waypoint, below you see a waypoint with multiple points,
+            * And the green plus sign creates a new point in the waypoint, below you see a waypoint with multiple
+            points,
             and a custom name. You can always adjust this in the inspector!
         </p>
         <img class="interactable" src="../assets/images/waypoint_system/3.png">
@@ -125,6 +133,12 @@
             <img class="interactable" src="../assets/images/waypoint_system/6.png">
         </section>
 
+        <p>This is even easier when using the shortcuts! holding <code>Left Alt</code> will enable the delete mode, and <code>Left Control</code> will enable the insert mode. This makes creating waypoints EVEN faster!</p>
+
+        <h2>3D</h2>
+        <p>Every example thus far has been in 2D, but this sytem is fully functional in 3D:</p>
+        <img class="interactable" src="../assets/images/waypoint_system/10.png">
+
         <h2>Inspector</h2>
         <section>
             <img class="interactable" src="../assets/images/waypoint_system/7.png">
@@ -147,25 +161,24 @@ public class WaypointChanger : MonoBehaviour
         waypoint.WaypointName = "This waypoint's name is now this very long string!";
     }
 }</code></pre>
-
-        <h2>Examples</h2>
-        <p>This is an example of a Waypoint on a Bobert (from Project StarFall). This means Bobert knows where it can
-            go.</p>
-            <img class="interactable" src="../assets/images/waypoint_system/8.png">
-            <p class="description">Small Patrol Path</p>
-            <img class="interactable" src="../assets/images/waypoint_system/9.png">
-            <p class="description">Big Patrol Path</p>
     </main>
 
     <footer>
         <div class="social-links">
-            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png" alt="Discord"></a>
-            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img src="../assets/icons/playstore.png" alt="Play Store"></a>
-            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
-            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png" alt="Github"></a>
-            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img src="../assets/icons/youtube.png" alt="YouTube"></a>
-            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img src="../assets/icons/mail.png" alt="E-mail"></a>
-            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png"
+                    alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img
+                    src="../assets/icons/playstore.png" alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png"
+                    alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png"
+                    alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img
+                    src="../assets/icons/youtube.png" alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img
+                    src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
             <a href="../cv/fdw-cv-english.pdf" target="_blank"><img src="../assets/icons/cv.png" alt="C V"></a>
         </div>
         <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>

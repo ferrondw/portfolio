@@ -47,7 +47,8 @@
         <div class="bg"></div>
     </div>
 
-    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span style="color: var(--light);">DE&thinsp;WITTE</span></div>
+    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span
+            style="color: var(--light);">DE&thinsp;WITTE</span></div>
     <header>
         <nav class="left">
             <button onclick="window.location.href='../home'">Home</button>
@@ -83,180 +84,176 @@
             that I made. (I'm also very grateful to all the people that helped me come up with ideas for the game to
             improve it even more!)</p>
 
+            <h2>Gameplay Mechanics</h2>
+            <p>Mechanics are all based on one base class, and a script that handles trigger collisions
+                with a mechanic</p>
+            <pre><code class="language-csharp">public class BaseMechanic : MonoBehaviour
+    {
+        // Collision checks do nothing if not overridden (e.g. Lava only needs Enter, while Black Hole needs all 3).
+        public virtual void HandleTriggerEnter(Collider2D other){}
+    
+        public virtual void HandleTriggerStay(Collider2D other){}
+    
+        public virtual void HandleTriggerExit(Collider2D other){}
+    }</code></pre>
+            <br><br>
+            <pre><code class="language-csharp">public class MechanicChecker : MonoBehaviour
+    {    
+        private Collider2D _collider;
+        private void Start() =&gt; _collider = GetComponent&lt;Collider2D&gt;();
+    
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+            if (gameMechanic != null)
+            {
+                gameMechanic.HandleTriggerEnter(_collider);
+            }
+        }
+    
+        private void OnTriggerStay2D(Collider2D collision)
+        {
+            BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+            if (gameMechanic != null)
+            {
+                gameMechanic.HandleTriggerStay(_collider);
+            }
+        }
+    
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+            if (gameMechanic != null)
+            {
+                gameMechanic.HandleTriggerExit(_collider);
+            }
+        }
+    }</code></pre>
+    
+            <p>For example, here are the Key, Lava and Jump Pad mechanic:</p>
+    
+            <pre><code class="language-csharp">public class Key : BaseMechanic
+    {
+        public GameObject objectToToggleOnHit;
+            
+        private void Start()
+        {
+            RecursiveKeyAnimation();
+        }
+    
+        private void RecursiveKeyAnimation()
+        {
+            transform.DOMoveY(transform.position.y + 0.3f, 1).SetEase(Ease.InOutSine).OnComplete(() =>
+            {
+                transform.DOMoveY(transform.position.y - 0.3f, 1).SetEase(Ease.InOutSine).OnComplete(RecursiveKeyAnimation);
+            });
+        }
+    
+        public override void HandleTriggerEnter(Collider2D other)
+        {
+            objectToToggleOnHit.SetActive(!objectToToggleOnHit.activeSelf);
+            Destroy(gameObject);
+        }
+    }</code></pre>
+            <img class="interactable" src="../assets/images/fever_dream/7.png" alt="Image">
+            <pre><code class="language-csharp">public class Lava : BaseMechanic
+    {
+        public override void HandleTriggerEnter(Collider2D other)
+        {
+            LevelManager.Instance.RestartLevel();
+        }
+    }</code></pre>
+            <img class="interactable" src="../assets/images/fever_dream/9.png" alt="Image">
+            <pre><code class="language-csharp">public class JumpPad : BaseMechanic
+    {
+        [SerializeField] private float JumpPadStrength;
+    
+        private bool isAnimating = false;
+        private Vector3 transformUp;
+    
+        private void Start() =&gt; transformUp = transform.up;
+    
+        public override void HandleTriggerEnter(Collider2D other)
+        {
+            other.GetComponent&lt;PlayerMovement&gt;().Rigidbody.velocity = new Vector2(other.GetComponent&lt;PlayerMovement&gt;().Rigidbody.velocity.x, JumpPadStrength) * transform.up;
+                
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            transform.DOMove(transform.position + transformUp * 0.2f, 0.25f).OnComplete(() =&gt;
+            {
+                transform.DOMove(transform.position - transformUp * 0.2f, 0.4f)
+                .OnComplete(() =&gt; { isAnimating = false; });
+            });
+        }
+    }</code></pre>
+            <img class="interactable" src="../assets/images/fever_dream/8.gif" alt="Image">
+
         <h2>Player</h2>
 
         <p>Even though the player is a simple rectangle, it needs to keep track of a lot of things,
             such as which way it moves:</p>
         <pre><code class="language-csharp">private MovementState movementState { get; set; }
     
-    public enum MovementState
-    {
-        Idle,
-        Left,
-        Right
-    }</code></pre>
+public enum MovementState
+{
+    Idle,
+    Left,
+    Right
+}</code></pre>
 
         <p>The player also manages how loud the wind sound effect needs to be</p>
         <pre><code class="language-csharp">public void HandleWindVolume()
+{
+    if (player.CanMove)
     {
-        if (player.CanMove)
-        {
-            RotationSound.volume = Mathf.Lerp(RotationSound.volume,
-                (Mathf.Abs(player.Rigidbody.angularVelocity) / 1700) * AudioSettings.sfxVolume * 0.5f,
-                1.3f * Time.deltaTime);
-        }
-    }</code></pre>
+        RotationSound.volume = Mathf.Lerp(RotationSound.volume,
+            (Mathf.Abs(player.Rigidbody.angularVelocity) / 1700) * AudioSettings.sfxVolume * 0.5f,
+            1.3f * Time.deltaTime);
+    }
+}</code></pre>
 
         <p>After some more code the player actually moves...</p>
         <pre><code class="language-csharp">private void Update()
-    {
-        if (!CanMove)
-        {
-            playerInput.ChangeMovementState(0);
-            Rigidbody.ResetVelocity();
-            Rigidbody.ResetAngularVelocity();
-            playerWindSFX.RotationSound.volume = Mathf.Lerp(playerWindSFX.RotationSound.volume, 0, 0.5f);
-    
-            return;
-        }
-        
-        playerWindSFX.HandleWindVolume();
-        
-        if (ControlSchemeHandler.UsingFullScreenControlScheme)
-        {
-            playerInput.FullscreenInput();
-            return;
-        }
-        
-        playerInput.ButtonInput();
-    }</code></pre>
-
-        <h2>Mechanics</h2>
-        <p>Mechanics are all based on one base class, and a script that handles trigger collisions
-            with a mechanic</p>
-        <pre><code class="language-csharp">public class BaseMechanic : MonoBehaviour
 {
-    // Collision checks do nothing if not overridden (e.g. Lava only needs Enter, while Black Hole needs all 3).
-    public virtual void HandleTriggerEnter(Collider2D other){}
-
-    public virtual void HandleTriggerStay(Collider2D other){}
-
-    public virtual void HandleTriggerExit(Collider2D other){}
-}</code></pre>
-        <br><br>
-        <pre><code class="language-csharp">public class MechanicChecker : MonoBehaviour
-{    
-private Collider2D _collider;
-private void Start() =&gt; _collider = GetComponent&lt;Collider2D&gt;();
-
-private void OnTriggerEnter2D(Collider2D collision)
-{
-    BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
-    if (gameMechanic != null)
+    if (!CanMove)
     {
-        gameMechanic.HandleTriggerEnter(_collider);
+        playerInput.ChangeMovementState(0);
+        Rigidbody.ResetVelocity();
+        Rigidbody.ResetAngularVelocity();
+        playerWindSFX.RotationSound.volume = Mathf.Lerp(playerWindSFX.RotationSound.volume, 0, 0.5f);
+
+        return;
     }
-}
-
-private void OnTriggerStay2D(Collider2D collision)
-{
-    BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
-    if (gameMechanic != null)
-    {
-        gameMechanic.HandleTriggerStay(_collider);
-    }
-}
-
-private void OnTriggerExit2D(Collider2D collision)
-{
-    BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
-    if (gameMechanic != null)
-    {
-        gameMechanic.HandleTriggerExit(_collider);
-    }
-}
-}</code></pre>
-
-        <p>For example, here are the Key, Lava and Jump Pad mechanic:</p>
-
-        <pre><code class="language-csharp">public class Key : BaseMechanic
-{
-public GameObject objectToToggleOnHit;
     
-private void Start()
-{
-    RecursiveKeyAnimation();
-}
-
-private void RecursiveKeyAnimation()
-{
-    transform.DOMoveY(transform.position.y + 0.3f, 1).SetEase(Ease.InOutSine).OnComplete(() =>
-    {
-        transform.DOMoveY(transform.position.y - 0.3f, 1).SetEase(Ease.InOutSine).OnComplete(RecursiveKeyAnimation);
-    });
-}
-
-public override void HandleTriggerEnter(Collider2D other)
-{
-    objectToToggleOnHit.SetActive(!objectToToggleOnHit.activeSelf);
-    Destroy(gameObject);
-}
-}</code></pre>
-        <img class="interactable" src="../assets/images/fever_dream/7.png" alt="Image">
-        <pre><code class="language-csharp">public class Lava : BaseMechanic
-{
-public override void HandleTriggerEnter(Collider2D other)
-{
-    LevelManager.Instance.RestartLevel();
-}
-}</code></pre>
-        <img class="interactable" src="../assets/images/fever_dream/9.png" alt="Image">
-        <pre><code class="language-csharp">public class JumpPad : BaseMechanic
-{
-[SerializeField] private float JumpPadStrength;
-
-private bool isAnimating = false;
-private Vector3 transformUp;
-
-private void Start() =&gt; transformUp = transform.up;
-
-public override void HandleTriggerEnter(Collider2D other)
-{
-    other.GetComponent&lt;PlayerMovement&gt;().Rigidbody.velocity = new Vector2(other.GetComponent&lt;PlayerMovement&gt;().Rigidbody.velocity.x, JumpPadStrength) * transform.up;
-        
-    if (isAnimating) return;
+    playerWindSFX.HandleWindVolume();
     
-    isAnimating = true;
-    transform.DOMove(transform.position + transformUp * 0.2f, 0.25f).OnComplete(() =&gt;
+    if (ControlSchemeHandler.UsingFullScreenControlScheme)
     {
-        transform.DOMove(transform.position - transformUp * 0.2f, 0.4f)
-        .OnComplete(() =&gt; { isAnimating = false; });
-    });
-}
+        playerInput.FullscreenInput();
+        return;
+    }
+    
+    playerInput.ButtonInput();
 }</code></pre>
-        <img class="interactable" src="../assets/images/fever_dream/8.png" alt="Image">
 
         <h2>Customisation</h2>
         <p>I LOVE customisation in games, so I'm not one to leave it out. Fever Dream has
             customisable skins, themes, trails, backgrounds and music. Here is an example of some skins:</p>
-        <img class="interactable" src="../assets/images/fever_dream/1.png" alt="Image">
-        <img class="interactable" src="../assets/images/fever_dream/2.png" alt="Image">
-        <img class="interactable" src="../assets/images/fever_dream/3.png" alt="Image">
-        <img class="interactable" src="../assets/images/fever_dream/4.png" alt="Image">
-        <img class="interactable" src="../assets/images/fever_dream/5.png" alt="Image">
-        <img class="interactable" src="../assets/images/fever_dream/6.png" alt="Image">
+        <img class="interactable" style="max-width: 500px;" src="../assets/images/fever_dream/1.png" alt="Image">
+        <img class="interactable" src="../assets/images/fever_dream/skins.gif" alt="Image">
 
         <h2>Levels</h2>
 
         <p>Levels are loaded while the transition animation is playing in the background, this is a
             snippet of how the level handling works:</p>
-        <img class="interactable" src="../assets/images/fever_dream/10.png" alt="Image">
+        <img class="interactable" style="max-width: 500px;" src="../assets/images/fever_dream/10.png" alt="Image">
         <p>Each level has it's own script</p>
         <pre><code class="language-csharp">public class Level : MonoBehaviour
 {
-public string levelName;
-public AudioClip audioClip;
-public Vector2 spawnPosition;
+    public string levelName;
+    public AudioClip audioClip;
+    public Vector2 spawnPosition;
 }</code></pre>
 
         <p>Those are used in LevelManager (this is the method 'LoadLevel(int levelID, bool
@@ -282,7 +279,8 @@ ResetPlayer();</code></pre>
     rb.velocity = Vector2.zero;
 }</code></pre>
 
-        <p>Level design is also important for a platformer! So I made some sketches to plan out level creation in the editor beforehand</p>
+        <p>Level design is also important for a platformer! So I made some sketches to plan out level creation in the
+            editor beforehand</p>
         <img class="interactable" src="../assets/images/fever_dream/14.png" alt="Image">
         <img class="interactable" src="../assets/images/fever_dream/15.png" alt="Image">
         <img class="interactable" src="../assets/images/fever_dream/16.png" alt="Image">
@@ -290,13 +288,20 @@ ResetPlayer();</code></pre>
 
     <footer>
         <div class="social-links">
-            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png" alt="Discord"></a>
-            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img src="../assets/icons/playstore.png" alt="Play Store"></a>
-            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
-            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png" alt="Github"></a>
-            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img src="../assets/icons/youtube.png" alt="YouTube"></a>
-            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img src="../assets/icons/mail.png" alt="E-mail"></a>
-            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png"
+                    alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img
+                    src="../assets/icons/playstore.png" alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png"
+                    alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png"
+                    alt="Github"></a>
+            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img
+                    src="../assets/icons/youtube.png" alt="YouTube"></a>
+            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img
+                    src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
             <a href="../cv/fdw-cv-english.pdf" target="_blank"><img src="../assets/icons/cv.png" alt="C V"></a>
         </div>
         <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>

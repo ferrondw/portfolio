@@ -72,20 +72,18 @@
         <div id="buttons">
             <img src="../assets/icons/github.png" target="_blank" onclick="window.location.href='https:\/\/github.com/ferrondw/JSTA'">
         </div>
-        <p>"In "The Clockwork" you wake up with a splitting headache and find yourself in a series of bizarre and often
+        <p>In "The Clockwork" you wake up with a splitting headache and find yourself in a series of bizarre and often
             gory situations. You'll make choices that lead to hilarious and sometimes gruesome consequences as you
             navigate through a tangled web of time loops, alien encounters, and divine knowledge. Will you survive this
             web of time loops and end it happily ever after, or will you find yourself lost in the void, frozen to
             death, or merged with your younger self, repeating the same adventure with newfound wisdom? Keep in mind,
-            your decisions will determine the fate of this world. Choose wisely."</p>
+            your decisions will determine the fate of this world. Choose wisely.</p>
 
-        <p>This was my first ever JavaScript project for <a href="https://www.ma-web.nl">MediaCollege Amsterdam</a>.
-            Where in our first year, we had to make a story game in pure JavaScript ran on NodeJS. We had to learn
-            GitHub and make a flowchart for the story:</p>
+        <p>This was my first ever JavaScript project. It runs on NodeJS, and I made a flowchart for the story:</p>
 
         <img class="interactable" src="../assets/images/the_clockwork/flowchart.png">
 
-        <p>Besides the story, I focussed on making the programming of it modular and easy to edit. Thus I made main.js,
+        <p>Besides the story, I focussed on making the programming of it modular and easy to edit. Thus I made <code>main.js</code>,
             which parses the story written fully in JSON. Then I use external ASCII art and such by making a JavaScript
             file and making it export itself, making it usable as an import. Here is a bit of code for parsing the
             story, followed by a part of the story:</p>
@@ -150,7 +148,7 @@ const Story = [
 ];
 module.exports = Story;</code></pre>
 
-        <p>Using process.stdout.write() I can write the next character without creating a new line, this is how
+        <p>Using <code>process.stdout.write()</code> I can write the next character without creating a new line, this is how
             animating the characters is made. If an error occurs, I handle that with spitting out a custom error message
             in line with the 'world' of the story. This is a part of the story animated:</p>
         <img class="interactable" src="../assets/images/the_clockwork/playing.gif">
