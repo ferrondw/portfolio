@@ -98,37 +98,28 @@
     }</code></pre>
             <br><br>
             <pre><code class="language-csharp">public class MechanicChecker : MonoBehaviour
-    {    
-        private Collider2D _collider;
-        private void Start() =&gt; _collider = GetComponent&lt;Collider2D&gt;();
+{    
+    private Collider2D _collider;
+    private void Start() =&gt; _collider = GetComponent&lt;Collider2D&gt;();
     
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
-            if (gameMechanic != null)
-            {
-                gameMechanic.HandleTriggerEnter(_collider);
-            }
-        }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        BaseMechanic baseMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+        baseMechanic?.HandleTriggerEnter(_collider);
+    }
     
-        private void OnTriggerStay2D(Collider2D collision)
-        {
-            BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
-            if (gameMechanic != null)
-            {
-                gameMechanic.HandleTriggerStay(_collider);
-            }
-        }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        BaseMechanic baseMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+        baseMechanic?.HandleTriggerStay(_collider);
+    }
     
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            BaseMechanic gameMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
-            if (gameMechanic != null)
-            {
-                gameMechanic.HandleTriggerExit(_collider);
-            }
-        }
-    }</code></pre>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        BaseMechanic baseMechanic = collision.gameObject.GetComponent&lt;BaseMechanic&gt;();
+        baseMechanic?.HandleTriggerExit(_collider);
+    }
+}</code></pre>
     
             <p>For example, here are the Key, Lava and Jump Pad mechanic:</p>
     
