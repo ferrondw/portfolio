@@ -4,11 +4,11 @@
         "description": "A game where you are a hedgehog needing to clear randomly generated mazes",
         "thumbnailPath": "assets/images/project_covers/hedge_runner.png",
         "path": "projects/hedge_runner",
-        "tags": ["unity", "csharp", "unfinished"],
-        "workTime": "",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
+        "tags": ["unity", "csharp", "blender"],
+        "workTime": "05-09-2024 - ??-??-????",
+        "spotlightLabel": "Best Project",
+        "spotlightColor": "#deb75c",
+        "finished": true
     },
     {
         "title": "Fever Dream",
@@ -16,21 +16,10 @@
         "thumbnailPath": "assets/images/project_covers/fever_dream.png",
         "path": "projects/fever_dream",
         "tags": ["unity", "csharp"],
-        "workTime": "16-12-2022 - 20-6-2024",
-        "spotlightLabel": "On the Play Store",
-        "finished": true,
-        "highlighted": true
-    },
-    {
-        "title": "Operation StarFall",
-        "description": "A Game as a Service 2.5D Metroidvania game in the style of popular cartoons from the 80s",
-        "thumbnailPath": "assets/images/project_covers/operation_starfall.png",
-        "path": "projects/operation_starfall",
-        "tags": ["unity", "csharp", "unfinished"],
-        "workTime": "11-9-2023 - ??-2-2025",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
+        "workTime": "16-12-2022 - 20-06-2024",
+        "spotlightLabel": "4.9★ on the Play Store",
+        "spotlightColor": "#c0c0c0",
+        "finished": true
     },
     {
         "title": "Custom Volume Overrides",
@@ -38,32 +27,10 @@
         "thumbnailPath": "assets/images/project_covers/custom_volume_overrides.png",
         "path": "projects/custom_volume_overrides", 
         "tags": ["unity", "shader"],
-        "workTime": "",
+        "workTime": "02-04-2024 - 02-07-2024",
         "spotlightLabel": "",
-        "finished": true,
-        "highlighted": false
-    },
-    {
-        "title": "MA Bird",
-        "description": "Flappy Bird clone made for MediaCollege Amsterdam in 5 hours",
-        "thumbnailPath": "assets/images/project_covers/ma_bird.png",
-        "path": "projects/ma_bird",
-        "tags": ["unity", "csharp", "unfinished"],
-        "workTime": "",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
-    },
-    {
-        "title": "El Cubico",
-        "description": "An infinite runner game, made by a guy, but I said I could do it better, thus this game was made",
-        "thumbnailPath": "assets/images/project_covers/el_cubico.png",
-        "path": "projects/el_cubico",
-        "tags": ["unity", "csharp", "unfinished"],
-        "workTime": "",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
+        "spotlightColor": "#fff",
+        "finished": true
     },
     {
         "title": "The Clockwork",
@@ -71,10 +38,10 @@
         "thumbnailPath": "assets/images/project_covers/the_clockwork.png",
         "path": "projects/the_clockwork",
         "tags": ["js", "github"],
-        "workTime": "14-9-2023 - 2-10-2023",
+        "workTime": "14-9-2023 - 02-10-2023",
         "spotlightLabel": "",
-        "finished": true,
-        "highlighted": false
+        "spotlightColor": "#fff",
+        "finished": true
     },
     {
         "title": "Waypoint System",
@@ -84,19 +51,8 @@
         "tags": ["unity", "csharp"],
         "workTime": "27-11-2023 - 01-25-2024",
         "spotlightLabel": "",
-        "finished": true,
-        "highlighted": false
-    },
-    {
-        "title": "Wiskunde Keuzedeel: Platformer",
-        "description": "Endless runner in Unity with mathematical functions for jumping, colliding and collecting",
-        "thumbnailPath": "assets/images/project_covers/wiskunde_keuzedeel_platformer.png",
-        "path": "projects/wiskunde_keuzedeel_platformer",
-        "tags": ["unity", "csharp", "unfinished"],
-        "workTime": "",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
+        "spotlightColor": "#fff",
+        "finished": true
     },
     {
         "title": "Master Cappuccino's Café",
@@ -106,29 +62,7 @@
         "tags": ["unity", "csharp", "jam"],
         "workTime": "14-10-2023 - 21-10-2023",
         "spotlightLabel": "",
-        "finished": true,
-        "highlighted": false
-    },
-    {
-        "title": "2D2D",
-        "description": "Jam game from the Educational International Game Jam about switching dimensions",
-        "thumbnailPath": "assets/images/project_covers/2d2d.png",
-        "path": "projects/2d2d",
-        "tags": ["unity", "csharp", "jam", "unfinished"],
-        "workTime": "",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
-    },
-    {
-        "title": "oYakka",
-        "description": "Website to chat with Ollama locally",
-        "thumbnailPath": "assets/images/project_covers/oyakka.png",
-        "path": "projects/oyakka",
-        "tags": ["html", "css", "js", "unfinished"],
-        "workTime": "",
-        "spotlightLabel": "",
-        "finished": false,
-        "highlighted": false
+        "spotlightColor": "#fff",
+        "finished": true
     }
 ]

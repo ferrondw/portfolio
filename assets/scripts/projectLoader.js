@@ -44,50 +44,53 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch((error) => console.error("Error fetching data:", error));
 
-    function renderProjects(projects) {
-        projectsContainer.innerHTML = "";
-        const finishedAndHighlightedProjects = projects.filter(project => project.finished && project.highlighted);
-        const finishedProjects = projects.filter(project => project.finished && !project.highlighted);
-        const unfinishedProjects = projects.filter(project => !project.finished);
-
-        finishedAndHighlightedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project);
-            projectsContainer.appendChild(projectElement);
-        });
-
-        finishedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project);
-            projectsContainer.appendChild(projectElement);
-        });
-
-        unfinishedProjects.forEach((project) => {
-            const projectElement = createProjectElement(project);
-            projectsContainer.appendChild(projectElement);
-        });
-    }
+        function renderProjects(projects) {
+            projectsContainer.innerHTML = "";
+            const finishedProjects = projects.filter(project => project.finished);
+            const unfinishedProjects = projects.filter(project => !project.finished);
+        
+            finishedProjects.forEach((project) => {
+                const projectElement = createProjectElement(project);
+                projectsContainer.appendChild(projectElement);
+            });
+        
+            unfinishedProjects.forEach((project) => {
+                const projectElement = createProjectElement(project);
+                projectsContainer.appendChild(projectElement);
+            });
+        }
+        
 
     function createProjectElement(project) {
         const projectElement = document.createElement("div");
         projectElement.classList.add("project");
 
         projectElement.innerHTML = `
-        <img src="${project.thumbnailPath}" alt="Project Image">
-        <div class="info">
-          <h2 class="title">${project.title}</h2>
-          <p class="description">${project.description}</p>
-          <div class="tags">
-          ${project.tags.map(tag => `<img src="assets/icons/${tag}.png" alt="Tag">`).join('')}
-        </div>
-        </div>
-      `;
+            <img src="${project.thumbnailPath}" alt="Project Image">
+            <div class="info">
+                <h2 class="title">${project.title}</h2>
+                <p class="description">${project.description}</p>
+                <div class="tags">
+                    ${project.tags.map(tag => `<img src="assets/icons/${tag}.png" alt="Tag">`).join('')}
+                </div>
+            </div>
+        `;
 
-        if (project.finished && project.highlighted) {
-                const div = document.createElement('div');
-                div.classList = 'border';
-                projectElement.appendChild(div);
-                projectElement.classList.add("highlighted");
+        if (project.spotlightLabel && project.spotlightLabel.length > 0) {
+            projectElement.classList.add("highlighted");
+            projectElement.style.setProperty('--spotlight-color', project.spotlightColor);
+
+            const spotlightText = document.createElement('p');
+            spotlightText.textContent = project.spotlightLabel;
+            spotlightText.classList.add('spotlight');
+            projectElement.appendChild(spotlightText);
+
+            const borderElement = document.createElement("div");
+            borderElement.classList.add("border");
+            projectElement.appendChild(borderElement);
         }
-        else if(!project.finished) {
+
+        if (!project.finished) {
             projectElement.classList.add("unfinished");
         }
 
@@ -95,15 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = project.path;
         });
 
-        if(project.spotlightLabel.length > 0){
-            const p = document.createElement('p');
-            p.textContent = project.spotlightLabel;
-            p.classList = 'spotlight';
-            projectElement.appendChild(p);
-        }
-
         return projectElement;
     }
+
 
     function filterProjects() {
         if (!projectData) return;

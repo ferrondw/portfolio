@@ -28,7 +28,8 @@
     <meta property="og:image" content="https://ferrondewitte.com/assets/images/metadata.png">
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:keywords" content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
     <meta name="theme-color" content="#57c7ff">
 
     <meta itemprop="name" content="Ferron de Witte">
@@ -46,7 +47,8 @@
         <div class="bg"></div>
     </div>
 
-    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span style="color: var(--light);">DE&thinsp;WITTE</span></div>
+    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span
+            style="color: var(--light);">DE&thinsp;WITTE</span></div>
     <header>
         <nav class="left">
             <button onclick="window.location.href='../home'">Home</button>
@@ -70,19 +72,237 @@
         <h1>Hedge Runner</h1>
         <img class="banner" src="../assets/banners/hedge_runner.gif" alt="Gif">
         <div id="buttons">
-            <img src="../assets/icons/github.png" target="_blank" onclick="window.location.href='https:\/\/github.com/ferrondw/maze-generation'">
+            <img src="../assets/icons/github.png" target="_blank"
+                onclick="window.location.href='https:\/\/github.com/ferrondw/maze-generation'">
         </div>
+
+        <h2>Project Details</h2>
+        <div class="project-details">
+            <p class="detail-description">Hedge Runner is a game where you play as a hedgehog, and complete infinite
+                randomly generated mazes, a lot of time has gone into the art direction of this game, and it's the first
+                where I made 3D art using Blender! (more on that below).</p>
+            <div class="details">
+                <div class="detail">
+                    <img src="../assets/icons/engine.png">
+                    <p>Engine: Unity, Blender</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/code.png">
+                    <p>Language: C#</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/workflow.png">
+                    <p>Workflow: SCRUM (2 week sprint)</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/worktime.png">
+                    <p>Work Time: 05-09-2024 - Now</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/teamsize.png">
+                    <p>Team Size: 1</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>Maze Generation</h2>
+        <p>Mazes are generated using the Recursive Backtracking Algorithm, this is an example on how a 4x4 maze would be
+            generated:</p>
+        <img class="interactable" src="../assets/images/hedge_runner/4x4.gif" alt="Image">
+
+        <p>This is the only algorithm I use in-game, but
+            the system is set up so you can generate using more algorithms. First of all is the 'contract', an interface
+            that says "If you inherit from me, you MUST have these methods!":</p>
+
+        <pre><code class="language-csharp">public interface IMazeGenerationStrategy
+{
+    // cell[,] is the maze, the stack is a path to the finish
+    (Cell[,], Stack<Vector2Int>) Generate(ushort width, ushort height, int seed = -1);
+}</code></pre>
+
+        <p>Then there is the algorithm itself, which inherits from this <code>IMazeGenerationStrategy</code> class:</p>
+
+        <pre><code>public class RecursiveBacktrackingStrategy : IMazeGenerationStrategy
+{
+    public (Cell[,], Stack&lt;Vector2Int&gt;) Generate(ushort width, ushort height, int seed = -1)
+    {
+        var randomInt16 = new System.Random().Next(ushort.MinValue, ushort.MaxValue);
+        var randomSeed = seed == -1 ? new System.Random(randomInt16) : new System.Random(seed);
+
+        var maze = new Cell[width, height];
+        const Cell initial = Cell.RightWall | Cell.LowerWall;
+
+        for (int i = 0; i &lt; width; i++)
+        {
+            for (int j = 0; j &lt; height; j++)
+            {
+                maze[i, j] = initial;
+            }
+        }
+
+        var positionStack = new Stack&lt;Vector2Int&gt;();
+        var parentMap = new Dictionary&lt;Vector2Int, Vector2Int&gt;();
+        var position = new Vector2Int { x = 0, y = height - 1 };
+
+        maze[position.x, position.y] |= Cell.Visited;
+        positionStack.Push(position);
+
+        while (positionStack.Count &gt; 0)
+        {
+            var current = positionStack.Pop();
+            var neighbours = Utilities.GetUnvisitedNeighbours(current, maze, width, height);
+
+            if (neighbours.Count &lt;= 0) continue;
+
+            positionStack.Push(current);
+
+            var randomNeighbour = neighbours[randomSeed.Next(0, neighbours.Count)];
+            var neighbourPosition = randomNeighbour.Position;
+            var (breakPos, wall) = randomNeighbour.WallToBreak;
+
+            maze[breakPos.x, breakPos.y] &= ~wall;
+            maze[neighbourPosition.x, neighbourPosition.y] |= Cell.Visited;
+
+            parentMap[neighbourPosition] = current;
+
+            positionStack.Push(neighbourPosition);
+        }
+
+        var pathStack = new Stack&lt;Vector2Int&gt;();
+        var pathPosition = new Vector2Int { x = width - 1, y = 0 };
+
+        while (pathPosition != new Vector2Int { x = 0, y = height - 1 })
+        {
+            pathStack.Push(pathPosition);
+            pathPosition = parentMap[pathPosition];
+        }
+
+        pathStack.Push(new Vector2Int { x = 0, y = height - 1 });
+        
+        return (maze, pathStack);
+    }
+}</code></pre>
+
+        <p>Lastly, there is a small static class which can actually generate the mazes, it is used in the
+            <code>LevelManager</code> to handle loading/getting mazes:
+        </p>
+
+        <pre><code>public static class MazeGenerator
+{
+    public static (Cell[,], Stack&lt;Vector2Int&gt;) Generate(ushort width, ushort height, IMazeGenerationStrategy strategy, int seed = -1)
+    {
+        return strategy.Generate(width, height, seed);
+    }
+}</code></pre>
+
+        <p>Put that all together and you get a beautiful maze in-game!</p>
+        <img class="interactable" src="../assets/images/hedge_runner/maze.png" alt="Image">
+
+        <h2>Shaders</h2>
+        <p>A good game needs graphics, of course! So, I made a lot of shaders, for example the orbs in the main menu:
+        </p>
+        <img class="interactable" src="../assets/images/hedge_runner/orb_graph.png" alt="Image">
+        <img class="interactable" src="../assets/images/hedge_runner/orb_menu.gif" alt="Image">
+
+        <p>But there is more to a game's graphics then orbs, so here are the trees, they have a vertex position offset
+            and fresnel:</p>
+        <img class="interactable" src="../assets/images/hedge_runner/tree_graph.png" alt="Image">
+        <img class="interactable" src="../assets/images/hedge_runner/tree_game.gif" alt="Image">
+
+        <h2>Models</h2>
+
+        <p>Shaders are cool and all... But why have shaders, if you got nothing to put them on? So, there are also
+            models in the game. Here is the Hedgehog:</p>
+        <img class="interactable" src="../assets/images/hedge_runner/hedgehog_1.png" alt="Image">
+        <img class="interactable" src="../assets/images/hedge_runner/hedgehog_2.png" alt="Image">
+        <img class="interactable" src="../assets/images/hedge_runner/hedgehog_2_rotate.gif" alt="Image">
+        <p>Originally, the idea was to give the hedgehog a walking animation, and maybe even a victory pose. But those
+            ideas were later scrapped, the high poly count is still present in the feet of the hedgehog because of
+            it.</p>
+
+        <p>There were also no trees in the game. But I wanted to confine the player without making strict
+            borders, the dense trees around the maze make it clear that you can't go outside them, making for a natural
+            way of conveying that to the player.</p>
+        <img class="interactable" style="max-width: 500px;" src="../assets/images/hedge_runner/tree.png" alt="Image">
+        <img class="interactable" src="../assets/images/hedge_runner/tree_rotate.gif"
+            alt="Image">
+
+        <h2>Optimisation</h2>
+        <p>Because Hedge Runner is a mobile game, it needs to be as optimised as it can be! So, for the first time, I
+            dipped my toes into GPU instancing. Everything where there are more then ~10 meshes, I try to GPU instance
+            it. It is currently used in the trees, flowers, and hedge/walls of the maze. Here is a snippet on how this
+            works:</p>
+
+        <pre><code>float offsetX = Random.Range(-randomTreeOffset, randomTreeOffset);
+float offsetZ = Random.Range(-randomTreeOffset, randomTreeOffset);
+Vector3 basePosition = new Vector3(x + offsetX, trunkHeight, z + offsetZ);
+
+trunkMatrices.Add(Matrix4x4.TRS(basePosition, Quaternion.identity, Vector3.one * trunkScale));
+leavesStaticMatrices.Add(Matrix4x4.TRS(basePosition, Quaternion.identity, Vector3.one * leavesScale));
+
+Vector3 leavesOverlayPosition = basePosition + relativeLeavePosition;
+leavesDynamicMatrices.Add(Matrix4x4.TRS(leavesOverlayPosition, Quaternion.identity, Vector3.one * leavesOverlayScale));</code></pre>
+
+        <p>This snippet is from the <code>DecorationGenerator</code>. This specific part calculates all the matrices for
+            the trees. Using <code>Matrix4x4.TRS</code> (translation, rotation and scaling), I can easily pass in a
+            Vector3 position, Quaternion rotation and Vector3 scaling, and it will calculate the complex matrix for me.
+            Then in the <code>Update</code>, I call <code>DrawMeshInChunks</code>, as shown here:</p>
+
+        <pre><code>private static void DrawMeshInChunks(Mesh mesh, Material material, List&lt;Matrix4x4&gt; matrices, ShadowCastingMode shadowCastingMode)
+{
+    const int batchSize = 1023;
+    for (int i = 0; i &lt; matrices.Count; i += batchSize)
+    {
+        int count = Mathf.Min(batchSize, matrices.Count - i);
+        Graphics.DrawMeshInstanced(
+            mesh,
+            0,
+            material,
+            matrices.GetRange(i, count),
+            null,
+            shadowCastingMode,
+            false
+        );
+    }
+}</code></pre>
+
+        <p>It draws all the trees without instantiating them as a GameObject, but just their Mesh and Material using the
+            given Matrix4x4. This reduces draw calls REAL fast. I went from 1260 draw calls to <b>108</b>. This lets the
+            game run at 60FPS consistently on mobile.</p>
+
+        <h2>Levels</h2>
+        <p>Levels are generated both infinitely (32bit limit: 4,294,967,295) and randomly, using the Maze Generation
+            explained above. The image below explain how the <code>LevelManager</code> works:</p>
+        <img class="interactable" src="../assets/images/hedge_runner/level_manager_visual_sheet.png" alt="Image">
+
+        <p>The levels use a random seed, but this is stashed and saved using <code>PlayerPrefs</code>. This means you
+            can revisit and clear levels with better times, but this feature has not been implemented yet. I implemented
+            it in this way so I could later revisit this feature and maybe implement it.</p>
+
+        <h2>Skins</h2>
+        <p>Another game means more room for customisation! And of course, this game is no exception from that. I had
+            lots of fun making cool looking skins, here are some of them:</p>
+            <img class="interactable" src="../assets/images/hedge_runner/skins.gif" alt="Image">
+            <img class="interactable" src="../assets/images/hedge_runner/skin_goldenwind.gif" alt="Image">
+            <img class="interactable" src="../assets/images/hedge_runner/skin_cosmos.gif" alt="Image">
+            <img class="interactable" src="../assets/images/hedge_runner/skin_rainbow.gif" alt="Image">
+
     </main>
 
     <footer>
         <div class="social-links">
-            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png" alt="Discord"></a>
-            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img src="../assets/icons/playstore.png" alt="Play Store"></a>
-            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png" alt="Itch dot io"></a>
-            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png" alt="Github"></a>
-            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img src="../assets/icons/youtube.png" alt="YouTube"></a>
-            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img src="../assets/icons/mail.png" alt="E-mail"></a>
-            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png" alt="LinkedIn"></a>
+            <a href="https://discord.gg/6FwTHR3qpn" target="_blank"><img src="../assets/icons/discord.png"
+                    alt="Discord"></a>
+            <a href="https://play.google.com/store/apps/developer?id=Yakanashe" target="_blank"><img
+                    src="../assets/icons/playstore.png" alt="Play Store"></a>
+            <a href="https://yakanashe.itch.io/" target="_blank"><img src="../assets/icons/itch.png"
+                    alt="Itch dot io"></a>
+            <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png"
+                    alt="Github"></a>
+            <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img
+                    src="../assets/icons/mail.png" alt="E-mail"></a>
+            <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png"
+                    alt="LinkedIn"></a>
             <a href="../cv/fdw-cv-english.pdf" target="_blank"><img src="../assets/icons/cv.png" alt="C V"></a>
         </div>
         <p>Copyright &copy; 2024 Ferron de Witte. All rights reserved.</p>

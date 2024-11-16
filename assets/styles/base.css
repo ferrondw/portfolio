@@ -47,6 +47,7 @@ body {
     flex-direction: column;
     align-items: center;
     scroll-behavior: smooth;
+    line-height: 1.6;
 }
 
 header {
@@ -59,7 +60,7 @@ header {
     padding-top: 0px;
 }
 
-.construction{
+.construction {
     border-radius: 20px;
     margin: 40px;
 }
@@ -114,6 +115,7 @@ main {
     align-items: center;
     padding-top: 0px;
     padding-bottom: 50px;
+    max-width: 1200px;
     /* user-select: none; */
 }
 
@@ -127,7 +129,7 @@ main .name {
 main .domain {
     z-index: -1;
     font-size: 90px;
-    margin-top: -60px;
+    margin-top: -93px;
     margin-bottom: -30px;
     color: var(--light);
     animation: 1s fadeIn;
@@ -190,12 +192,12 @@ main p {
     background-image:
         linear-gradient(to right, var(--background-line) 1px, transparent 1px),
         linear-gradient(to bottom, var(--background-line) 1px, transparent 1px);
-    
-    transform: rotateX(40deg);
+
+    transform: rotateX(30deg);
     animation: 6s linear infinite crawlingWall;
 }
 
-.small-name{
+.small-name {
     font-size: 20px;
     font-weight: bold;
     animation: 1s fadeIn;
@@ -264,7 +266,7 @@ footer p {
     margin-right: 10px;
 }
 
-.search-bar:focus{
+.search-bar:focus {
     outline: none;
 }
 
@@ -317,31 +319,6 @@ projects .info {
     justify-content: center;
 }
 
-.border {
-    position: absolute;
-    display: block;
-    z-index: -2;
-    display: block;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    background: linear-gradient(45deg, #fff0 20%, #fff0 45%, #deb75c40 52%, #deb75c40 58%, #fff0 65%, #fff0 100%);
-    background-size: 500% auto;
-    left: 0;
-    top: 0;
-    border-radius: 10px;
-    border-width: 10px;
-    border-color: #deb75c70;
-    
-    animation: shine 15s linear infinite;
-  }
-
-  @keyframes shine {
-    to {
-      background-position: 500% center;
-    }
-  }
-
 .project {
     display: flex;
     position: relative;
@@ -366,34 +343,65 @@ projects .info {
     transition: ease var(--transition-speed);
 }
 
-.project.unfinished{
+.project.unfinished {
     filter: blur(1.5px) saturate(0.2);
     opacity: 0.7;
 }
 
-.project.highlighted{
-    border-color: #deb75c;
+.project.highlighted {
+    border-color: var(--spotlight-color, #deb75c);
     border-width: 5px;
     border-style: solid;
     border-radius: 0px 20px 20px 20px;
-    background-color: #000000;
     background-color: var(--semi-transparent);
 }
 
-.project .spotlight{
+.project .spotlight {
     position: absolute;
     z-index: 1;
-    background-color: #deb75c;
+    background-color: var(--spotlight-color, #deb75c);
     color: var(--dark);
     font-size: 20px;
     text-shadow: none;
     font-weight: bold;
     padding: 2px;
     left: -5px;
-    top: -50px;
+    top: -60px;
     border-radius: 15px 15px 0px 0px;
     padding-inline: 15px;
 }
+
+.border {
+    position: absolute;
+    display: block;
+    z-index: -2;
+    opacity: 0.4;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(45deg,
+            transparent 20%,
+            transparent 45%,
+            var(--spotlight-color, #deb75c) 52%,
+            var(--spotlight-color, #deb75c) 58%,
+            transparent 65%,
+            transparent 100%);
+    background-size: 500% auto;
+    left: 0;
+    top: 0;
+    border-radius: 0px;
+    border-width: 10px;
+    border-color: var(--spotlight-color, #deb75c70);
+
+    animation: shine 15s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 500% center;
+    }
+}
+
 
 .project .metadata {
     display: flex;
@@ -478,6 +486,19 @@ projects .info .title {
     margin: 0%;
 }
 
+code {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+pre {
+    code {
+        background-color: unset;
+        max-height: 500px;
+    }
+}
+
 @keyframes crawlingWall {
     from {
         background-position-y: 0;
@@ -529,7 +550,7 @@ projects .info .title {
         z-index: -1;
         font-size: 70px;
         font-weight: 700;
-        margin-top: -50px;
+        margin-top: -73px;
         animation: 1s fadeIn;
     }
 
@@ -544,16 +565,16 @@ projects .info .title {
         flex-wrap: wrap;
     }
 
-    highlighted{
+    highlighted {
         width: 90%;
         height: min-content;
-    
-        img{
+
+        img {
             max-height: fit-content;
             width: 50%;
         }
-    
-        .info{
+
+        .info {
             margin-left: 15px;
             width: 50%;
         }
@@ -568,7 +589,7 @@ projects .info .title {
         margin-bottom: 30px;
     }
 
-    .project.highlighted{
+    .project.highlighted {
         margin-top: 15px;
     }
 
@@ -601,6 +622,11 @@ projects .info .title {
 
     projects .info .description {
         font-size: 10px;
+    }
+
+    .project .spotlight {
+        font-size: 17px;
+        top: -50px;
     }
 
     filtering {

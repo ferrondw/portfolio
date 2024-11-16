@@ -7,7 +7,8 @@ h1 {
 
 #project {
     animation: none;
-    width: 60%;
+    max-width: 1000px;
+    width: 100%;
 
     img {
         width: 60%;
@@ -39,18 +40,6 @@ h1 {
     }
 }
 
-code{
-    background-color: #333;
-    border-radius: 5px;
-    padding: 3px;
-}
-
-pre{
-    code{
-        background-color: unset;
-    }
-}
-
 p {
     border-radius: 20px;
     background-color: var(--semi-transparent);
@@ -69,8 +58,10 @@ p {
     display: flex;
 
     img {
-        width: 40px;
-        height: 40px;
+        max-width: 40px;
+        max-height: 40px;
+        min-width: 40px;
+        min-height: 40px;
         padding-inline: 5px;
         margin: 0;
 
@@ -195,6 +186,62 @@ a:visited {
     scale: 1.05;
 }
 
+.project-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.detail-description {
+    width: 50%;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.details {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    background-color: var(--semi-transparent);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.detail img {
+    max-width: 40px;
+    max-height: 40px;
+    margin-right: 10px;
+    margin-top: 0px !important;
+    border-radius: 0px !important;
+}
+
+.detail img:hover{
+    cursor: default !important;
+    box-shadow: none !important;
+    transform: none !important;
+    scale: 1 !important;
+    opacity: 1 !important;
+}
+
+.detail p {
+    margin: 0;
+    font-size: 14px;
+    background-color: transparent;
+}
+
 @media only screen and (max-width: 1024px) {
     h1 {
         font-size: 1.3em;
@@ -204,8 +251,10 @@ a:visited {
         height: 40px;
         
         img {
-            width: 30px;
-            height: 30px;
+            max-width: 30px;
+            max-height: 30px;
+            min-width: 30px;
+            min-height: 30px;
         }
     }
 
@@ -241,5 +290,50 @@ a:visited {
         p {
             width: 100%;
         }
+    }
+
+    .project-details {
+        flex-direction: column;
+        width: 100%;
+        padding: 0px;
+    }
+    
+    .detail-description {
+        width: calc(100% - 40px);
+        padding: 20px;
+        border-radius: 20px;
+    }
+    
+    .details {
+        width: 100%;
+    }
+    
+    .detail {
+        width: 100%;
+        background-color: var(--semi-transparent);
+        margin: 10px;
+        padding: 10px;
+        border-radius: 20px;
+    }
+    
+    .detail img {
+        max-width: 30px;
+        max-height: 30px;
+        margin-top: 0px !important;
+        border-radius: 0px !important;
+    }
+    
+    .detail img:hover{
+        cursor: default !important;
+        box-shadow: none !important;
+        transform: none !important;
+        scale: 1 !important;
+        opacity: 1 !important;
+    }
+    
+    .detail p {
+        margin: 0;
+        font-size: 14px;
+        background-color: transparent;
     }
 }

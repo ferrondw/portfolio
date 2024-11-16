@@ -76,18 +76,42 @@
                 onclick="window.location.href='https:\/\/play.google.com/store/apps/details?id=game.Yakanashe.FeverDream'">
         </div>
 
-        <p>I started this project to test a little game mechanic I had in mind, which expanded into
-            this game. Fever Dream is a platformer where you can't jump. This means you'll have to flick your way off
-            platforms in order to reach the portal to finish the level. This has been the project that stuck with me,
-            and that I've worked the longest on. That also means that the UI and code have improved in it's lifetime.
-            I'm very happy about the project, and although it's not completely finished yet, I'm happy about the game
-            that I made. (I'm also very grateful to all the people that helped me come up with ideas for the game to
-            improve it even more!)</p>
+        <h2>Project Details</h2>
+        <div class="project-details">
+            <p class="detail-description">I started this project to test a little game mechanic I had in mind, which
+                expanded into this game. Fever Dream is a platformer where you can't jump. This means you'll have to
+                flick your way off platforms in order to reach the portal to finish the level. This has been the project that stuck with me,
+                and that I've worked the longest on. That also means that the UI and code have improved in it's lifetime.
+                I'm very happy about the project and all the people that helped me come up with ideas for the
+                game to mprove it even more!</p>
+            <div class="details">
+                <div class="detail">
+                    <img src="../assets/icons/engine.png">
+                    <p>Engine: Unity</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/code.png">
+                    <p>Language: C#</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/workflow.png">
+                    <p>Workflow: Waterfall</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/worktime.png">
+                    <p>Work Time: 16-12-2022 - 20-06-2024</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/teamsize.png">
+                    <p>Team Size: 1</p>
+                </div>
+            </div>
+        </div>
 
-            <h2>Gameplay Mechanics</h2>
-            <p>Mechanics are all based on one base class, and a script that handles trigger collisions
-                with a mechanic</p>
-            <pre><code class="language-csharp">public class BaseMechanic : MonoBehaviour
+        <h2>Gameplay Mechanics</h2>
+        <p>Mechanics are all based on one base class, and a script that handles trigger collisions
+            with a mechanic</p>
+        <pre><code class="language-csharp">public class BaseMechanic : MonoBehaviour
     {
         // Collision checks do nothing if not overridden (e.g. Lava only needs Enter, while Black Hole needs all 3).
         public virtual void HandleTriggerEnter(Collider2D other){}
@@ -96,8 +120,8 @@
     
         public virtual void HandleTriggerExit(Collider2D other){}
     }</code></pre>
-            <br><br>
-            <pre><code class="language-csharp">public class MechanicChecker : MonoBehaviour
+        <br><br>
+        <pre><code class="language-csharp">public class MechanicChecker : MonoBehaviour
 {    
     private Collider2D _collider;
     private void Start() =&gt; _collider = GetComponent&lt;Collider2D&gt;();
@@ -120,10 +144,10 @@
         baseMechanic?.HandleTriggerExit(_collider);
     }
 }</code></pre>
-    
-            <p>For example, here are the Key, Lava and Jump Pad mechanic:</p>
-    
-            <pre><code class="language-csharp">public class Key : BaseMechanic
+
+        <p>For example, here are the Key, Lava and Jump Pad mechanic:</p>
+
+        <pre><code class="language-csharp">public class Key : BaseMechanic
     {
         public GameObject objectToToggleOnHit;
             
@@ -146,16 +170,16 @@
             Destroy(gameObject);
         }
     }</code></pre>
-            <img class="interactable" src="../assets/images/fever_dream/7.png" alt="Image">
-            <pre><code class="language-csharp">public class Lava : BaseMechanic
+        <img class="interactable" src="../assets/images/fever_dream/7.png" alt="Image">
+        <pre><code class="language-csharp">public class Lava : BaseMechanic
     {
         public override void HandleTriggerEnter(Collider2D other)
         {
             LevelManager.Instance.RestartLevel();
         }
     }</code></pre>
-            <img class="interactable" src="../assets/images/fever_dream/9.png" alt="Image">
-            <pre><code class="language-csharp">public class JumpPad : BaseMechanic
+        <img class="interactable" src="../assets/images/fever_dream/9.png" alt="Image">
+        <pre><code class="language-csharp">public class JumpPad : BaseMechanic
     {
         [SerializeField] private float JumpPadStrength;
     
@@ -178,7 +202,7 @@
             });
         }
     }</code></pre>
-            <img class="interactable" src="../assets/images/fever_dream/8.gif" alt="Image">
+        <img class="interactable" src="../assets/images/fever_dream/8.gif" alt="Image">
 
         <h2>Player</h2>
 
@@ -287,8 +311,6 @@ ResetPlayer();</code></pre>
                     alt="Itch dot io"></a>
             <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png"
                     alt="Github"></a>
-            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img
-                    src="../assets/icons/youtube.png" alt="YouTube"></a>
             <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img
                     src="../assets/icons/mail.png" alt="E-mail"></a>
             <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png"

@@ -74,5 +74,71 @@
         "spotlightLabel": "",
         "finished": false,
         "highlighted": false
+    },
+    {
+        "title": "2D2D",
+        "description": "Jam game from the Educational International Game Jam about switching dimensions",
+        "thumbnailPath": "assets/images/project_covers/2d2d.png",
+        "path": "projects/2d2d",
+        "tags": ["unity", "csharp", "jam", "unfinished"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "oYakka",
+        "description": "Website to chat with Ollama locally",
+        "thumbnailPath": "assets/images/project_covers/oyakka.png",
+        "path": "projects/oyakka",
+        "tags": ["html", "css", "js", "unfinished"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Wiskunde Keuzedeel: Platformer",
+        "description": "Endless runner in Unity with mathematical functions for jumping, colliding and collecting",
+        "thumbnailPath": "assets/images/project_covers/wiskunde_keuzedeel_platformer.png",
+        "path": "projects/wiskunde_keuzedeel_platformer",
+        "tags": ["unity", "csharp", "unfinished"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "MA Bird",
+        "description": "Flappy Bird clone made for MediaCollege Amsterdam in 5 hours",
+        "thumbnailPath": "assets/images/project_covers/ma_bird.png",
+        "path": "projects/ma_bird",
+        "tags": ["unity", "csharp", "unfinished"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "El Cubico",
+        "description": "An infinite runner game, made by a guy, but I said I could do it better, thus this game was made",
+        "thumbnailPath": "assets/images/project_covers/el_cubico.png",
+        "path": "projects/el_cubico",
+        "tags": ["unity", "csharp", "unfinished"],
+        "workTime": "",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
+    },
+    {
+        "title": "Operation StarFall",
+        "description": "A Game as a Service 2.5D Metroidvania game in the style of popular cartoons from the 80s",
+        "thumbnailPath": "assets/images/project_covers/operation_starfall.png",
+        "path": "projects/operation_starfall",
+        "tags": ["unity", "csharp", "unfinished"],
+        "workTime": "11-09-2023 - ??-02-2025",
+        "spotlightLabel": "",
+        "finished": false,
+        "highlighted": false
     }
 ]

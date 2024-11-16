@@ -71,13 +71,40 @@
     <main id="project">
         <h1>Waypoint System</h1>
         <img class="banner" src="../assets/banners/waypoint_system.gif" alt="Gif">
-        <p>Waypoints are specific points in a game world that serve as navigation aids for objects such as players,
-            enemies, and moving platforms. They are widely used in games to control the movement and positioning of
-            objects. This ensures smooth and controlled gameplay experiences.
-        </p>
-        <p>Creating a Waypoint in a game was very difficult at first, with a lot of empty GameObjects and clutter. But
-            now all that is no longer necessary, with the Waypoint System you can easily edit and use a list of points
-            in the gizmos. This can be useful for moving platforms, splines, enemies, spawners and more!</p>
+
+        <h2>Project Details</h2>
+        <div class="project-details">
+            <p class="detail-description">Waypoints are specific points in a game world that serve as navigation aids
+                for objects such as players,
+                enemies, and moving platforms. They are widely used in games to control the movement and positioning of
+                objects. This ensures smooth and controlled gameplay experiences. Creating a Waypoint in a game was very
+                difficult at first, with a lot of empty GameObjects and clutter. But
+                now all that is no longer necessary, with the Waypoint System you can easily edit and use a list of
+                points
+                in the gizmos. This can be useful for moving platforms, splines, enemies, spawners and more!</p>
+            <div class="details">
+                <div class="detail">
+                    <img src="../assets/icons/engine.png">
+                    <p>Engine: Unity</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/code.png">
+                    <p>Language: C#</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/workflow.png">
+                    <p>Workflow: SCRUM (3 week sprint)</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/worktime.png">
+                    <p>Work Time: 27-11-2023 - 01-25-2024</p>
+                </div>
+                <div class="detail">
+                    <img src="../assets/icons/teamsize.png">
+                    <p>Team Size: 1</p>
+                </div>
+            </div>
+        </div>
 
         <h2>Examples</h2>
         <p>This is an example of a Waypoint on a Bobert (from Project StarFall). This means Bobert knows where it can
@@ -133,7 +160,8 @@
             <img class="interactable" src="../assets/images/waypoint_system/6.png">
         </section>
 
-        <p>This is even easier when using the shortcuts! holding <code>Left Alt</code> will enable the delete mode, and <code>Left Control</code> will enable the insert mode. This makes creating waypoints EVEN faster!</p>
+        <p>This is even easier when using the shortcuts! holding <code>Left Alt</code> will enable the delete mode, and
+            <code>Left Control</code> will enable the insert mode. This makes creating waypoints EVEN faster!</p>
 
         <h2>3D</h2>
         <p>Every example thus far has been in 2D, but this sytem is fully functional in 3D:</p>
@@ -161,6 +189,50 @@ public class WaypointChanger : MonoBehaviour
         waypoint.WaypointName = "This waypoint's name is now this very long string!";
     }
 }</code></pre>
+
+        <h2>Toolbar</h2>
+        <p>Waypoints can also be made using the Toolbar in Unity, as seen below. This is possible due to Unity's
+            MenuItem attribute:</p>
+        <img class="interactable" src="../assets/images/waypoint_system/toolbar.png">
+        <pre><code>public static class WaypointCreateUtility
+{
+    private const string undoMessage = "Created new waypoint";
+    private const string baseName = "New Waypoint";
+    private const string lineWaypointName = "New Line Waypoint";
+    private const string dotsWaypointName = "New Dots Waypoint";
+
+    [MenuItem("NeoN/Waypoint System/Line Waypoint")]
+    public static void CreateLineWaypoint(MenuCommand menuCommand) => CreateWaypoint(lineWaypointName, true);
+
+    [MenuItem("NeoN/Waypoint System/Dots Waypoint")]
+    public static void CreateDotsWaypoint(MenuCommand menuCommand) => CreateWaypoint(dotsWaypointName, false);
+
+    private static void CreateWaypoint(string name, bool shouldDrawLines)
+    {
+        var newWaypoint = ObjectFactory.CreateGameObject(baseName, typeof(Waypoint));
+
+        var lastView = SceneView.lastActiveSceneView;
+        newWaypoint.transform.position = lastView ? lastView.pivot : Vector3.zero;
+
+        StageUtility.PlaceGameObjectInCurrentStage(newWaypoint);
+        GameObjectUtility.EnsureUniqueNameForSibling(newWaypoint);
+
+        Undo.RegisterCreatedObjectUndo(newWaypoint, undoMessage);
+        Selection.activeGameObject = newWaypoint;
+
+        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+
+        ApplySettings(newWaypoint.GetComponent<Waypoint>(), name, shouldDrawLines);
+    }
+
+    private static void ApplySettings(Waypoint waypoint, string name, bool shouldDrawLines)
+    {
+        waypoint.WaypointName = name;
+        waypoint.name = name;
+        waypoint.ShouldDrawLines = shouldDrawLines;
+    }
+}</code></pre>
+
     </main>
 
     <footer>
@@ -173,8 +245,6 @@ public class WaypointChanger : MonoBehaviour
                     alt="Itch dot io"></a>
             <a href="https://github.com/ferrondw" target="_blank"><img src="../assets/icons/github.png"
                     alt="Github"></a>
-            <a href="https://www.youtube.com/channel/UCIhnRc0IVlZXscjgm_14iiQ" target="_blank"><img
-                    src="../assets/icons/youtube.png" alt="YouTube"></a>
             <a href="mailto:ferrondewitte@gmail.com?subject=We would love to hire you!"><img
                     src="../assets/icons/mail.png" alt="E-mail"></a>
             <a href="https://www.linkedin.com/in/ferrondewitte/" target="_blank"><img src="../assets/icons/linkedin.png"
