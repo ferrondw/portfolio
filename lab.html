@@ -9,7 +9,6 @@
     <link rel="shortcut icon" href="assets/icons/logo.png" type="image/png">
 
     <link rel="stylesheet" href="assets/styles/base.css">
-    <script defer src="assets/scripts/variables.js"></script>
     <script defer src="../assets/scripts/hueRandomiser.js"></script>
     <script defer src="assets/scripts/backgroundParralex.js"></script>
 
@@ -33,6 +32,52 @@
     <meta name="twitter:description" content="My Portfolio">
     <meta name="twitter:image" content="https://ferrondewitte.com/assets/images/metadata.png">
     <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        .buttons {
+            color: var(--white);
+            font-size: 17px;
+            max-width: 1000px;
+            width: 80%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            background-color: var(--semi-transparent);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 50px;
+            margin-top: 0px;
+            transition: ease var(--transition-speed);
+
+            button {
+                padding: 10px 20px;
+                font-family: "Source Code Pro", monospace;
+                margin-bottom: 20px;
+                max-width: 200px;
+                width: 100%;
+                font-size: 16px;
+                background-color: var(--primary);
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            button:hover {
+                background-color: var(--secondary);
+                transform: scale(1.05);
+            }
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .buttons {
+                font-size: 13px;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -57,13 +102,9 @@
     </header>
 
     <h1 class="about-text">LAB</h1>
-    <div class="about">
-        <p class="about-p">
-            Under construction! Check back later for some web tests, little tools and miscellaneous projects!
-        </p>
-    </div>
-
-    <img class="construction" src="assets/images/construction.gif">
+    <div class="buttons">
+        <p>All of my own little HTML tests and tools in one place.</p>
+        <button onclick="window.location.href='/lab/svg-to-png'">SVG to PNG</button>
     </div>
 
     <footer>

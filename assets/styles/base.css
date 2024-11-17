@@ -428,7 +428,8 @@ projects .info .title {
     color: var(--white);
     font-size: 17px;
     /* user-select: none; */
-    width: 60%;
+    max-width: 1000px;
+    width: 90%;
     color: #fff;
     display: flex;
     flex-direction: row;
@@ -554,6 +555,11 @@ pre {
         animation: 1s fadeIn;
     }
 
+    .small-name{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
     main p {
         color: var(--light);
         z-index: 2;
@@ -643,7 +649,6 @@ pre {
     }
 
     .about {
-        width: 90%;
         flex-direction: column;
         color: var(--white);
         font-size: 13px;

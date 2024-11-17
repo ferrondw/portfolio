@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Ferron | SVG to PNG</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icons/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="../assets/styles/base.css">
+    <script defer src="../assets/scripts/hueRandomiser.js"></script>
+    <script defer src="../assets/scripts/backgroundParralex.js"></script>
+
+    <!-- Metadata -->
+    <meta property="og:title" content="Ferron" />
+    <meta property="og:description" content="My Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ferrondewitte.com/" />
+    <meta property="og:image" content="https://ferrondewitte.com/assets/images/metadata.png">
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:keywords"
+        content="portfolio, game developer, games, videogames, student, android, android development, software, software development">
+    <meta name="theme-color" content="#57c7ff">
+
+    <meta itemprop="name" content="Ferron de Witte">
+    <meta itemprop="description" content="My Portfolio">
+    <meta itemprop="image" content="https://ferrondewitte.com/assets/images/metadata.png">
+
+    <meta name="twitter:title" content="Ferron de Witte">
+    <meta name="twitter:description" content="My Portfolio">
+    <meta name="twitter:image" content="https://ferrondewitte.com/assets/images/metadata.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <style>
+        body {
+            object-fit: border-box;
+            font-family: "Source Code Pro", monospace;
+        }
+
+        .main {
+            color: var(--light);
+            font-size: 17px;
+            max-width: 1000px;
+            width: 80%;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background-color: var(--semi-transparent);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0px;
+            margin-top: 0px;
+            transition: ease var(--transition-speed);
+        }
+
+        .size {
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: row;
+            width: 100%;
+
+            div {
+                width: 25%;
+                text-align: center;
+                margin-bottom: 30px;
+                margin-top: 30px;
+
+                .small {
+                    color: #ffffff7f;
+                }
+
+                p {
+                    margin: -5px;
+                }
+
+            }
+        }
+
+        #fileInputContainer {
+            width: 70%;
+            max-width: 500px;
+            padding: 20px;
+            background-color: var(--semi-transparent);
+            border: 2px dotted var(--secondary);
+            border-width: 2px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: border-color 0.3s;
+        }
+
+        #fileInputContainer:hover {
+            border-color: var(--light);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .svgPreview {
+            width: auto;
+            height: auto;
+            max-height: 300px;
+            max-width: 100%;
+            display: block;
+        }
+
+        #previewContainer {
+            display: block;
+            align-self: center;
+            max-width: max-content;
+            min-width: max -content;
+        }
+
+        #scaleFactor {
+            width: 100px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid var(--secondary);
+            background-color: var(--semi-transparent);
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        #scaleFactor:focus {
+            border-color: var(--light);
+            outline: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+            margin-top: 20px;
+
+            button {
+                padding: 10px 20px;
+                font-size: 16px;
+                background-color: var(--primary);
+                font-family: "Source Code Pro", monospace;
+                border: none;
+                border-radius: 5px;
+                color: #fff;
+                cursor: pointer;
+                transition: background-color 0.3s, transform 0.3s;
+            }
+
+            button:hover {
+                background-color: var(--secondary);
+                transform: scale(1.05);
+            }
+
+            button:active {
+                transform: scale(1);
+            }
+        }
+
+
+        @media only screen and (max-width: 1024px) {
+            .main {
+                font-size: 13px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bgholder">
+        <div class="bg"></div>
+    </div>
+
+    <div class="small-name"><span style="color: var(--secondary);">FERRON</span>&thinsp;<span
+            style="color: var(--light);">DE&thinsp;WITTE</span></div>
+    <header>
+        <nav class="left">
+            <button onclick="window.location.href='../home'">Home</button>
+            <button onclick="window.location.href='../lab'">Lab</button>
+        </nav>
+
+        <img src="../assets/icons/logo.png" alt="Logo" onclick="toggleRandomColors()">
+
+        <nav class="right">
+            <button onclick="window.location.href='../about'">About</button>
+            <button onclick="window.location.href='../contact'">Contact</button>
+        </nav>
+    </header>
+
+    <h1 style="padding-top: 30px;">SVG to PNG</h1>
+
+    <div id="fileInputContainer">
+        <p>Click or drag an SVG file here to upload</p>
+        <input type="file" id="fileInput" accept=".svg">
+    </div>
+
+    <div class="main" id="main" style="display: none;">
+        <div id="previewContainer"></div>
+
+        <div class="size">
+            <div class="size-comparison">
+                <p class="small">Original</p>
+                <p id="originalSizeText">0x0</p>
+            </div>
+            <div class="size-comparison">
+                <p class="small">Scaled</p>
+                <p id="scaledSizeText">0x0</p>
+            </div>
+        </div>
+
+        <label for="scaleFactor">Scale Factor</label>
+        <input type="number" id="scaleFactor" value="2" min="1" max="64" step="1">
+
+        <div class="buttons">
+            <button id="downloadBtn">Download PNG</button>
+            <button id="cancelBtn">Cancel</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const fileInputContainer = document.getElementById('fileInputContainer');
+    const fileInput = document.getElementById('fileInput');
+    const originalSizeText = document.getElementById('originalSizeText');
+    const scaledSizeText = document.getElementById('scaledSizeText');
+    const main = document.getElementById('main');
+    const scaleFactorInput = document.getElementById('scaleFactor');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+    let canvas, imageDataUrl, originalFilename;
+
+    addEventListeners();
+
+    function handleFile(file) {
+        if (!file || file.type !== 'image/svg+xml') {
+            alert('Please upload a valid SVG file.');
+            return;
+        }
+
+        originalFilename = file.name.replace(/\.[^/.]+$/, "");
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const svgData = e.target.result;
+            const parser = new DOMParser();
+            const svgDoc = parser.parseFromString(svgData, "image/svg+xml");
+            const svgElement = svgDoc.querySelector("svg");
+
+            if (!svgElement) {
+                alert("Invalid SVG file.");
+                return;
+            }
+
+            svgElement.classList = 'svgPreview';
+
+            fileInputContainer.style.display = "none";
+            main.style.display = "flex";
+
+            const previewContainer = document.getElementById("previewContainer");
+            previewContainer.innerHTML = "";
+            previewContainer.appendChild(svgElement);
+
+            const { width, height } = getSvgDimensions(svgElement);
+
+            originalSizeText.textContent = `${Math.round(width)}x${Math.round(height)}`;
+            updateScaledSizeText(width, height);
+            prepareCanvas(svgElement, width, height);
+        };
+        reader.readAsText(file);
+    }
+
+    function getSvgDimensions(svgElement) {
+        let width = parseFloat(svgElement.getAttribute("width")) || 0;
+        let height = parseFloat(svgElement.getAttribute("height")) || 0;
+
+        if ((!width || !height) && svgElement.hasAttribute("viewBox")) {
+            const viewBox = svgElement.getAttribute("viewBox").split(" ");
+            const [x, y, vbWidth, vbHeight] = viewBox.map(parseFloat);
+            width = vbWidth;
+            height = vbHeight;
+        }
+
+        return { width, height };
+    }
+
+    function updateScaledSizeText(width, height) {
+        const scaleFactor = parseFloat(scaleFactorInput.value) || 1;
+        const scaledWidth = width * scaleFactor;
+        const scaledHeight = height * scaleFactor;
+        scaledSizeText.textContent = `${Math.round(scaledWidth)}x${Math.round(scaledHeight)}`;
+    }
+
+    function prepareCanvas(svgElement, width, height) {
+        const scaleFactor = parseFloat(scaleFactorInput.value) || 2;
+        const scaledWidth = width * scaleFactor;
+        const scaledHeight = height * scaleFactor;
+
+        const svgData = new XMLSerializer().serializeToString(svgElement);
+        const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+        const svgUrl = URL.createObjectURL(svgBlob);
+
+        const img = new Image();
+        img.onload = function () {
+            canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = scaledWidth;
+            canvas.height = scaledHeight;
+
+            ctx.drawImage(img, 0, 0, scaledWidth, scaledHeight);
+            imageDataUrl = canvas.toDataURL('image/png');
+            URL.revokeObjectURL(svgUrl);
+        };
+        img.src = svgUrl;
+    }
+
+    function download() {
+        const svgElement = document.querySelector('.svgPreview');
+        const { width, height } = getSvgDimensions(svgElement);
+        const scaleFactor = parseFloat(scaleFactorInput.value) || 2;
+        const scaledWidth = width * scaleFactor;
+        const scaledHeight = height * scaleFactor;
+
+        prepareCanvas(svgElement, width, height);
+
+        const scaledSize = scaledSizeText.textContent;
+        const link = document.createElement('a');
+        link.download = `${originalFilename}-${scaledSize}.png`;
+
+        canvas.width = scaledWidth;
+        canvas.height = scaledHeight;
+
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const img = new Image();
+        img.onload = function () {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                link.href = url;
+                link.click();
+                URL.revokeObjectURL(url);
+            }, 'image/png');
+        };
+        img.src = imageDataUrl;
+    }
+
+    function addEventListeners() {
+        fileInputContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileInputContainer.style.borderColor = 'var(--light)';
+        });
+
+        fileInputContainer.addEventListener('dragleave', () => {
+            fileInputContainer.style.borderColor = 'var(--secondary)';
+        });
+
+        fileInputContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileInputContainer.style.borderColor = 'var(--secondary)';
+            if (e.dataTransfer.files.length) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInputContainer.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        scaleFactorInput.addEventListener('input', () => {
+            const svgElement = document.querySelector('.svgPreview');
+            if (svgElement) {
+                const { width, height } = getSvgDimensions(svgElement);
+                updateScaledSizeText(width, height);
+            }
+        });
+
+        downloadBtn.addEventListener('click', download);
+
+        cancelBtn.addEventListener('click', () => {
+            const previewContainer = document.getElementById("previewContainer");
+            previewContainer.innerHTML = "";
+            fileInput.value = '';
+            fileInputContainer.style.display = "block";
+            main.style.display = "none";
+        });
+    }
+</script>
+
+</html>
