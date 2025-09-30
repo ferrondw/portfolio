@@ -1,7 +1,7 @@
 (async () => {
     let data;
     try {
-        const r = await fetch('/projects/_index.json', { cache: 'no-store' }); // fuckass json started caching
+        const r = await fetch('/assets/projects/list.json', { cache: 'no-store' }); // fuckass json started caching
         data = await r.json();
     }
     catch (e) {

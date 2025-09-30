@@ -2,7 +2,7 @@
     let params = new URLSearchParams(window.location.search);
     let id = params.get("id") || "fetch will fail";
 
-    let projectResponse = await fetch(`/projects/${id}.md`);
+    let projectResponse = await fetch(`/assets/projects/${id}.md`);
     if (!projectResponse.ok) {
         document.querySelector(".projectHeader .description").innerHTML = "<p>Project not found.</p>";
         document.querySelector(".tableOfContents").style.display = "none";
@@ -10,7 +10,7 @@
     }
     let rawText = await projectResponse.text();
 
-    let infoResponse = await fetch(`/projects/_index.json`);
+    let infoResponse = await fetch(`/projects/list.json`);
     let infoData = await infoResponse.json();
     let info = (infoData.projects || []).find(p => p.id === id) || {};
 
