@@ -2,27 +2,21 @@
     let params = new URLSearchParams(window.location.search);
     let id = params.get("id") || "fetch will fail";
 
-    let response = await fetch(`/projects/${id}.md`);
-    if (!response.ok) {
+    let projectResponse = await fetch(`/projects/${id}.md`);
+    if (!projectResponse.ok) {
         document.querySelector(".projectHeader .description").innerHTML = "<p>Project not found.</p>";
         document.querySelector(".tableOfContents").style.display = "none";
         return;
     }
-    let rawText = await response.text();
+    let rawText = await projectResponse.text();
 
-    let title = "";
-    let description = "";
+    let infoResponse = await fetch(`/projects/_index.json`);
+    let infoData = await infoResponse.json();
+    let info = (infoData.projects || []).find(p => p.id === id) || {};
+
+    let title = info.title;
+    let description = info.description;
     let content = rawText;
-
-    if (rawText.startsWith("---")) {
-        let end = rawText.indexOf("---", 3);
-        if (end !== -1) {
-            let frontMatter = rawText.slice(3, end).trim().split("\n");
-            title = frontMatter[0] || "";
-            description = frontMatter[1] || "";
-            content = rawText.slice(end + 3).trim();
-        }
-    }
 
     if (title) document.querySelector(".projectHeader .nameTitle").textContent = title;
     if (description) document.querySelector(".projectHeader .description").textContent = description;

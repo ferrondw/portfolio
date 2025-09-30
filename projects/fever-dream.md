@@ -1,8 +1,3 @@
----
-Fever Dream
-A platformer game where you can't jump
----
-
 # Mechanic Handler
 
 Mechanics are all based on one base class, and a script that handles trigger collisions with a mechanic

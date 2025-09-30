@@ -1,8 +1,3 @@
----
-Master Cappuccino's Café
-A merge game where you help master cappuccino by combining cats in his market stall
----
-
 # Jam Results
 
 We won! And not just won, first in every category!

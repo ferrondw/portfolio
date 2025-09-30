@@ -1,8 +1,3 @@
----
-Waypoint System
-A simple visual waypoint system for Unity
----
-
 # Examples
 
 This is an example of a Waypoint on a Bobert (from Project StarFall). This means Bobert knows where it can go.

@@ -1,8 +1,3 @@
----
-Hedge Runner
-A game where you are a hedgehog needing to clear randomly generated mazes
----
-
 # Maze Generation
 
 Mazes are generated using the Recursive Backtracking Algorithm, this is an example on how a 4x4 maze would be generated:

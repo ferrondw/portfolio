@@ -1,8 +1,3 @@
----
-The Clockwork
-A choose your own adventure text story written in JavaScript as beginnner course for MediaCollege Amsterdam
----
-
 # Introduction
 
 This was my first ever JavaScript project made in my first year in Mediacollege Amsterdam. It's a text adventure story

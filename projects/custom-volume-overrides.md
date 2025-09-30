@@ -1,8 +1,3 @@
----
-Custom Volume Overrides
-A collection of shader graph effects made to work with URP Volumes
----
-
 # Pixel Transition
 
 Every good game needs a fancy transition! So I thought about what kind of transition would be cool, and then the idea struck. What if the whole screen slowly pixelates and then goes to black?
