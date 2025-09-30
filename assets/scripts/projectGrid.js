@@ -12,7 +12,7 @@
 
   const html = (data.projects || []).map(project => {
     return `
-      <div class="projectCard ${project.hidden ? 'hidden' : ''}" onclick="window.location.href='/project.html?id=${project.id || ''}'">
+      <div class="projectCard ${project.hidden ? 'hidden' : ''}" onclick="window.location.href='project.html?id=${project.id || ''}'">
         <img src="${`assets/images/covers/${project.id || ''}.png`}" alt="Project cover" onerror="this.src='assets/images/covers/default.png'">
         <div class="background"></div>
         <div class="info">
