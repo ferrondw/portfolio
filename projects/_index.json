@@ -1,0 +1,166 @@
+{
+    "projects": [
+        {
+            "title": "Hedge Runner",
+            "description": "A game where you are a hedgehog needing to clear randomly generated mazes",
+            "id": "hedge-runner",
+            "tags": [
+                "Unity",
+                "C#",
+                "3D",
+                "Blender",
+                "Shader Graph"
+            ]
+        },
+        {
+            "title": "2D2D",
+            "description": "2D2D is a 2 dimensional 2 dimensional game where you have 2 dimensions you can dimension switch to",
+            "id": "2d2d",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D",
+                "Game Jam"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "Hamstergeddon",
+            "description": "Ascend the Tower of Babel as a hamster in his metal ball and confront God",
+            "id": "hamstergeddon",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D",
+                "Game Jam"
+            ]
+        },
+        {
+            "title": "Custom Volume Overrides",
+            "description": "A collection of shader graph effects made to work with URP Volumes",
+            "id": "custom-volume-overrides",
+            "tags": [
+                "Unity",
+                "Shader Graph"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "Wiskunde Keuzedeel: Platformer",
+            "description": "A platformer made using almost no built-in Unity collision and physics stuff",
+            "id": "wiskunde-keuzedeel-platformer",
+            "tags": [
+                "Unity",
+                "C#"
+            ]
+        },
+        {
+            "title": "Fever Dream",
+            "description": "A platformer game where you can't jump",
+            "id": "fever-dream",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D"
+            ]
+        },
+        {
+            "title": "Master Cappuccino's Café",
+            "description": "A merge game where you help master cappuccino by combining cats in his market stall",
+            "id": "master-cappuccinos-cafe",
+            "tags": [
+                "Unity",
+                "C#",
+                "Game Jam",
+                "2D"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "Gusarski",
+            "description": "Nodejs Media Downloader",
+            "id": "gusarski",
+            "tags": [
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Node.js",
+                "Express"
+            ]
+        },
+        {
+            "title": "The Clockwork",
+            "description": "A choose your own adventure text story written in JavaScript as beginnner course for MediaCollege Amsterdam",
+            "id": "the-clockwork",
+            "tags": [
+                "JavaScript"
+            ]
+        },
+        {
+            "title": "Waypoint System",
+            "description": "A simple visual waypoint system for Unity",
+            "id": "waypoint-system",
+            "tags": [
+                "Unity",
+                "C#"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "Wiper",
+            "description": "Unity package for easily managing scene transitions",
+            "id": "wiper",
+            "tags": [
+                "Unity",
+                "C#",
+                "Shader Graph"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "KVKwuest",
+            "description": "A board game with minigames made during my internship at KVK set in an office space",
+            "id": "kvkwuest",
+            "tags": [
+                "Unity",
+                "C#",
+                "Internship",
+                "Jira",
+                "Git"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "YAUTL",
+            "description": "Yet Another Unity Tween Library",
+            "id": "yautl",
+            "tags": [
+                "Unity",
+                "C#"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "Operation Starfall",
+            "description": "",
+            "id": "operation-starfall",
+            "tags": [
+                "Unity",
+                "C#",
+                "Shader Graph",
+                "2.5D"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "HeatZone",
+            "description": "A mix of tower defense and hyper-casual gameplay in (almost) a single scene",
+            "id": "heatzone",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D"
+            ]
+        }
+    ]
+}
