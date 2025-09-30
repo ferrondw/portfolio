@@ -10,7 +10,7 @@
     }
     let rawText = await projectResponse.text();
 
-    let infoResponse = await fetch(`/portfolio/projects/_index.json`); // REMOVE portfolio/ IF I GET A CUSTOM DOMAIN
+    let infoResponse = await fetch(`/portfolio/projects/list.json`); // REMOVE portfolio/ IF I GET A CUSTOM DOMAIN
     let infoData = await infoResponse.json();
     let info = (infoData.projects || []).find(p => p.id === id) || {};
 

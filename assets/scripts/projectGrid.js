@@ -2,7 +2,7 @@
   let data;
   try {
     // REMOVE portfolio/ IF I GET A CUSTOM DOMAIN
-    const r = await fetch('/portfolio/projects/_index.json', { cache: 'no-store' }); // fuckass json started caching
+    const r = await fetch('/portfolio/projects/list.json', { cache: 'no-store' }); // fuckass json started caching
     data = await r.json();
   }
   catch (e) {
