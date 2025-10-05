@@ -2,7 +2,7 @@
     let params = new URLSearchParams(window.location.search);
     let id = params.get("id") || "fetch will fail";
 
-    let projectResponse = await fetch(`/portfolio/projects/${id}.md`); // REMOVE portfolio/ IF I GET A CUSTOM DOMAIN
+    let projectResponse = await fetch(`${inGitHubPages()}/projects/${id}.md`);
     if (!projectResponse.ok) {
         document.querySelector(".projectHeader .description").innerHTML = "<p>Project not found.</p>";
         document.querySelector(".tableOfContents").style.display = "none";
@@ -10,7 +10,7 @@
     }
     let rawText = await projectResponse.text();
 
-    let infoResponse = await fetch(`/portfolio/projects/list.json`); // REMOVE portfolio/ IF I GET A CUSTOM DOMAIN
+    let infoResponse = await fetch(`${inGitHubPages()}/projects/list.json`);
     let infoData = await infoResponse.json();
     let info = (infoData.projects || []).find(p => p.id === id) || {};
 
@@ -31,13 +31,15 @@
 
     let headings = output.querySelectorAll("h1, h2, h3");
     headings.forEach(heading => {
-        heading.addEventListener("click", () => {
-            location.href = `#${heading.id}`;
-        });
-
+        
         let id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); // we <3 kebab-case
         heading.id = id;
-
+        
+        heading.addEventListener("click", () => {
+            const url = `${window.location.origin}${window.location.pathname}?id=${new URLSearchParams(window.location.search).get("id")}#${id}`;
+            navigator.clipboard.writeText(url);
+        });
+        
         let li = document.createElement("li");
         li.innerHTML = `<a href="#${id}">${heading.textContent}</a>`;
         tocList.appendChild(li);
@@ -53,10 +55,6 @@
     }, 100);
 })();
 
-/*
-- projects 3 wide?
-- projects meer fullscreen laten zien?? // strak (studiozoetekauw)
-- banner in project.html?
-- contra-color for underline/bold text/h1
-- images clicken en animaten voor list view (artstation maar dan beter)
-*/
+function inGitHubPages() {
+    return window.location.href.includes("github.io") ? '/portfolio' : '';
+}

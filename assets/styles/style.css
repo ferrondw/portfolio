@@ -1,14 +1,14 @@
 :root,
 body.dark {
-    --background: #06070a;
+    --background: #11151e;
     --header-edge: #ffffff1a;
-    --project-edge: #ffffff1a;
-    --project-edge-hover: #ffffff44;
-    --project-gradient-start: #06070ae2;
-    --project-gradient-end: #06070a37;
+    --element-edge: 3px solid #ffffff1a;
+    --element-edge-hover: 3px solid #ffffff44;
+    --project-gradient-start: #000000cb;
+    --project-gradient-end: #00000037;
     --table-outline: 2px solid #4e4e4e;
     --table-even: #11131b;
-    --tag-background: #06070a52;
+    --tag-background: #11151ea8;
     --code-background: #0a0c13;
     --page-width: 980px;
     --text: #eee;
@@ -306,7 +306,7 @@ body {
                 width: 30rem;
                 height: 18rem;
                 overflow: hidden;
-                border: 3px solid var(--project-edge);
+                border: var(--element-edge);
 
                 &.hidden {
                     scale: 0.95;
@@ -317,7 +317,7 @@ body {
 
                 &:hover {
                     cursor: pointer;
-                    border: 3px solid var(--project-edge-hover);
+                    border: var(--element-edge-hover);
 
                     img {
                         scale: 1.04;
@@ -380,6 +380,7 @@ body {
                         font-size: 0.7rem;
                         color: var(--text-semi);
                         background: var(--tag-background);
+                        border: var(--element-edge);
                         backdrop-filter: blur(8px) saturate(150%);
                         padding: 4px 8px;
                         border-radius: 8px;
@@ -391,7 +392,7 @@ body {
         }
 
         .toolButton {
-            border: 2px solid var(--project-edge);
+            border: var(--element-edge);
             border-radius: 12px;
             color: var(--text);
             background: none;
@@ -400,7 +401,7 @@ body {
 
             &:hover {
                 cursor: pointer;
-                border: 2px solid var(--project-edge-hover);
+                border: var(--element-edge-hover);
                 scale: 1.02;
 
                 &:active {
@@ -415,9 +416,7 @@ body {
         display: grid;
         grid-template-columns: minmax(0, var(--page-width)) 240px;
         grid-template-rows: auto 1fr;
-        grid-template-areas:
-            "header header"
-            "content toc";
+        grid-template-areas: "header header" "content toc";
         justify-content: center;
         gap: 32px;
         align-items: start;
@@ -467,7 +466,7 @@ body {
                 cursor: pointer;
 
                 &::before {
-                    content: "#";
+                    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3e%3cpath fill='%23bababa' d='M20 2H10c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m0 12H10V4h10z'/%3e%3cpath fill='%23bababa' d='M14 20H4V10h2V8H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-2h-2z'/%3e%3c/svg%3e");
                     left: -10px;
                     padding-right: 10px;
                     color: var(--text-semi);
@@ -583,7 +582,7 @@ body {
 
 @keyframes parallax {
     to {
-        transform: translateY(1200px);
+        transform: translateY(500px);
     }
 }
 
