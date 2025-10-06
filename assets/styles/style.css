@@ -12,8 +12,9 @@ body.dark {
     --code-background: #0a0c13;
     --page-width: 980px;
     --text: #eee;
+    --text-big: #6faeff;
     --text-semi: #bababa;
-    --accent: #5da3ff;
+    --accent: #6faeff;
     --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --transition: all 0.2s ease;
 }
@@ -30,6 +31,8 @@ body.dark {
     transition: var(--transition);
     line-height: 1.7;
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--code-background);
 }
 
 a {
@@ -110,13 +113,18 @@ th {
     color: var(--text);
 }
 
-* :-webkit::-webkit-scrollbar-thumb {
-    background-color: var(--text-semi);
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
     border-radius: 10px;
 }
 
-* :-webkit::-webkit-scrollbar {
-    width: 8px;
+*::-webkit-scrollbar-track {
+    border-radius: 10px;
     background-color: var(--code-background);
 }
 
@@ -225,11 +233,6 @@ body {
                     &:hover {
                         cursor: pointer;
                         color: var(--accent);
-                        scale: 1.05;
-
-                        &:active {
-                            scale: 1;
-                        }
                     }
                 }
             }
@@ -276,17 +279,28 @@ body {
             text-align: center;
         }
 
-        .nameTitle {
-            font-size: 6rem;
-        }
+        .title {
+            .nameTitle {
+                font-size: 6rem;
+                color: var(--text);
+            }
 
-        p {
-            margin-top: -10px;
-            font-size: 1.5rem;
-            color: var(--text-semi);
+            p {
+                margin-top: -10px;
+                font-size: 1.5rem;
+                color: var(--text-semi);
 
-            &.jobTitle {
-                margin-top: -30px;
+                &.jobTitle {
+                    margin-top: -30px;
+                }
+            }
+
+            img {
+                display: block;
+                margin: 20px auto 0 auto;
+                width: 96px;
+                height: 96px;
+                border-radius: 16px;
             }
         }
 
@@ -433,6 +447,7 @@ body {
                 font-size: 4rem;
                 text-align: center;
                 font-weight: bold;
+                color: var(--text-big);
 
                 .small {
                     font-size: 2rem;
@@ -464,6 +479,7 @@ body {
                 margin-top: 32px;
                 position: relative;
                 cursor: pointer;
+                color: var(--text-big);
 
                 &::before {
                     content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3e%3cpath fill='%23bababa' d='M20 2H10c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m0 12H10V4h10z'/%3e%3cpath fill='%23bababa' d='M14 20H4V10h2V8H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-2h-2z'/%3e%3c/svg%3e");
@@ -529,11 +545,6 @@ body {
 
                         &:hover {
                             color: var(--accent);
-                        }
-
-                        &.active {
-                            font-weight: bold;
-                            padding-right: 4px;
                         }
                     }
                 }
