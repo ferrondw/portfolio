@@ -44,6 +44,9 @@
         tocList.appendChild(li);
     });
 
+    let projectBanner = document.getElementById("projectBanner");
+    projectBanner.src = `assets/images/covers/${id}.png`;
+
     let images = output.querySelectorAll("img");
     images.forEach(image => {
         image.addEventListener("click", () => {

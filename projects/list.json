@@ -13,17 +13,6 @@
             ]
         },
         {
-            "title": "2D2D",
-            "description": "2D2D is a 2 dimensional 2 dimensional game where you have 2 dimensions you can dimension switch to",
-            "id": "2d2d",
-            "tags": [
-                "Unity",
-                "C#",
-                "2D",
-                "Game Jam"
-            ]
-        },
-        {
             "hidden": true,
             "title": "Hamstergeddon",
             "description": "Ascend the Tower of Babel as a hamster in his metal ball and confront God",
@@ -42,6 +31,15 @@
             "tags": [
                 "Unity",
                 "Shader Graph"
+            ]
+        },
+        {
+            "title": "Gartic Artist",
+            "description": "A chrome extension that adds better and native looking tools and utilities to Gartic Phone",
+            "id": "gartic-artist",
+            "tags": [
+                "JavaScript",
+                "CSS"
             ]
         },
         {
@@ -86,6 +84,17 @@
                 "JavaScript",
                 "Node.js",
                 "Express"
+            ]
+        },
+        {
+            "title": "2D2D",
+            "description": "2D2D is a 2 dimensional 2 dimensional game where you have 2 dimensions you can dimension switch to",
+            "id": "2d2d",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D",
+                "Game Jam"
             ]
         },
         {
