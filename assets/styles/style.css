@@ -464,7 +464,7 @@ body {
                     z-index: -2;
                 }
 
-                .projectNameLogo{
+                .projectNameLogo {
                     width: 250px;
                     height: auto;
                 }
@@ -859,10 +859,15 @@ body {
                 justify-content: center;
 
                 .projectCard {
-                    height: 200px;
+                    height: 220px;
 
                     .background {
                         background: linear-gradient(to right, var(--project-gradient-start) 30%, var(--project-gradient-end) 100%);
+                    }
+
+                    .projectNameLogo {
+                        width: 150px;
+                        height: auto;
                     }
 
                     .info {
