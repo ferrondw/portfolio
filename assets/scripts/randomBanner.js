@@ -11,5 +11,25 @@ const banners = [
     "wiskunde-keuzedeel-platformer"
 ]
 
-const banner = banners[Math.floor(Math.random() * banners.length)];
-document.getElementById("bannerImg").src = `assets/images/banners/${banner}.gif`;
+const bannerElement = document.getElementById("bannerImg");
+bannerElement.style.opacity = 0;
+
+function assignRandomBanner() {
+    const banner = banners[Math.floor(Math.random() * banners.length)];
+    bannerElement.src = `assets/images/banners/${banner}.gif`;
+}
+
+function cycleBanner() {
+    bannerElement.style.opacity = 1;
+
+    setTimeout(() => {
+        bannerElement.style.opacity = 0;
+        setTimeout(() => {
+            assignRandomBanner();
+            cycleBanner();
+        }, 1000);
+    }, 8000);
+}
+
+assignRandomBanner();
+cycleBanner();

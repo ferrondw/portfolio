@@ -249,6 +249,7 @@ body {
         transition: 0.2s ease top;
         animation: parallax linear;
         animation-timeline: scroll();
+        transition: opacity 0.5s ease-in-out;
 
         img {
             width: 100%;
@@ -286,6 +287,80 @@ body {
         .center {
             width: 100%;
             text-align: center;
+        }
+
+        #about {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+
+            img {
+                border-radius: 16px;
+                border: var(--element-edge);
+            }
+
+            .skills {
+                display: flex;
+                flex-direction: column;
+
+                .links {
+                    padding-top: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8px;
+
+                    a {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                        width: 60%;
+                        border-radius: 8px;
+                        border: var(--element-edge);
+                        background-color: var(--background);
+                        color: var(--text);
+                        padding: 4px 8px;
+                        transition: var(--transition);
+                        background-color: var(--tag-background);
+
+
+                        svg {
+                            width: 22px;
+                            height: 22px;
+                            fill: var(--text);
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+                            border: var(--element-edge-hover);
+                            transition: var(--transition);
+                            color: var(--accent);
+
+                            svg {
+                                fill: var(--accent);
+                            }
+                        }
+                    }
+
+                }
+            }
+
+            h2 {
+                padding: 16px 0px 8px 0px;
+            }
+
+            .info {
+                width: 150%;
+
+                h1 {
+                    font-size: 50px;
+                }
+            }
         }
 
         .title {
@@ -698,6 +773,40 @@ body {
         }
 
         main {
+
+            #about {
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: flex-start;
+                gap: 16px;
+
+                img {
+                    width: 150px;
+                    height: 200px;
+                    object-fit: cover;
+                }
+
+                .info {
+                    width: auto;
+                    flex: 1 1 auto;
+                }
+
+                .skills {
+                    width: 100%;
+                    flex-direction: row;
+
+                    .links {
+                        align-items: flex-start;
+                        padding: 10px 30px;
+                        width: 100%;
+
+                        a {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
             width: 90%;
             padding: 100px 0px 0px 0px;
 
