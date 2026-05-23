@@ -18,8 +18,25 @@
     let description = info.description;
     let content = rawText;
 
-    if (title) document.querySelector(".projectHeader .nameTitle").textContent = title;
     if (description) document.querySelector(".projectHeader .description").textContent = description;
+
+    const titleElement = document.querySelector(".projectHeader .nameTitle");
+    const logoPath = `assets/images/logos/${id}.png`;
+    if (title) {
+        const logoImage = new Image();
+        logoImage.onload = () => {
+            logoImage.alt = title;
+            logoImage.className = 'projectNameLogo';
+            titleElement.textContent = '';
+            titleElement.appendChild(logoImage);
+        };
+        logoImage.onerror = () => {
+            titleElement.textContent = title;
+        };
+        logoImage.src = logoPath;
+    } else {
+        titleElement.textContent = '';
+    }
 
     document.title = `fdw.fyi - ${title}`;
 

@@ -44,9 +44,9 @@
         },
         {
             "hidden": true,
-            "title": "Wiskunde Keuzedeel: Platformer",
+            "title": "Endless Runner",
             "description": "A platformer made using almost no built-in Unity collision and physics stuff",
-            "id": "wiskunde-keuzedeel-platformer",
+            "id": "endless-runner",
             "tags": [
                 "Unity",
                 "C#"
@@ -150,25 +150,35 @@
         },
         {
             "hidden": true,
-            "title": "Operation Starfall",
-            "description": "",
-            "id": "operation-starfall",
+            "title": "Hoftix",
+            "description": "A perspective puzzle game set in a steampunk world where you can use electricity to manipulate the environment and solve puzzles",
+            "id": "hoftix",
             "tags": [
                 "Unity",
                 "C#",
-                "Shader Graph",
-                "2.5D"
+                "3D"
             ]
         },
         {
             "hidden": true,
-            "title": "HeatZone",
-            "description": "A mix of tower defense and hyper-casual gameplay in (almost) a single scene",
-            "id": "heatzone",
+            "title": "Bits & Bots",
+            "description": "A match 3 game where you can fight your way to the top and upgrade your robot's parts with the money you earn",
+            "id": "bits-and-bots",
             "tags": [
                 "Unity",
                 "C#",
-                "2D"
+                "3D",
+                "Shader Graph"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "LANPad",
+            "description": "A remote controller app that uses your network IP so phones can connect as controllers",
+            "id": "lanpad",
+            "tags": [
+                "AI",
+                "Rust"
             ]
         }
     ]
