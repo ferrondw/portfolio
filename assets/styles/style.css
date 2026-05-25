@@ -1,13 +1,14 @@
 :root,
 body.dark {
-    --background: #11151e;
+    --background: #060b17;
     --header-edge: #ffffff1a;
     --element-edge: 3px solid #ffffff1a;
     --element-edge-hover: 3px solid #ffffff44;
     --project-gradient-start: #000000e4;
     --project-gradient-end: #00000037;
     --table-outline: 2px solid #4e4e4e;
-    --table-even: #11131b;
+    --table-even: #091124;
+    --table-header: #0d1e45;
     --tag-background: #11151ea8;
     --code-background: #0a0c13;
     --page-width: 980px;
@@ -109,7 +110,7 @@ th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: var(--accent);
+    background-color: var(--table-header);
     color: var(--text);
 }
 
@@ -403,6 +404,10 @@ body {
                 height: 96px;
                 border-radius: 16px;
             }
+        }
+
+        .hiddenProjects{
+            margin-bottom: -20px !important;
         }
 
         .projects,
@@ -734,7 +739,7 @@ body {
         text-align: center;
         color: var(--text-semi);
         font-size: 0.9rem;
-        margin-top: -50px;
+        margin-top: 50px;
 
         .links {
             display: flex;
