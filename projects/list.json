@@ -173,6 +173,19 @@
         },
         {
             "hidden": true,
+            "title": "Illegal Motorboating",
+            "description": "",
+            "id": "illegal-motorboating",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D",
+                "Game Jam",
+                "Shader Graph"
+            ]
+        },
+        {
+            "hidden": true,
             "title": "LANPad",
             "description": "A remote controller app that uses your network IP so phones can connect as controllers",
             "id": "lanpad",
