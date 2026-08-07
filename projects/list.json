@@ -174,13 +174,25 @@
         {
             "hidden": true,
             "title": "Illegal Motorboating",
-            "description": "",
+            "description": "An arcade-like game about illegally running a boat taxi until you run out of time",
             "id": "illegal-motorboating",
             "tags": [
                 "Unity",
                 "C#",
                 "2D",
                 "Game Jam",
+                "Shader Graph"
+            ]
+        },
+        {
+            "hidden": true,
+            "title": "Pareidolia",
+            "description": "Make your own constellations and snap a picture of it, made for my HKU entrance exam",
+            "id": "pareidolia",
+            "tags": [
+                "Unity",
+                "C#",
+                "2D",
                 "Shader Graph"
             ]
         },
