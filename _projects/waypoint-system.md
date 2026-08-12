@@ -1,3 +1,12 @@
+---
+title: Waypoint System
+description: A simple visual waypoint system for Unity
+hidden: false
+tags:
+- Unity
+- C#
+---
+
 # Examples
 
 This is an example of a Waypoint on a Bobert (from Project StarFall). This means Bobert knows where it can go.

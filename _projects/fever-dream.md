@@ -1,3 +1,13 @@
+---
+title: Fever Dream
+description: A platformer game where you can't jump
+hidden: false
+tags:
+- Unity
+- C#
+- 2D
+---
+
 # Mechanic Handler
 
 Mechanics are all based on one base class, and a script that handles trigger collisions with a mechanic

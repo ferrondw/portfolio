@@ -1,58 +1,14 @@
 (async () => {
-    let params = new URLSearchParams(window.location.search);
-    let id = params.get("id") || "fetch will fail";
-
-    let projectResponse = await fetch(`${inGitHubPages()}/projects/${id}.md`);
-    if (!projectResponse.ok) {
-        document.querySelector(".projectHeader .description").innerHTML = "<p>Project not found.</p>";
-        document.querySelector(".tableOfContents").style.display = "none";
-        return;
-    }
-    let rawText = await projectResponse.text();
-
-    let infoResponse = await fetch(`${inGitHubPages()}/projects/list.json`);
-    let infoData = await infoResponse.json();
-    let info = (infoData.projects || []).find(p => p.id === id) || {};
-
-    let title = info.title;
-    let description = info.description;
-    let content = rawText;
-
-    if (description) document.querySelector(".projectHeader .description").textContent = description;
-
-    const titleElement = document.querySelector(".projectHeader .nameTitle");
-    const logoPath = `assets/images/logos/${id}.png`;
-    if (title) {
-        const logoImage = new Image();
-        logoImage.onload = () => {
-            logoImage.alt = title;
-            logoImage.className = 'projectNameLogo';
-            titleElement.textContent = '';
-            titleElement.appendChild(logoImage);
-        };
-        logoImage.onerror = () => {
-            titleElement.textContent = title;
-        };
-        logoImage.src = logoPath;
-    } else {
-        titleElement.textContent = '';
-    }
-
-    document.title = `fdw.fyi - ${title}`;
-
     let output = document.querySelector(".markdownOutput");
-    output.innerHTML = marked.parse(content);
-
     let tocList = document.querySelector(".tableOfContents ul");
-    tocList.innerHTML = "";
-
     let headings = output.querySelectorAll("h1, h2, h3");
+
     headings.forEach(heading => {
         let id = heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); // we <3 kebab-case
         heading.id = id;
 
         heading.addEventListener("click", () => {
-            const url = `${window.location.origin}${window.location.pathname}?id=${new URLSearchParams(window.location.search).get("id")}#${id}`;
+            const url = `${window.location.origin}${window.location.pathname}#${id}`;
             navigator.clipboard.writeText(url);
         });
 
@@ -62,7 +18,7 @@
     });
 
     let projectBanner = document.getElementById("projectBanner");
-    projectBanner.src = `assets/images/covers/${id}.png`;
+    projectBanner.src = `assets/images/covers/{{ project.name | escape }}.png`;
 
     let images = output.querySelectorAll("img");
     images.forEach(image => {
@@ -86,10 +42,6 @@
         window.location.href = `${hash}`;
     }, 100);
 })();
-
-function inGitHubPages() {
-    return window.location.href.includes("github.io") ? '/portfolio' : '';
-}
 
 document.getElementById("modalContainer").addEventListener("click", (e) => {
     if (e.target.id === "modalContainer") {

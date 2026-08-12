@@ -1,3 +1,12 @@
+---
+title: Gartic Artist
+description: A chrome extension that adds better and native looking tools and utilities to Gartic Phone
+hidden: false
+tags:
+- JavaScript
+- CSS
+---
+
 *( first of all, no the extension is not available because I'm pretty sure it violates the ToS of Gartic Phone )*
 
 # Introduction

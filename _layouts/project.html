@@ -1,38 +1,59 @@
+---
+layout: default
+---
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fdw.fyi</title>
+    <title>fdw.fyi - {{ project.title | escape }}</title>
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="shortcut icon" href="assets/images/icons/favicon.png" type="image/png">
-    <script src="assets/scripts/bannerParralex.js"></script>
-    <script src="assets/scripts/projectList.js" defer></script>
-    <script src="assets/scripts/randomBanner.js" defer></script>
+    <script defer src="assets/scripts/project.js"></script>
+    <script src="assets/scripts/betterLinks.js"></script>
+    <!-- Highlight JS -->
+    <link rel="stylesheet" href="assets/packages/highlightjs/highlightjs.css">
+    <script src="assets/packages/highlightjs/highlightjs.js"></script>
 </head>
 
 <body>
+    <div class="banner">
+        <img loading="lazy" id="projectBanner" alt="Project banner">
+        <div class="overlay"></div>
+    </div>
     <header>
         <div class="backdrop"></div>
         <div class="backdropEdge"></div>
         <div class="container">
-            <button id="navTitleButton" onclick="window.location.href='./'">
+            <button id="navTitleButton" onclick="window.location.href='index.html'">
                 <img src="assets/images/icons/favicon.png">
                 fdw.fyi
             </button>
             <nav>
-                <button onclick="window.location.href='./'">Home</button>
-                <button onclick="window.location.href='about'">About</button>
+                <button onclick="window.location.href='index.html'">Home</button>
+                <button onclick="window.location.href='about.html'">About</button>
             </nav>
         </div>
     </header>
-    <main>
-        <div class="title">
-            <h1 class="nameTitle center">404</h1>
-            <a href="./" class="center">Back to Home</a>
+    <div class="project">
+        <div class="projectHeader">
+            <img class="projectNameLogo center" src="assets/images/logos/{{ project.name | escape }}.png">
+            <p class="description center">{{ project.description | escape }}</p>
         </div>
-    </main>
+        <div class="markdownOutput">
+            {{ content }}
+        </div>
+        <div class="tableOfContents">
+            <h3>Table of Contents</h3>
+            <ul id="tableOfContentsList"></ul>
+        </div>
+    </div>
+    <div id="modalContainer">
+        <button id="closeModal" onclick="closeModal()">×</button>
+        <img id="modalImage" src="">
+    </div>
     <footer>
         <div class="links">
             <a href="https://yakanashe.itch.io/" target="_blank">

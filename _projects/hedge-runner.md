@@ -1,3 +1,15 @@
+---
+title: Hedge Runner
+description: A game where you are a hedgehog needing to clear randomly generated mazes
+hidden: false
+tags:
+- Unity
+- C#
+- 3D
+- Blender
+- Shader Graph
+---
+
 # Maze Generation
 
 Mazes are generated using the Recursive Backtracking Algorithm, this is an example on how a 4x4 maze would be generated:
