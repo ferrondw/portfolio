@@ -8,14 +8,16 @@ layout: default
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fdw.fyi - {{ project.title | escape }}</title>
-    <link rel="stylesheet" href="../../assets/styles/style.css">
-    <link rel="shortcut icon" href="../../assets/images/icons/favicon.png" type="image/png">
-    <script defer src="../../assets/scripts/project.js"></script>
-    <script src="../../assets/scripts/betterLinks.js"></script>
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="shortcut icon" href="{{ 'assets/images/icons/favicon.png' | relative_url }}" type="image/png">
+    <script defer src="{{ 'assets/scripts/project.js | relative_url }}"></script>
+    <script src="{{ 'assets/scripts/betterLinks.js | relative_url }}"></script>
     <!-- Highlight JS -->
-    <link rel="stylesheet" href="../../assets/packages/highlightjs/highlightjs.css">
-    <script src="../../assets/packages/highlightjs/highlightjs.js"></script>
+    <link rel="stylesheet" href="{{ 'assets/packages/highlightjs/highlightjs.css | relative_url }}">
+    <script src="{{ 'assets/packages/highlightjs/highlightjs.js | relative_url }}"></script>
+
+    <!-- dont wanna inject variables, so im doing it right in the html -->
+    <script>document.title = 'fdw.fyi - {{ page.title }}';</script>
 </head>
 
 <body>
@@ -28,7 +30,7 @@ layout: default
         <div class="backdropEdge"></div>
         <div class="container">
             <button id="navTitleButton" onclick="window.location.href='index.html'">
-                <img src="../../assets/images/icons/favicon.png">
+                <img src="{{ 'assets/images/icons/favicon.png | relative_url }}">
                 fdw.fyi
             </button>
             <nav>
@@ -39,8 +41,8 @@ layout: default
     </header>
     <div class="project">
         <div class="projectHeader">
-            <img class="projectNameLogo center" src="../../assets/images/logos/{{ project.name | escape }}.png">
-            <p class="description center">{{ project.description | escape }}</p>
+            <img class="projectNameLogo center" src="{{ 'assets/images/logos/{{ page.name | escape }}.png | relative_url }}">
+            <p class="description center">{{ page.description | escape }}</p>
         </div>
         <div class="markdownOutput">
             {{ content }}
