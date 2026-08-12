@@ -22,8 +22,8 @@ The color input is handy, but when drawing quickly, only 18 colors won't cut it.
 
 So not only did I make a custom color palette grid, but also added a color picker (much like the other extensions, only mine has the correct `:hover` and `:active` states like the original tools of Gartic Phone)
 
-![Palette](./assets/images/projects/gartic-artist/palette.png)
-![Palette](./assets/images/projects/gartic-artist/color-picker.gif)
+![Palette](/assets/images/projects/gartic-artist/palette.png)
+![Palette](/assets/images/projects/gartic-artist/color-picker.gif)
 
 
 # Canvas
@@ -76,7 +76,7 @@ I will not be going into how the eraser, bucket, redo and undo work, but for the
 
 The line, box outline, circle outline, box fill and circle fill are all the same, they send a single message with 2 pairs of coordinates, that being the top-left and bottom-right corner, the shape is stretched between those 2 coordinates like the image below
 
-![Circle Coordinates](./assets/images/projects/gartic-artist/circle-coordinates.png)
+![Circle Coordinates](/assets/images/projects/gartic-artist/circle-coordinates.png)
 That image would send `42[2,7,{"t":0,"d":1,"v":[6,1,["#ffffff",7,1],[0,0],[150,100]]}]` to the server
 
 <br><br>
@@ -84,7 +84,7 @@ That image would send `42[2,7,{"t":0,"d":1,"v":[6,1,["#ffffff",7,1],[0,0],[150,1
 The brush works by first sending a `"d":1` message to the server with it's initial coordinates, followed by partially complete `"d":3` message with all points thus far, followed by another `"d":3` message when you let go, containing all the points. In this whole process, the stroke index does *not* go up, because well... it's the same stroke
 
 Keep in mind all the black dots are coordinates being sent in `[x,y]` pairs, the orange partial message sends all coordinates behind it
-![Brush Coordinates](./assets/images/projects/gartic-artist/brush-coordinates.png)
+![Brush Coordinates](/assets/images/projects/gartic-artist/brush-coordinates.png)
 This image would initially send `42[2,7,{"t":0,"d":1,"v":[1,2,["#ffffff",6,1],[0,0]]}]`<br>
 Followed by all the partial messages containing only a handful of coordinates<br>
 And lastly by `42[2,7,{"t":0,"d":3,"v":[1,2,["#ffffff",6,1],[0,0],[0,1],[1,1],[1,2],[1,3],[2,3],[2,4],[3,5],[3,6],[4,6],[4,7],[5,7],[5,9],...`

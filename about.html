@@ -12,12 +12,12 @@
             <div class="backdrop"></div>
             <div class="backdropEdge"></div>
             <div class="container">
-                <button id="navTitleButton" onclick="window.location.href='./'">
+                <button id="navTitleButton" onclick="window.location.href='{{ `/` | relative_url }}'">
                     <img src="assets/images/icons/favicon.png">
                     fdw.fyi
                 </button>
                 <nav>
-                    <button onclick="window.location.href='./'">Home</button>
+                    <button onclick="window.location.href='{{ `/` | relative_url }}'">Home</button>
                     <button class="active">About</button>
                 </nav>
             </div>

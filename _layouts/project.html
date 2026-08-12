@@ -7,34 +7,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fdw.fyi - {{ page.title }}</title>
     <link rel="stylesheet" href="{{ 'assets/styles/style.css' | relative_url }}">
     <link rel="shortcut icon" href="{{ 'assets/images/icons/favicon.png' | relative_url }}" type="image/png">
     <script defer src="{{ 'assets/scripts/project.js' | relative_url }}"></script>
-    <script src="{{ 'assets/scripts/betterLinks.js' | relative_url }}"></script>
     <!-- Highlight JS -->
     <link rel="stylesheet" href="{{ 'assets/packages/highlightjs/highlightjs.css' | relative_url }}">
     <script src="{{ 'assets/packages/highlightjs/highlightjs.js' | relative_url }}"></script>
-
-    <!-- dont wanna inject variables, so im doing it right in the html -->
-    <script>document.title = 'fdw.fyi - {{ page.title }}';</script>
 </head>
 
 <body>
     <div class="banner">
-        <img loading="lazy" id="projectBanner" alt="Project banner">
+        <img loading="lazy" id="projectBanner" src="assets/images/covers/{{ project.slug | escape }}.png" alt="Project banner">
         <div class="overlay"></div>
     </div>
     <header>
         <div class="backdrop"></div>
         <div class="backdropEdge"></div>
         <div class="container">
-            <button id="navTitleButton" onclick="window.location.href='index.html'">
+            <button id="navTitleButton" onclick="window.location.href='{{ `/` | relative_url }}'">
                 <img src="{{ 'assets/images/icons/favicon.png' | relative_url }}">
                 fdw.fyi
             </button>
             <nav>
-                <button onclick="window.location.href='index.html'">Home</button>
-                <button onclick="window.location.href='about.html'">About</button>
+                <button onclick="window.location.href='{{ `/` | relative_url }}'">Home</button>
+                <button onclick="window.location.href='{{ `/about` | relative_url }}'">About</button>
             </nav>
         </div>
     </header>

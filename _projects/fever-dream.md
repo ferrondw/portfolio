@@ -78,7 +78,7 @@ public class Key : BaseMechanic
 }
 ```
 
-![Key Mechanic](./assets/images/projects/fever-dream/key.png)
+![Key Mechanic](/assets/images/projects/fever-dream/key.png)
 
 ```csharp
 public class Lava : BaseMechanic
@@ -90,7 +90,7 @@ public class Lava : BaseMechanic
 }
 ```
 
-![Lava Mechanic](./assets/images/projects/fever-dream/lava.png)
+![Lava Mechanic](/assets/images/projects/fever-dream/lava.png)
 
 ```csharp
 public class JumpPad : BaseMechanic
@@ -118,7 +118,7 @@ public class JumpPad : BaseMechanic
 }
 ```
 
-![Jump Pad Mechanic](./assets/images/projects/fever-dream/jump-pad.png)
+![Jump Pad Mechanic](/assets/images/projects/fever-dream/jump-pad.png)
 
 # Player Movement
 
@@ -180,14 +180,14 @@ private void Update()
 
 I LOVE customisation in games, so I'm not one to leave it out. Fever Dream has customisable skins, themes, trails, backgrounds and music. Here is an example of some skins:
 
-![Skin Example](./assets/images/projects/fever-dream/skins-inspector.png)
-![Skins Gif](./assets/images/projects/fever-dream/skins.gif)
+![Skin Example](/assets/images/projects/fever-dream/skins-inspector.png)
+![Skins Gif](/assets/images/projects/fever-dream/skins.gif)
 
 # Level Handling
 
 Levels are loaded while the transition animation is playing in the background, this is a snippet of how the level handling works:
 
-![Level Handling](./assets/images/projects/fever-dream/levels.png)
+![Level Handling](/assets/images/projects/fever-dream/levels.png)
 
 Each level has it's own script
 
@@ -232,6 +232,6 @@ public void ResetPlayer()
 
 Level design is also important for a platformer! So I made some sketches to plan out level creation in the editor beforehand
 
-![Level Sketch 1](./assets/images/projects/fever-dream/level-sketch-1.png)
-![Level Sketch 2](./assets/images/projects/fever-dream/level-sketch-2.png)
-![Level Sketch 3](./assets/images/projects/fever-dream/level-sketch-3.png)
+![Level Sketch 1](/assets/images/projects/fever-dream/level-sketch-1.png)
+![Level Sketch 2](/assets/images/projects/fever-dream/level-sketch-2.png)
+![Level Sketch 3](/assets/images/projects/fever-dream/level-sketch-3.png)

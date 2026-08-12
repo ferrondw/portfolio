@@ -14,7 +14,7 @@ tags:
 
 Mazes are generated using the Recursive Backtracking Algorithm, this is an example on how a 4x4 maze would be generated:
 
-![4x4 Maze](./assets/images/projects/hedge-runner/4x4.gif)
+![4x4 Maze](/assets/images/projects/hedge-runner/4x4.gif)
 
 This is the only algorithm I use in-game, but the system is set up so you can generate using more algorithms. First of all is the 'contract', an interface that says "If you inherit from me, you MUST have these methods!":
 
@@ -105,34 +105,34 @@ public static class MazeGenerator
 
 Put that all together and you get a beautiful maze in-game!
 
-![Maze](./assets/images/projects/hedge-runner/maze.png)
+![Maze](/assets/images/projects/hedge-runner/maze.png)
 
 # Shaders
 
 A good game needs graphics, of course! So, I made a lot of shaders, for example the orbs in the main menu:
 
-![Orb Graph](./assets/images/projects/hedge-runner/orb-graph.png)
-![Orb Menu](./assets/images/projects/hedge-runner/orb-menu.gif)
+![Orb Graph](/assets/images/projects/hedge-runner/orb-graph.png)
+![Orb Menu](/assets/images/projects/hedge-runner/orb-menu.gif)
 
 But there is more to a game's graphics then orbs, so here are the trees, they have a vertex position offset and fresnel:
 
-![Tree Graph](./assets/images/projects/hedge-runner/tree-graph.png)
-![Tree Game](./assets/images/projects/hedge-runner/tree-game.gif)
+![Tree Graph](/assets/images/projects/hedge-runner/tree-graph.png)
+![Tree Game](/assets/images/projects/hedge-runner/tree-game.gif)
 
 # Models
 
 Shaders are cool and all... But why have shaders, if you got nothing to put them on? So, there are also models in the game. Here is the Hedgehog:
 
-![Hedgehog 1](./assets/images/projects/hedge-runner/hedgehog-1.png)
-![Hedgehog 2](./assets/images/projects/hedge-runner/hedgehog-2.png)
-![Hedgehog Rotate](./assets/images/projects/hedge-runner/hedgehog-2-rotate.gif)
+![Hedgehog 1](/assets/images/projects/hedge-runner/hedgehog-1.png)
+![Hedgehog 2](/assets/images/projects/hedge-runner/hedgehog-2.png)
+![Hedgehog Rotate](/assets/images/projects/hedge-runner/hedgehog-2-rotate.gif)
 
 Originally, the idea was to give the hedgehog a walking animation, and maybe even a victory pose. But those ideas were later scrapped, the high poly count is still present in the feet of the hedgehog because of it.
 
 There were also no trees in the game. But I wanted to confine the player without making strict borders, the dense trees around the maze make it clear that you can't go outside them, making for a natural way of conveying that to the player.
 
-![Tree](./assets/images/projects/hedge-runner/tree.png)
-![Tree Rotate](./assets/images/projects/hedge-runner/tree-rotate.gif)
+![Tree](/assets/images/projects/hedge-runner/tree.png)
+![Tree Rotate](/assets/images/projects/hedge-runner/tree-rotate.gif)
 
 # Optimisation
 
@@ -178,7 +178,7 @@ It draws all the trees without instantiating them as a GameObject, but just thei
 
 Levels are generated both infinitely (32bit limit: 4,294,967,295) and randomly, using the Maze Generation explained above. The image below explain how the `LevelManager` works:
 
-![Level Manager Visual Sheet](./assets/images/projects/hedge-runner/level-manager-visual-sheet.png)
+![Level Manager Visual Sheet](/assets/images/projects/hedge-runner/level-manager-visual-sheet.png)
 
 The levels use a random seed, but this is stashed and saved using `PlayerPrefs`. This means you can revisit and clear levels with better times, but this feature has not been implemented yet. I implemented it in this way so I could later revisit this feature and maybe implement it.
 
@@ -186,7 +186,7 @@ The levels use a random seed, but this is stashed and saved using `PlayerPrefs`.
 
 Another game means more room for customisation! And of course, this game is no exception from that. I had lots of fun making cool looking skins, here are some of them:
 
-![Skins](./assets/images/projects/hedge-runner/skins.gif)
-![Goldenwind Skin](./assets/images/projects/hedge-runner/skin-goldenwind.gif)
-![Cosmos Skin](./assets/images/projects/hedge-runner/skin-cosmos.gif)
-![Rainbow Skin](./assets/images/projects/hedge-runner/skin-rainbow.gif)
+![Skins](/assets/images/projects/hedge-runner/skins.gif)
+![Goldenwind Skin](/assets/images/projects/hedge-runner/skin-goldenwind.gif)
+![Cosmos Skin](/assets/images/projects/hedge-runner/skin-cosmos.gif)
+![Rainbow Skin](/assets/images/projects/hedge-runner/skin-rainbow.gif)

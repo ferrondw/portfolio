@@ -12,7 +12,7 @@ This was my first ever JavaScript project made in my first year in Mediacollege 
 
 # Flowchart
 
-![Story Flowchart](./assets/images/projects/the-clockwork/flowchart.png)
+![Story Flowchart](/assets/images/projects/the-clockwork/flowchart.png)
 
 # Story Handling
 
@@ -92,4 +92,4 @@ Using `process.stdout.write()` I can write the next character without creating a
 
 # Example
 
-![Playing](./assets/images/projects/the-clockwork/playing.gif)
+![Playing](/assets/images/projects/the-clockwork/playing.gif)

@@ -13,7 +13,7 @@ tags:
 
 We won! And not just won, first in every category!
 
-![Jam Results](./assets/images/projects/master-cappuccinos-cafe/score.png)
+![Jam Results](/assets/images/projects/master-cappuccinos-cafe/score.png)
 
 # Mechanics
 
@@ -56,8 +56,8 @@ private void ConnectTwoKitties(GameObject kitty1, GameObject kitty2)
 
 This is one of the cats that [Annique](https://anniquebebe.artstation.com) made. We talked a bit back and forth, and came to the conclusion that in the theme of a market stall it would be cute to make all the cats food-themed. So this is the highest tier cat: the **Boba Cat**! Wanna see more art? Check out the game on Itch.io!
 
-![Boba Cat](./assets/images/projects/master-cappuccinos-cafe/boba.png)
+![Boba Cat](/assets/images/projects/master-cappuccinos-cafe/boba.png)
 
 And this is the background. In Unity the background is set to brown, and the z-layer of the "background" is set higher than other sprites, so it acts more like a foreground. But it looks cute and works like a charm!
 
-![Background](./assets/images/projects/master-cappuccinos-cafe/background.png)
+![Background](/assets/images/projects/master-cappuccinos-cafe/background.png)
