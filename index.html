@@ -43,7 +43,7 @@
             {% unless project.hidden %}
             <div class="projectCard" onclick="window.location.href='{{ project.url | relative_url }}'">
                 <img class="projectCover" loading="lazy"
-                    src="/assets/images/covers/{{ project.name }}.png"
+                    src="/assets/images/covers/{{ project.slug }}.png"
                     alt="Project cover" onerror="this.src='{{ `/assets/images/covers/default.png` | relative_url }}'">
 
                 <div class="background"></div>
@@ -51,7 +51,7 @@
                 <div class="info">
                     <h2>
                         <img class="projectNameLogo" loading="lazy"
-                            src="/assets/images/logos/{{ project.name }}.png"
+                            src="/assets/images/logos/{{ project.slug }}.png"
                             alt="{{ project.title }}">
                     </h2>
 
