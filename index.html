@@ -59,16 +59,14 @@
             {% for project in site.projects %}
             {% if project.hidden %}
             <div class="projectCard hidden" onclick="window.location.href='{{ project.url | relative_url }}'">
-                <img class="projectCover" loading="lazy"
-                    src="{{ '/assets/images/covers/' | append: project.name | append: '.png' | relative_url }}"
+                <img class="projectCover" loading="lazy" src="/assets/images/covers/{{ project.slug }}.png"
                     alt="Project cover" onerror="this.src='{{ `/assets/images/covers/default.png` | relative_url }}'">
 
                 <div class="background"></div>
 
                 <div class="info">
                     <h2>
-                        <img class="projectNameLogo" loading="lazy"
-                            src="{{ '/assets/images/logos/' | append: project.name | append: '.png' | relative_url }}"
+                        <img class="projectNameLogo" loading="lazy" src="/assets/images/logos/{{ project.slug }}.png"
                             alt="{{ project.title }}">
                     </h2>
 
