@@ -7,8 +7,6 @@ tags:
 - CSS
 ---
 
-*( first of all, no the extension is not available because I'm pretty sure it violates the ToS of Gartic Phone )*
-
 # Introduction
 What started as a simple idea to make a better looking Gartic Phone extension turned into almost completely reverse-engineering how Gartic Phone works!
 
@@ -63,7 +61,7 @@ Now that the basics are done, here is a list of all the tools and their tool ind
 
 | Index | Name |
 |---|---|
-| 1    | Brush |
+| 1 | Brush |
 | 2 | Eraser |
 | 3 | Line |
 | 4 | Box Outline |
