@@ -108,6 +108,7 @@ I'm currently working on a more complete documentation, all progress and tables 
 ## Preset Game Modes
 
 All payloads for preset gamemodes are denoted by `42[2,26,id]`, the table only includes the ID
+
 | Name | ID |
 | - | - |
 | Normal | 1 |
@@ -147,6 +148,7 @@ When changing a setting, `42[2,18,{"name":value}]` will be sent, with `name` bei
 Then each setting has a dropdown or toggle with multiple options, each with their own name and internal ID
 
 ### Time (speed)
+
 | Name | ID |
 | - | - |
 | Fast | 3 |
@@ -161,6 +163,7 @@ Then each setting has a dropdown or toggle with multiple options, each with thei
 | Slower First Turn | 10 |
 
 ### Task Flow (first)
+
 | Name | ID |
 | - | - |
 | Writing, Drawing | 1 |
@@ -177,6 +180,7 @@ Then each setting has a dropdown or toggle with multiple options, each with thei
 | Drawings with a background, no preview | 11 |
 
 ### Turns (turns)
+
 | Name | ID |
 | - | - |
 | Few | 1 |
@@ -200,6 +204,7 @@ Then each setting has a dropdown or toggle with multiple options, each with thei
 | 30 Turns | 19 |
 
 ### Keep Drawing (keep)
+
 | Name | ID |
 | - | - |
 | Disabled | 2 |
@@ -208,24 +213,28 @@ Then each setting has a dropdown or toggle with multiple options, each with thei
 | Connected by the top | 4 |
 
 ### Scoreboard (score)
+
 | Name | ID |
 | - | - |
 | Off | 2 |
 | On | 1 |
 
 ### Secrecy (visible)
+
 | Name | ID |
 | - | - |
 | Off | 1 |
 | On | 2 |
 
 ### Animation (animate)
+
 | Name | ID |
 | - | - |
 | Off | 2 |
 | On | 1 |
 
 ### Canvas Format (shape)
+
 | Name | ID |
 | - | - |
 | Standard | 1 |
@@ -233,6 +242,7 @@ Then each setting has a dropdown or toggle with multiple options, each with thei
 | Square | 2 |
 
 ### Moderation (mod)
+
 | Name | ID |
 | - | - |
 | Off | 2 |
