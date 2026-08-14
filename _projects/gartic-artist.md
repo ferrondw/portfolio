@@ -100,4 +100,156 @@ I even looked into React fiber trees (still no clue though) to spy on props. Fro
 
 
 <br><br><br><br><br><br><br><br><br><br><br>
-*And was all this worth my time? Probably not... But it was fun nonetheless!*
+
+# WebSocket Again
+
+I'm currently working on a more complete documentation, all progress and tables will be put here temporarily until i rewrite the complete project for a better and cleaner explanation
+
+## Preset Game Modes
+
+All payloads for preset gamemodes are denoted by `42[2,26,id]`, the table only includes the ID
+| Name | ID |
+| - | - |
+| Normal | 1 |
+| Knock-off | 8 |
+| Animation | 11 |
+| Icebreaker | 9 |
+| Exquisite Corpse | 24 |
+| Complement | 15 |
+| Masterpiece | 20 |
+| Story | 17 |
+| Missing Piece | 21 |
+| Secret | 3 |
+| Co-op | 18 |
+| Score | 10 |
+| Sandwich | 5 |
+| Background | 14 |
+| Solo | 13 |
+
+## Custom Game Modes
+
+When clicking on the "Custom Settings" tab `42[2,27,2]` will be sent, returning to a preset gamemode will send `42[2,27,1]`.
+
+When changing a setting, `42[2,18,{"name":value}]` will be sent, with `name` being the internal name of the setting, and `value` being it's corresponding value, which from testing is not always in order of the dropdown menu (imagine making it easy huh...)
+
+| Display Name | Internal Name |
+| - | - |
+| Time | speed |
+| Task Flow | first |
+| Turns | turns |
+| Keep Drawing | keep |
+| Scoreboard | score |
+| Secrecy | visible |
+| Animation | animate |
+| Canvas Format | shape |
+| Moderation | mod |
+
+Then each setting has a dropdown or toggle with multiple options, each with their own name and internal ID
+
+### Time (speed)
+| Name | ID |
+| - | - |
+| Fast | 3 |
+| Normal | 2 |
+| Slow | 1 |
+| Regressive | 5 |
+| Progressive | 8 |
+| Dynamic | 4 |
+| Infinite | 6 |
+| Host's Decision | 7 |
+| Faster First Turn | 9 |
+| Slower First Turn | 10 |
+
+### Task Flow (first)
+| Name | ID |
+| - | - |
+| Writing, Drawing | 1 |
+| Drawing, Writing | 2 |
+| Only Drawings | 3 |
+| Only Writings | 12 |
+| Writing only at the beginning and the end | 4 |
+| Writing only at the beginning | 5 |
+| Writing only at the end | 6 |
+| Single Sentence | 7 |
+| Single Drawing | 8 |
+| Solo Drawing | 9 |
+| Drawings with a background | 10 |
+| Drawings with a background, no preview | 11 |
+
+### Turns (turns)
+| Name | ID |
+| - | - |
+| Few | 1 |
+| Most | 2 |
+| All | 3 |
+| All +1 | 12 |
+| 200% | 4 |
+| 300% | 5 |
+| Single Turn | 6 |
+| 2 Turns | 10 |
+| 3 Turns | 11 |
+| 4 Turns | 17 |
+| 5 Turns | 7 |
+| 6 Turns | 13 |
+| 7 Turns | 14 |
+| 8 Turns | 15 |
+| 9 Turns | 16 |
+| 10 Turns | 8 |
+| 15 Turns | 18 |
+| 20 Turns | 9 |
+| 30 Turns | 19 |
+
+### Keep Drawing (keep)
+| Name | ID |
+| - | - |
+| Disabled | 2 |
+| All Drawings | 1 |
+| Only the previous drawing | 3 |
+| Connected by the top | 4 |
+
+### Scoreboard (score)
+| Name | ID |
+| - | - |
+| Off | 2 |
+| On | 1 |
+
+### Secrecy (visible)
+| Name | ID |
+| - | - |
+| Off | 1 |
+| On | 2 |
+
+### Animation (animate)
+| Name | ID |
+| - | - |
+| Off | 2 |
+| On | 1 |
+
+### Canvas Format (shape)
+| Name | ID |
+| - | - |
+| Standard | 1 |
+| Photo | 3 |
+| Square | 2 |
+
+### Moderation (mod)
+| Name | ID |
+| - | - |
+| Off | 2 |
+| On | 1 |
+
+Weirdly, when you turn off moderation, you receieve a `42[2,39,"key"]` payload, with `key` being a randomized 24 character string. I have absolutely no clue as to how it's used in-game, as I never use moderation haha
+
+### Other Lobby Buttons
+
+The invite button, qr code button, and match settings copy button do not send any payloads to the websocket.
+
+Individual Invite sends `42[2,37]`, and receives a `42[2,37,"code"]` with `code` being the invite code. But it's not the code that gets copied to your clipboard, it is the NEXT code you copy. I still have no clue how you get to the first code, but all following codes can be 'predicted' by the code payload.
+
+Max player count is the same as the other settings, but without stupid out of order dropdowns. It sends `42[2,18,{"maxUsers":amount}]` with `amount` simply being the amount of max players in the lobby. The dropdown has options for the following: `4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20, 30, 40, 50` players.
+
+## Menus
+
+When the host starts the game, it sends `42[2,5]`, and it receives `42[2,5,1]`
+
+When you go back from the lobby to the main screen, you send `42[2,28]` followed by `41` which closes the websocket connection.
