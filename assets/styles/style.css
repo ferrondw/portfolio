@@ -48,7 +48,6 @@ a {
 }
 
 @view-transition {
-    /* https://www.youtube.com/watch?v=caXbgH-cZGQ */
     navigation: auto;
 }
 
@@ -184,7 +183,7 @@ body {
         padding: 0px 20px;
         height: 90px;
         background-color: var(--background-header);
-        view-transition-name: 'disabled';
+        view-transition-name: disabled;
 
         .backdrop {
             position: absolute;
@@ -512,7 +511,7 @@ body {
                 .projectNameLogo {
                     width: 250px;
                     height: auto;
-                    view-transition-name: 'project-cover';
+                    view-transition-name: project-cover;
                 }
 
                 .info {
