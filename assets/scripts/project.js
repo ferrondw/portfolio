@@ -43,11 +43,12 @@
 document.getElementById("modalContainer").addEventListener("click", (e) => {
     if (e.target.id === "modalContainer") {
         window.closeModal();
+        document.getElementById("modalImage").classList.remove('zoomed');
     }
 });
 
-document.getElementById("modalImage").onclick = function() {
-  this.classList.toggle('zoomed');
+document.getElementById("modalImage").onclick = function () {
+    this.classList.toggle('zoomed');
 };
 
 window.closeModal = function () {

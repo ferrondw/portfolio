@@ -1,6 +1,6 @@
 ---
-title: Gartic Artist
-description: A chrome extension that adds better and native looking tools and utilities to Gartic Phone
+title: Gartic Reverse Engineered
+description: An (almost) complete documentation of how Gartic Phone works under the hood
 hidden: false
 tags:
 - JavaScript
@@ -14,7 +14,7 @@ Because when playing with friends, I always wonder why all the extensions looked
 
 
 # Palette
-Really? 18 colors? What about 66?
+Before I took off with reverse engineering Gartic Phone itself, the extension had an extended color palette of 66 colors.
 
 The color input is handy, but when drawing quickly, only 18 colors won't cut it.
 

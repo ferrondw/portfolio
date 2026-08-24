@@ -565,7 +565,7 @@ body {
             cursor: zoom-in;
 
             &.zoomed {
-                scale: 1.5 !important;
+                scale: 2 !important;
                 cursor: zoom-out;
             }
         }
