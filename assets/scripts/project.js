@@ -46,6 +46,10 @@ document.getElementById("modalContainer").addEventListener("click", (e) => {
     }
 });
 
+document.getElementById("modalImage").onclick = function() {
+  this.classList.toggle('zoomed');
+};
+
 window.closeModal = function () {
     let modalContainer = document.getElementById("modalContainer");
     modalContainer.classList.remove("open");
